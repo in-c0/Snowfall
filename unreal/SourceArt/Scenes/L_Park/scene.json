@@ -1,0 +1,2265 @@
+{
+ "level": "L_Park",
+ "source": "park.js",
+ "env": {
+  "hdri": "autumn_park",
+  "envIntensity": 0.55,
+  "fog": {
+   "type": "exp2",
+   "color": [
+    0.02732,
+    0.03434,
+    0.00913
+   ],
+   "density": 0.009
+  },
+  "sky": {
+   "kind": "dome",
+   "top": [
+    0.02732,
+    0.03434,
+    0.00913
+   ],
+   "horizon": [
+    0.02732,
+    0.03434,
+    0.00913
+   ],
+   "uniforms": {
+    "uSun": [
+     0.39393,
+     0.28013,
+     -0.87541
+    ],
+    "uHaze": [
+     0.02732,
+     0.03434,
+     0.00913
+    ],
+    "uGlow": [
+     0.87137,
+     0.43415,
+     0.11697
+    ]
+   },
+   "radius": 400
+  },
+  "background": [
+   0.02732,
+   0.03434,
+   0.00913
+  ]
+ },
+ "look": {
+  "exposure": 0.95,
+  "bloom": 0.07,
+  "halation": 0.1,
+  "focus": 3.1037513874792415,
+  "focusRange": 1.6,
+  "dof": 0.6,
+  "dofNear": 0.1,
+  "lift": [
+   0.03,
+   0.012,
+   0
+  ],
+  "gamma": [
+   1,
+   1,
+   1.04
+  ],
+  "gain": [
+   1.08,
+   0.98,
+   0.86
+  ],
+  "sat": 1.15,
+  "contrast": 1.12,
+  "tint": [
+   1.04,
+   0.99,
+   0.92
+  ],
+  "vignette": 0.42,
+  "ca": 0.25,
+  "grain": 0.04,
+  "rays": 0,
+  "raysTint": [
+   1,
+   0.72,
+   0.4
+  ],
+  "raysThreshold": 0.9,
+  "raysDecay": 0.95,
+  "raysLen": 0.7,
+  "raysSky": 0,
+  "raysLight": [
+   1.0242793753477273,
+   -0.11633123656422184
+  ]
+ },
+ "lights": [
+  {
+   "type": "hemisphere",
+   "sky": [
+    1,
+    0.67954,
+    0.39157
+   ],
+   "ground": [
+    0.10224,
+    0.02315,
+    0.00605
+   ],
+   "intensity": 0.55
+  },
+  {
+   "type": "directional",
+   "color": [
+    1,
+    0.47932,
+    0.16203
+   ],
+   "intensity": 2.4,
+   "position": [
+    23.64319,
+    16.81986,
+    -52.70977
+   ],
+   "target": [
+    -3.14435,
+    -2.22906,
+    6.81809
+   ],
+   "castShadow": true,
+   "shadowMapSize": 2048,
+   "shadowBias": -0.0005,
+   "shadowNormalBias": 0.05,
+   "shadowExtent": [
+    -22,
+    22,
+    -22,
+    22,
+    1,
+    140
+   ]
+  },
+  {
+   "type": "directional",
+   "color": [
+    1,
+    0.62396,
+    0.32314
+   ],
+   "intensity": 0.35,
+   "position": [
+    -0.3,
+    0.6,
+    1
+   ],
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "castShadow": false
+  }
+ ],
+ "materials": {
+  "mat0": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.63076,
+    0.09759,
+    0.04231
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1.2,
+   "polyhaven": "dry_decay_leaves",
+   "tiling": [
+    40,
+    60
+   ],
+   "wind": 0
+  },
+  "mat1": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.55201,
+    0.25415,
+    0.12214
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": true,
+   "opacity": 1,
+   "normalScale": 1,
+   "depthWrite": false,
+   "polyhaven": "forest_leaves_02",
+   "tiling": [
+    1,
+    1
+   ],
+   "wind": 0,
+   "featherEdges": true
+  },
+  "mat2": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.7,
+   "metalness": 0,
+   "alphaTest": 0.45,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "grid": 4,
+   "translucency": 0.9,
+   "wind": 0.8,
+   "map": "tex/mapleAtlas.png"
+  },
+  "mat3": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.68669,
+    0.55201,
+    0.39157
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 0.4,
+   "polyhaven": "bark_brown_02",
+   "tiling": [
+    1,
+    1
+   ],
+   "wind": 0
+  },
+  "mat4": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.9,
+   "metalness": 0,
+   "alphaTest": 0.45,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "grid": 4,
+   "translucency": 0.3,
+   "wind": 0.2,
+   "map": "tex/leafAtlas.png"
+  },
+  "mat5": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.85,
+   "metalness": 0,
+   "alphaTest": 0.45,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "grid": 4,
+   "translucency": 0.1,
+   "wind": 0,
+   "map": "tex/mapleAtlas.png"
+  },
+  "mat6": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.10224,
+    0.016
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1,
+   "polyhaven": "leafy_grass",
+   "tiling": [
+    3,
+    3
+   ],
+   "wind": 0
+  },
+  "mat7": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "alphaTest": 0.45,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "grid": 4,
+   "translucency": 0.4,
+   "wind": 0.3,
+   "map": "tex/leafAtlas.png"
+  },
+  "mat8": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "alphaTest": 0.45,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "grid": 4,
+   "translucency": 0.5,
+   "wind": 0,
+   "map": "tex/mapleAtlas.png"
+  },
+  "mat9": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.10224,
+    0.01033,
+    0.007
+   ],
+   "roughness": 0.6,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat10": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.85499,
+    0.76052,
+    0.57758
+   ],
+   "roughness": 0.9,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  }
+ },
+ "meshes": [
+  {
+   "id": "m0",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat2",
+   "name": "Plane mapleAtlas",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m0.bin",
+   "count": 126820,
+   "customFloats": 4
+  },
+  {
+   "id": "m1",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat2",
+   "name": "Plane mapleAtlas",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m1.bin",
+   "count": 87534,
+   "customFloats": 4
+  },
+  {
+   "id": "m2",
+   "file": "meshes/ge5c85535_185096.glb",
+   "material": "mat3",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 139568,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m3",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat5",
+   "name": "Plane mapleAtlas",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m3.bin",
+   "count": 42000,
+   "customFloats": 4
+  },
+  {
+   "id": "m4",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat7",
+   "name": "Plane leafAtlas",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m4.bin",
+   "count": 39297,
+   "customFloats": 4
+  },
+  {
+   "id": "m5",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat4",
+   "name": "Plane leafAtlas",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "instances": "inst/m5.bin",
+   "count": 29120,
+   "customFloats": 4
+  },
+  {
+   "id": "m6",
+   "file": "meshes/g7dcad0fc_13741.glb",
+   "material": "mat0",
+   "name": "Plane dry_decay_leaves",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 27000,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m7",
+   "file": "meshes/ga22dd746_56160.glb",
+   "material": "mat6",
+   "name": "Mesh leafy_grass",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 18720,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m8",
+   "file": "meshes/g170e85a6_602.glb",
+   "material": "mat1",
+   "name": "Mesh forest_leaves_02",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 600,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m9",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat8",
+   "name": "Plane mapleAtlas",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "animated": true,
+   "instances": "inst/m9.bin",
+   "count": 220,
+   "customFloats": 4
+  },
+  {
+   "id": "m10",
+   "file": "meshes/gd8685761_24.glb",
+   "material": "mat9",
+   "name": "ChairAttached Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "tag": "ChairAttached",
+   "matrix": [
+    -0.97857,
+    0.00513,
+    0.20586,
+    0,
+    0.01697,
+    0.9983,
+    0.0558,
+    0,
+    -0.20522,
+    0.0581,
+    -0.97699,
+    0,
+    0.01233,
+    0.68545,
+    -0.30508,
+    1
+   ]
+  },
+  {
+   "id": "m11",
+   "file": "meshes/gc3ac5269_24.glb",
+   "material": "mat10",
+   "name": "ChairAttached Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "tag": "ChairAttached",
+   "matrix": [
+    -0.97857,
+    0.00513,
+    0.20586,
+    0,
+    0.01697,
+    0.9983,
+    0.0558,
+    0,
+    -0.20522,
+    0.0581,
+    -0.97699,
+    0,
+    0.00548,
+    0.68548,
+    -0.30364,
+    1
+   ]
+  }
+ ],
+ "models": [
+  {
+   "name": "wheelchair_01",
+   "matrix": [
+    -0.99906,
+    0,
+    -0.04337,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.04337,
+    0,
+    -0.99906,
+    0,
+    0.00712,
+    0.00621,
+    -0.18519,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true,
+   "tag": "Chair"
+  }
+ ],
+ "markers": [
+  {
+   "tag": "PlayerStart",
+   "spawn": "default",
+   "position": [
+    -0.03842,
+    0.03286,
+    0.86382
+   ],
+   "yaw": -0.04338,
+   "pitch": -0.13,
+   "note": "behind the push handles (1.05 m behind the chair origin); park is on rails"
+  },
+  {
+   "tag": "OpeningCam",
+   "name": "OpeningCam",
+   "position": [
+    -0.91415,
+    0.76199,
+    -2.72315
+   ],
+   "lookAt": [
+    0.00712,
+    1.46199,
+    -0.18519
+   ],
+   "fov": 62
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_opening",
+   "position": [
+    -0.91415,
+    0.76199,
+    -2.72315
+   ],
+   "lookAt": [
+    0.00712,
+    1.46199,
+    -0.18519
+   ],
+   "fov": 62
+  },
+  {
+   "tag": "Path0",
+   "position": [
+    0.00712,
+    0.01417,
+    -0.18519
+   ]
+  },
+  {
+   "tag": "Path1",
+   "position": [
+    0.16234,
+    0.05289,
+    -2.1924
+   ]
+  },
+  {
+   "tag": "Path2",
+   "position": [
+    0.37287,
+    0.06354,
+    -4.18158
+   ]
+  },
+  {
+   "tag": "Path3",
+   "position": [
+    0.57841,
+    -0.0014,
+    -6.17084
+   ]
+  },
+  {
+   "tag": "Path4",
+   "position": [
+    0.74188,
+    -0.02541,
+    -8.1647
+   ]
+  },
+  {
+   "tag": "Path5",
+   "position": [
+    0.82779,
+    -0.05653,
+    -10.16316
+   ]
+  },
+  {
+   "tag": "Path6",
+   "position": [
+    0.7915,
+    -0.07416,
+    -12.15537
+   ]
+  },
+  {
+   "tag": "Path7",
+   "position": [
+    0.60561,
+    -0.07288,
+    -14.15288
+   ]
+  },
+  {
+   "tag": "Path8",
+   "position": [
+    0.31059,
+    -0.06641,
+    -16.13077
+   ]
+  },
+  {
+   "tag": "Path9",
+   "position": [
+    -0.05497,
+    -0.08997,
+    -18.09701
+   ]
+  },
+  {
+   "tag": "Path10",
+   "position": [
+    -0.45782,
+    -0.07608,
+    -20.05612
+   ]
+  },
+  {
+   "tag": "Path11",
+   "position": [
+    -0.86791,
+    -0.0383,
+    -22.0138
+   ]
+  },
+  {
+   "tag": "Path12",
+   "position": [
+    -1.25616,
+    -0.02415,
+    -23.9759
+   ]
+  },
+  {
+   "tag": "Path13",
+   "position": [
+    -1.59214,
+    -0.02923,
+    -25.9478
+   ]
+  },
+  {
+   "tag": "Path14",
+   "position": [
+    -1.90964,
+    -0.04285,
+    -27.92172
+   ]
+  },
+  {
+   "tag": "Path15",
+   "position": [
+    -2.25359,
+    -0.0548,
+    -29.89193
+   ]
+  },
+  {
+   "tag": "Path16",
+   "position": [
+    -2.59644,
+    -0.04486,
+    -31.86232
+   ]
+  },
+  {
+   "tag": "Path17",
+   "position": [
+    -2.91057,
+    -0.05337,
+    -33.83747
+   ]
+  },
+  {
+   "tag": "Path18",
+   "position": [
+    -3.16807,
+    -0.06762,
+    -35.8207
+   ]
+  },
+  {
+   "tag": "Path19",
+   "position": [
+    -3.34076,
+    -0.05175,
+    -37.81297
+   ]
+  },
+  {
+   "tag": "Path20",
+   "position": [
+    -3.40106,
+    -0.06454,
+    -39.8101
+   ]
+  },
+  {
+   "tag": "Path21",
+   "position": [
+    -3.33733,
+    -0.0712,
+    -41.81013
+   ]
+  },
+  {
+   "tag": "Path22",
+   "position": [
+    -3.17385,
+    -0.06833,
+    -43.80342
+   ]
+  },
+  {
+   "tag": "Path23",
+   "position": [
+    -2.9311,
+    -0.10396,
+    -45.78871
+   ]
+  },
+  {
+   "tag": "Path24",
+   "position": [
+    -2.62631,
+    -0.13149,
+    -47.76548
+   ]
+  },
+  {
+   "tag": "Path25",
+   "position": [
+    -2.27447,
+    -0.12836,
+    -49.7344
+   ]
+  },
+  {
+   "tag": "Path26",
+   "position": [
+    -1.88919,
+    -0.11576,
+    -51.69695
+   ]
+  },
+  {
+   "tag": "Path27",
+   "position": [
+    -1.48356,
+    -0.06549,
+    -53.65534
+   ]
+  },
+  {
+   "tag": "Path28",
+   "position": [
+    -1.0648,
+    -0.02146,
+    -55.61101
+   ]
+  },
+  {
+   "tag": "Path29",
+   "position": [
+    -0.56244,
+    0.01512,
+    -57.54676
+   ]
+  },
+  {
+   "tag": "Path30",
+   "position": [
+    0.01633,
+    0.05962,
+    -59.46105
+   ]
+  },
+  {
+   "tag": "Path31",
+   "position": [
+    0.6299,
+    0.08073,
+    -61.36447
+   ]
+  },
+  {
+   "tag": "Path32",
+   "position": [
+    1.23523,
+    0.09847,
+    -63.27066
+   ]
+  },
+  {
+   "tag": "Path33",
+   "position": [
+    1.78788,
+    0.11562,
+    -65.19258
+   ]
+  },
+  {
+   "tag": "Path34",
+   "position": [
+    2.24292,
+    4.05504,
+    -67.1398
+   ]
+  },
+  {
+   "tag": "Path35",
+   "position": [
+    2.57345,
+    0.09135,
+    -69.11207
+   ]
+  },
+  {
+   "tag": "Path36",
+   "position": [
+    2.83366,
+    0.02457,
+    -71.09496
+   ]
+  },
+  {
+   "tag": "Path37",
+   "position": [
+    3.03369,
+    -0.0014,
+    -73.08491
+   ]
+  },
+  {
+   "tag": "Path38",
+   "position": [
+    3.17435,
+    0.03019,
+    -75.07996
+   ]
+  },
+  {
+   "tag": "Path39",
+   "position": [
+    3.25583,
+    0.03577,
+    -77.07828
+   ]
+  },
+  {
+   "tag": "Path40",
+   "position": [
+    3.2777,
+    0.04341,
+    -79.0781
+   ]
+  },
+  {
+   "tag": "Path41",
+   "position": [
+    3.23886,
+    0.02903,
+    -81.07769
+   ]
+  },
+  {
+   "tag": "Path42",
+   "position": [
+    3.13068,
+    0.02661,
+    -83.07449
+   ]
+  },
+  {
+   "tag": "Path43",
+   "position": [
+    2.92587,
+    0.00174,
+    -85.06378
+   ]
+  },
+  {
+   "tag": "Path44",
+   "position": [
+    2.6428,
+    0.00655,
+    -87.04357
+   ]
+  },
+  {
+   "tag": "Path45",
+   "position": [
+    2.30514,
+    0.00103,
+    -89.01486
+   ]
+  },
+  {
+   "tag": "Path46",
+   "position": [
+    1.9357,
+    0.00324,
+    -90.98048
+   ]
+  },
+  {
+   "tag": "Path47",
+   "position": [
+    1.55656,
+    -0.01807,
+    -92.94423
+   ]
+  },
+  {
+   "tag": "Path48",
+   "position": [
+    1.18961,
+    -0.06753,
+    -94.91028
+   ]
+  },
+  {
+   "tag": "Path49",
+   "position": [
+    0.85092,
+    -0.1169,
+    -96.88136
+   ]
+  },
+  {
+   "tag": "Path50",
+   "position": [
+    0.51012,
+    -0.1316,
+    -98.85211
+   ]
+  },
+  {
+   "tag": "Path51",
+   "position": [
+    0.16129,
+    -0.11182,
+    -100.82145
+   ]
+  },
+  {
+   "tag": "Path52",
+   "position": [
+    -0.19311,
+    -0.07681,
+    -102.7898
+   ]
+  },
+  {
+   "tag": "Path53",
+   "position": [
+    -0.55066,
+    -0.03357,
+    -104.75759
+   ]
+  },
+  {
+   "tag": "Path54",
+   "position": [
+    -0.90892,
+    -0.02961,
+    -106.72524
+   ]
+  },
+  {
+   "tag": "Path55",
+   "position": [
+    -0.96751,
+    -0.03044,
+    -107.04764
+   ],
+   "note": "end of push (PATH_LEN-3)"
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_push",
+   "position": [
+    0.85209,
+    1.54584,
+    -11.10712
+   ],
+   "lookAt": [
+    0.39432,
+    0.50877,
+    -19.0264
+   ],
+   "fov": 62,
+   "yaw": 0.05774,
+   "pitch": -0.13
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_canopy",
+   "position": [
+    -1.43526,
+    1.59077,
+    -24.90958
+   ],
+   "lookAt": [
+    -2.52669,
+    4.85285,
+    -32.13229
+   ],
+   "fov": 62,
+   "yaw": 0.14998,
+   "pitch": 0.42
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    3.69914,
+    4.98112,
+    -107.04205
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.23614,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    3.72577,
+    1.39847,
+    -6.05677
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.4157,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -11.38187,
+    3.6041,
+    -43.57977
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.43586,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -4.47689,
+    4.89516,
+    -103.99987
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.17207,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -7.63376,
+    3.45749,
+    -77.18167
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28838,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -4.24158,
+    3.16783,
+    -42.88818
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.33588,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    10.95489,
+    3.85368,
+    -65.71376
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.16429,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.33602,
+    5.26839,
+    -97.88829
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.17021,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.99527,
+    5.16444,
+    -97.13042
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.18041,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    10.20464,
+    4.47267,
+    -4.41749
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.44362,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -4.88033,
+    2.22029,
+    -10.17633
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.17928,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -3.86641,
+    4.44545,
+    -104.15222
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.30658,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -9.26688,
+    4.9912,
+    -60.59296
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.25242,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.26966,
+    5.18672,
+    -56.08164
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.41153,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -9.91662,
+    5.54848,
+    -20.71665
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.30731,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.27956,
+    2.75929,
+    -0.11253
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.27678,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    12.8772,
+    3.80796,
+    -85.91717
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.17812,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    11.29013,
+    2.79748,
+    -85.25712
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.39413,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    9.78537,
+    2.05439,
+    -78.55556
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28022,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -12.25476,
+    2.79726,
+    -48.59047
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.38021,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -7.00541,
+    4.24711,
+    -38.78196
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.40843,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    7.07641,
+    1.68746,
+    -3.75169
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.37163,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    4.53513,
+    2.10697,
+    -31.59036
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.27898,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -10.50675,
+    5.18236,
+    -51.12965
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.26382,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -6.36249,
+    1.9845,
+    -33.68524
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.3153,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -9.05959,
+    4.41545,
+    -35.66253
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.39367,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.53973,
+    2.50928,
+    -14.54429
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.27744,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -6.38722,
+    4.35448,
+    -96.49528
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.36588,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.89946,
+    4.02068,
+    -47.39061
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.2354,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.9032,
+    2.99775,
+    -98.93684
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.22309,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.69171,
+    4.7797,
+    -62.92154
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28605,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -7.53532,
+    2.35164,
+    -67.08658
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.35973,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.95277,
+    1.96218,
+    -96.2931
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.21391,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.04179,
+    1.68943,
+    -93.9107
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.17964,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -3.61878,
+    1.93319,
+    -50.61965
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.29563,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -8.14781,
+    4.59128,
+    -11.06375
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.29748,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    9.47219,
+    3.80271,
+    -72.55633
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.24825,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    4.33232,
+    3.76558,
+    -85.86709
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.18378,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -8.63309,
+    1.26253,
+    -102.73555
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.22116,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -3.16705,
+    2.15146,
+    -19.37823
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.25384,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    2.61813,
+    2.70445,
+    -41.73235
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.23185,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.80459,
+    2.80258,
+    -23.8952
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.30037,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.83109,
+    2.11962,
+    -94.3627
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.44543,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.53382,
+    3.55216,
+    -39.12304
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.26982,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.45171,
+    4.27928,
+    -66.19651
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.19786,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -4.418,
+    5.4593,
+    -36.05721
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.38249,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.72407,
+    5.19664,
+    -44.49802
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.26291,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    3.30742,
+    3.53648,
+    -49.23021
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.29646,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    6.7189,
+    4.37005,
+    -51.32595
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.26295,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    5.85494,
+    4.75839,
+    -36.77738
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.31513,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    12.3001,
+    3.8074,
+    -72.53997
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.22341,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.3329,
+    1.35193,
+    -26.56961
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.43864,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -4.0938,
+    2.8318,
+    -43.79191
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.27103,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    2.35524,
+    2.86752,
+    -11.34563
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.25896,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    11.45965,
+    2.16851,
+    -15.13013
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.27586,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.59296,
+    5.53166,
+    -105.59608
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.29878,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    6.61873,
+    3.81305,
+    -45.92999
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.337,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    10.0226,
+    2.38065,
+    -98.46284
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.2941,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -6.2733,
+    2.18068,
+    -41.03819
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.31207,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    9.06927,
+    2.6757,
+    -88.60666
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.42063,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    2.5262,
+    2.53701,
+    -103.61629
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.1905,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -7.36264,
+    2.09921,
+    -61.1469
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.36386,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.47966,
+    3.70994,
+    -49.86949
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.41047,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    5.70716,
+    2.73226,
+    -66.45869
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.43297,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -5.6337,
+    3.58283,
+    -11.40706
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.31969,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -9.61798,
+    1.81345,
+    -52.69341
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.21845,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.90346,
+    4.86891,
+    -68.62486
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.17986,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -11.92074,
+    3.27892,
+    -42.3455
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.19342,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.99595,
+    3.16692,
+    -69.24875
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.41495,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -8.65768,
+    2.58362,
+    -100.7048
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.25879,
+   "opacity": 0.55
+  }
+ ],
+ "uvConvention": "glTF: v=0 at the top of the stored PNG / Poly Haven image (three uv flipped on export)",
+ "stats": {
+  "meshEntries": 12,
+  "instances": 324997,
+  "triangles": 835894,
+  "models": 1,
+  "markers": 131,
+  "lights": 3,
+  "skipped": {
+   "sky": 1,
+   "her": 2
+  },
+  "figureLightsSkipped": 1,
+  "animatedObjects": 1,
+  "uniqueGeometries": 7,
+  "textures": [
+   "tex/mapleAtlas.png",
+   "tex/leafAtlas.png",
+   "tex/glow.png"
+  ]
+ },
+ "notes": [
+  "maple crowns use per-tree distance LOD at runtime (mesh.count); exported at full count",
+  "the book on her lap is exported (tag ChairAttached) at the start pose; it rides with the Chair",
+  "falling leaves (Drifters) exported as an animated leafcards snapshot"
+ ]
+}

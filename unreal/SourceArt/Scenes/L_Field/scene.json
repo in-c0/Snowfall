@@ -1,0 +1,831 @@
+{
+ "level": "L_Field",
+ "source": "field.js",
+ "env": {
+  "hdri": "snowy_field",
+  "envIntensity": 0.3,
+  "fog": {
+   "type": "exp2",
+   "color": [
+    0.47932,
+    0.5972,
+    0.7913
+   ],
+   "density": 0.0018
+  },
+  "sky": {
+   "kind": "dome",
+   "top": [
+    0.00439,
+    0.04231,
+    0.26225
+   ],
+   "horizon": [
+    0.65837,
+    0.76052,
+    0.90466
+   ],
+   "uniforms": {
+    "uSun": [
+     -0.60448,
+     0.29249,
+     -0.74098
+    ],
+    "uZen": [
+     0.00439,
+     0.04231,
+     0.26225
+    ],
+    "uMid": [
+     0.04971,
+     0.21223,
+     0.63076
+    ],
+    "uHor": [
+     0.65837,
+     0.76052,
+     0.90466
+    ]
+   },
+   "radius": 600
+  },
+  "background": [
+   0.65837,
+   0.76052,
+   0.90466
+  ]
+ },
+ "look": {
+  "exposure": 0.92,
+  "bloom": 0.09,
+  "halation": 0.04,
+  "focus": 6.215328502541254,
+  "focusRange": 4,
+  "dof": 0.25,
+  "dofNear": 0,
+  "lift": [
+   0,
+   0.006,
+   0.025
+  ],
+  "gamma": [
+   1,
+   1,
+   1
+  ],
+  "gain": [
+   1.03,
+   1.01,
+   0.99
+  ],
+  "sat": 1.15,
+  "contrast": 1.15,
+  "tint": [
+   1,
+   1,
+   1.01
+  ],
+  "vignette": 0.3,
+  "ca": 0.2,
+  "grain": 0.04,
+  "rays": 0,
+  "raysTint": [
+   1,
+   1,
+   1
+  ],
+  "raysThreshold": 0.8,
+  "raysDecay": 0.96,
+  "raysLen": 0.9,
+  "raysSky": 1,
+  "raysLight": [
+   0.5,
+   0.8
+  ]
+ },
+ "lights": [
+  {
+   "type": "hemisphere",
+   "sky": [
+    0.11444,
+    0.26636,
+    0.7913
+   ],
+   "ground": [
+    0.73791,
+    0.7913,
+    0.88792
+   ],
+   "intensity": 0.5
+  },
+  {
+   "type": "directional",
+   "color": [
+    1,
+    0.88792,
+    0.73046
+   ],
+   "intensity": 4.2,
+   "position": [
+    -54.40344,
+    26.47481,
+    -68.68808
+   ],
+   "target": [
+    0,
+    0.15056,
+    -2
+   ],
+   "castShadow": true,
+   "shadowMapSize": 2048,
+   "shadowBias": -0.0004,
+   "shadowNormalBias": 0.05,
+   "shadowExtent": [
+    -26,
+    26,
+    -26,
+    26,
+    1,
+    200
+   ]
+  }
+ ],
+ "materials": {
+  "mat0": {
+   "kind": "snowground",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.92158,
+    0.93869,
+    0.97345
+   ],
+   "roughness": 0.82,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "sparkle": 1.2,
+   "relief": 0.8,
+   "wind": 0
+  },
+  "mat1": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.00478,
+    0.01161,
+    0.00913
+   ],
+   "roughness": 0.95,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "envMapIntensity": 0.4,
+   "snow": 0.12,
+   "snowDir": [
+    0,
+    0,
+    0
+   ],
+   "wind": 0
+  },
+  "mat2": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.0356,
+    0.0319
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1,
+   "polyhaven": "bark_brown_02",
+   "tiling": [
+    1,
+    1
+   ],
+   "snow": 0.2,
+   "snowDir": [
+    0,
+    0,
+    0
+   ],
+   "wind": 0
+  },
+  "mat3": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.03689,
+    0.03434
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "alphaTest": 0.35,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/twig1.png",
+   "wind": 0
+  },
+  "mat4": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.03689,
+    0.03434
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "alphaTest": 0.35,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/twig2.png",
+   "wind": 0
+  },
+  "mat5": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.03689,
+    0.03434
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "alphaTest": 0.35,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/twig0.png",
+   "wind": 0
+  }
+ },
+ "meshes": [
+  {
+   "id": "m0",
+   "file": "meshes/g3fc775e2_32761.glb",
+   "material": "mat0",
+   "name": "Plane snowground",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 64800,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m1",
+   "file": "meshes/g483e7b89_92.glb",
+   "material": "mat1",
+   "name": "Mesh basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 45,
+   "instances": "inst/m1.bin",
+   "count": 688,
+   "customFloats": 0
+  },
+  {
+   "id": "m2",
+   "file": "meshes/g9687ef2a_12221.glb",
+   "material": "mat0",
+   "name": "Plane snowground",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 24000,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m3",
+   "file": "meshes/g0b834514_1360.glb",
+   "material": "mat2",
+   "name": "Mesh bark_brown_02",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 1072,
+   "instances": "inst/m3.bin",
+   "count": 10,
+   "customFloats": 0
+  },
+  {
+   "id": "m4",
+   "file": "meshes/gcbb4dd06_1352.glb",
+   "material": "mat2",
+   "name": "Mesh bark_brown_02",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 1064,
+   "instances": "inst/m4.bin",
+   "count": 10,
+   "customFloats": 0
+  },
+  {
+   "id": "m5",
+   "file": "meshes/g3ceaad90_1340.glb",
+   "material": "mat2",
+   "name": "Mesh bark_brown_02",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 1056,
+   "instances": "inst/m5.bin",
+   "count": 10,
+   "customFloats": 0
+  },
+  {
+   "id": "m6",
+   "file": "meshes/gafec5a26_432.glb",
+   "material": "mat4",
+   "name": "Mesh twig2",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 216,
+   "instances": "inst/m6.bin",
+   "count": 10,
+   "customFloats": 0
+  },
+  {
+   "id": "m7",
+   "file": "meshes/g6f64ea95_432.glb",
+   "material": "mat5",
+   "name": "Mesh twig0",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 216,
+   "instances": "inst/m7.bin",
+   "count": 10,
+   "customFloats": 0
+  },
+  {
+   "id": "m8",
+   "file": "meshes/gdc0ea277_424.glb",
+   "material": "mat3",
+   "name": "Mesh twig1",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 212,
+   "instances": "inst/m8.bin",
+   "count": 10,
+   "customFloats": 0
+  }
+ ],
+ "models": [
+  {
+   "name": "wheelchair_01",
+   "matrix": [
+    -0.68688,
+    0,
+    0.72677,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -0.72677,
+    0,
+    -0.68688,
+    0,
+    0,
+    0.14387,
+    -5,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true,
+   "tag": "Chair"
+  }
+ ],
+ "markers": [
+  {
+   "tag": "PlayerStart",
+   "spawn": "default",
+   "position": [
+    0,
+    0.15448,
+    1
+   ],
+   "yaw": 0,
+   "pitch": -0.1
+  },
+  {
+   "tag": "FieldCenter",
+   "position": [
+    8.06872,
+    -0.35099,
+    -16.14804
+   ],
+   "radius": 11.40795,
+   "loopLength": 73.16338,
+   "note": "her loop is an irregular closed CatmullRom; Loop0..N give the exact centre line (2 m spacing)"
+  },
+  {
+   "tag": "Loop0",
+   "position": [
+    0,
+    0.15265,
+    -5
+   ]
+  },
+  {
+   "tag": "Loop1",
+   "position": [
+    -1.14185,
+    0.06837,
+    -6.6288
+   ]
+  },
+  {
+   "tag": "Loop2",
+   "position": [
+    -1.8571,
+    0.01343,
+    -8.49453
+   ]
+  },
+  {
+   "tag": "Loop3",
+   "position": [
+    -2.29563,
+    -0.05217,
+    -10.44513
+   ]
+  },
+  {
+   "tag": "Loop4",
+   "position": [
+    -2.49286,
+    -0.16315,
+    -12.43478
+   ]
+  },
+  {
+   "tag": "Loop5",
+   "position": [
+    -2.39679,
+    -0.24813,
+    -14.42928
+   ]
+  },
+  {
+   "tag": "Loop6",
+   "position": [
+    -2.00745,
+    -0.31649,
+    -16.38954
+   ]
+  },
+  {
+   "tag": "Loop7",
+   "position": [
+    -1.3943,
+    -0.40735,
+    -18.29249
+   ]
+  },
+  {
+   "tag": "Loop8",
+   "position": [
+    -0.58867,
+    -0.45155,
+    -20.12246
+   ]
+  },
+  {
+   "tag": "Loop9",
+   "position": [
+    0.40557,
+    -0.50117,
+    -21.85706
+   ]
+  },
+  {
+   "tag": "Loop10",
+   "position": [
+    1.57269,
+    -0.56445,
+    -23.47882
+   ]
+  },
+  {
+   "tag": "Loop11",
+   "position": [
+    2.87002,
+    -0.66052,
+    -25.00119
+   ]
+  },
+  {
+   "tag": "Loop12",
+   "position": [
+    4.30293,
+    -0.64465,
+    -26.39561
+   ]
+  },
+  {
+   "tag": "Loop13",
+   "position": [
+    5.90206,
+    -0.6178,
+    -27.59439
+   ]
+  },
+  {
+   "tag": "Loop14",
+   "position": [
+    7.71258,
+    -0.57765,
+    -28.42818
+   ]
+  },
+  {
+   "tag": "Loop15",
+   "position": [
+    9.69376,
+    -0.54649,
+    -28.63505
+   ]
+  },
+  {
+   "tag": "Loop16",
+   "position": [
+    11.67357,
+    -0.56177,
+    -28.37322
+   ]
+  },
+  {
+   "tag": "Loop17",
+   "position": [
+    13.58266,
+    -0.47624,
+    -27.78197
+   ]
+  },
+  {
+   "tag": "Loop18",
+   "position": [
+    15.36493,
+    -0.43972,
+    -26.87984
+   ]
+  },
+  {
+   "tag": "Loop19",
+   "position": [
+    16.88355,
+    -0.46009,
+    -25.59275
+   ]
+  },
+  {
+   "tag": "Loop20",
+   "position": [
+    17.99841,
+    -0.44361,
+    -23.93543
+   ]
+  },
+  {
+   "tag": "Loop21",
+   "position": [
+    18.80571,
+    -0.4033,
+    -22.10743
+   ]
+  },
+  {
+   "tag": "Loop22",
+   "position": [
+    19.34563,
+    -0.37738,
+    -20.18261
+   ]
+  },
+  {
+   "tag": "Loop23",
+   "position": [
+    19.5756,
+    -0.3409,
+    -18.19797
+   ]
+  },
+  {
+   "tag": "Loop24",
+   "position": [
+    19.31429,
+    -0.32061,
+    -16.22604
+   ]
+  },
+  {
+   "tag": "Loop25",
+   "position": [
+    18.43716,
+    -0.32853,
+    -14.43423
+   ]
+  },
+  {
+   "tag": "Loop26",
+   "position": [
+    17.23035,
+    -0.31222,
+    -12.8415
+   ]
+  },
+  {
+   "tag": "Loop27",
+   "position": [
+    15.87229,
+    -0.25059,
+    -11.37328
+   ]
+  },
+  {
+   "tag": "Loop28",
+   "position": [
+    14.45781,
+    -0.18662,
+    -9.95869
+   ]
+  },
+  {
+   "tag": "Loop29",
+   "position": [
+    13.04801,
+    -0.08977,
+    -8.54198
+   ]
+  },
+  {
+   "tag": "Loop30",
+   "position": [
+    11.61123,
+    -0.02045,
+    -7.14975
+   ]
+  },
+  {
+   "tag": "Loop31",
+   "position": [
+    10.11136,
+    0.03936,
+    -5.82633
+   ]
+  },
+  {
+   "tag": "Loop32",
+   "position": [
+    8.50667,
+    0.10816,
+    -4.63349
+   ]
+  },
+  {
+   "tag": "Loop33",
+   "position": [
+    6.73597,
+    0.13922,
+    -3.71177
+   ]
+  },
+  {
+   "tag": "Loop34",
+   "position": [
+    4.77621,
+    0.08927,
+    -3.37086
+   ]
+  },
+  {
+   "tag": "Loop35",
+   "position": [
+    2.79317,
+    0.06518,
+    -3.58985
+   ]
+  },
+  {
+   "tag": "Loop36",
+   "position": [
+    0.93563,
+    0.13289,
+    -4.31319
+   ]
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_start",
+   "position": [
+    0,
+    1.77448,
+    1
+   ],
+   "lookAt": [
+    0,
+    0.57647,
+    -10.94005
+   ],
+   "fov": 62,
+   "yaw": 0,
+   "pitch": -0.1
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_chase",
+   "position": [
+    5.5,
+    1.51631,
+    -9
+   ],
+   "lookAt": [
+    10.42034,
+    0.23443,
+    -28.58299
+   ],
+   "fov": 62
+  }
+ ],
+ "uvConvention": "glTF: v=0 at the top of the stored PNG / Poly Haven image (three uv flipped on export)",
+ "stats": {
+  "meshEntries": 9,
+  "instances": 750,
+  "triangles": 158120,
+  "models": 1,
+  "markers": 41,
+  "lights": 2,
+  "skipped": {
+   "sky": 1,
+   "snow": 1,
+   "her": 2,
+   "emptyGeometry": 1,
+   "pointsEmpty": 1,
+   "character": 2
+  },
+  "figureLightsSkipped": 1,
+  "animatedObjects": 0,
+  "uniqueGeometries": 9,
+  "textures": [
+   "tex/twig1.png",
+   "tex/twig2.png",
+   "tex/twig0.png",
+   "tex/glow.png"
+  ]
+ },
+ "notes": [
+  "wheel tracks / wheel spray are runtime-generated (not exported)",
+  "the wheelchair (tag Chair) is placed at the loop start; it moves along the loop at runtime"
+ ]
+}
