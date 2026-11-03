@@ -322,10 +322,12 @@ def import_characters():
                 tall = old.get_bounds().box_extent.z * 2.0
             except Exception:
                 tall = 999.0
-            if not (tall < 20.0 and os.path.exists(unit)):
+            asset_file = os.path.join(PROJECT, 'Content', 'Characters', c, f'SK_{c}.uasset')
+            stale = os.path.exists(unit) and (tall < 20.0 or (os.path.exists(asset_file) and os.path.getmtime(unit) > os.path.getmtime(asset_file)))
+            if not stale:
                 continue
-            # imported at 1/100 scale from the unbaked glb (runtime x126 broke its rendering): replace it
-            log(f'{c}: re-importing at real size (was {tall:.1f} cm tall)')
+            # imported at 1/100 scale from the unbaked glb (runtime x126 broke its rendering), or the prepared glb changed
+            log(f'{c}: re-importing from {os.path.basename(unit)} (was {tall:.1f} cm tall)')
             unreal.EditorAssetLibrary.delete_directory(folder)
         src = unit if os.path.exists(unit) else os.path.join(DOWNLOADS, 'chars', c + '.glb')
         if not os.path.exists(src):

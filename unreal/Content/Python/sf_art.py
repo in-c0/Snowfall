@@ -340,6 +340,34 @@ def import_pass(level):
         log('ART_IMPORT_COMPLETE')
 
 
+def _repair_slots(pl):
+    """Slots the scan ships without textures (pine: trunk_c, dead_branches) kept the importer's plain material, which
+    lacks the instanced-mesh usage flag and renders as the engine default in game (warnings in tag ch1). Give each such
+    slot the asset's closest textured instance (shared name token, else bark/trunk, else the first)."""
+    for (asset, vi), sms in sorted(pl.meshes.items()):
+        mis = [eal.load_asset(p) for p in eal.list_assets(f'/Game/Models/{asset}', recursive=False, include_folder=False)]
+        mis = [m for m in mis if isinstance(m, unreal.MaterialInstanceConstant)]
+        if not mis:
+            continue
+        for sm in sms:
+            statics = sm.get_editor_property('static_materials'); changed = False
+            for i, sl in enumerate(statics):
+                cur = sl.get_editor_property('material_interface')
+                if isinstance(cur, unreal.MaterialInstanceConstant) and cur.get_path_name().startswith(f'/Game/Models/{asset}/MI_'):
+                    continue
+                slot = str(sl.get_editor_property('material_slot_name')).lower()
+                toks = set(slot.replace('-', '_').split('_')) - {asset.lower(), 'pine', 'tree', '01', '02', 'lod0'}
+                def score(m):
+                    n = m.get_name().lower()
+                    return (sum(1 for t in toks if t and t in n), 'trunk' in n or 'bark' in n)
+                best = max(mis, key=score)
+                sl.set_editor_property('material_interface', best); statics[i] = sl; changed = True
+                log(f'art {sm.get_name()}: slot {slot} -> {best.get_name()}')
+            if changed:
+                sm.set_editor_property('static_materials', statics)
+                eal.save_loaded_asset(sm)
+
+
 def _ensure_nanite(pl):
     """Every art mesh must render through Nanite. A ProfileGPU of the walk (tag gp1) showed 60 ms of non-Nanite depth+base
     pass draws once the pines were in view, so check each mesh and rebuild it with Nanite on where it is off."""
@@ -380,6 +408,7 @@ def apply(level, scene, calib):
         if spec.get('type', 'model') == 'model' and 'snow' in spec and any(k[0] == asset for k in pl.sets):
             _snow_on_asset(asset, spec['snow'])
     _ensure_nanite(pl)
+    _repair_slots(pl)
     total = pl.spawn()
     rec = {'level': level, 'version': a.get('version'), 'scatter': counts, 'instances': total, 'colliders': len(pl.colliders),
            'meshes': {f'{k[0]}#{k[1]}': [m.get_path_name() for m in v] for k, v in pl.meshes.items()}}

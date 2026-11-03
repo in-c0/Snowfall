@@ -80,6 +80,20 @@ def fix(path):
                 if out not in done:
                     scale_accessor(j, b, out, lambda v: v * s); done.add(out)
     j['nodes'][arm]['scale'] = [1.0, 1.0, 1.0]
+    # one skinned mesh per skin: Xbot ships its body ('Beta_Surface') and its ball joints ('Beta_Joints') as two
+    # meshes, and Unreal imported only one of them - the Shadow showed up as a cloud of floating joints (tag ch1)
+    by_skin = {}
+    for ni, n in enumerate(j['nodes']):
+        if 'mesh' in n and 'skin' in n:
+            by_skin.setdefault(n['skin'], []).append(ni)
+    for skin, nodes in by_skin.items():
+        if len(nodes) > 1:
+            keep = j['nodes'][nodes[0]]
+            for other in nodes[1:]:
+                on = j['nodes'][other]
+                j['meshes'][keep['mesh']]['primitives'] += j['meshes'][on['mesh']]['primitives']
+                del on['mesh']; del on['skin']
+            print(f'  merged {len(nodes)} skinned meshes of skin {skin} into {j["meshes"][keep["mesh"]].get("name")}')
     dst = os.path.splitext(path)[0] + '.unit.glb'
     save_glb(dst, j, b)
     print(f'{path}: baked armature scale {s} into {len(joints)} joints, {len(done)} translation tracks -> {dst}')
