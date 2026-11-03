@@ -361,10 +361,14 @@ def _repair_slots(pl):
                     n = m.get_name().lower()
                     return (sum(1 for t in toks if t and t in n), 'trunk' in n or 'bark' in n)
                 best = max(mis, key=score)
-                sl.set_editor_property('material_interface', best); statics[i] = sl; changed = True
+                sm.set_material(i, best); changed = True   # (editing static_materials did not persist: tag ch2)
+                try:   # the importer's material stays loaded elsewhere; let it render on instances anyway
+                    if isinstance(cur, unreal.Material):
+                        cur.set_editor_property('used_with_instanced_static_meshes', True); eal.save_loaded_asset(cur)
+                except Exception as e:
+                    warn(f'art {cur.get_name() if cur else "?"}: {e}')
                 log(f'art {sm.get_name()}: slot {slot} -> {best.get_name()}')
             if changed:
-                sm.set_editor_property('static_materials', statics)
                 eal.save_loaded_asset(sm)
 
 
