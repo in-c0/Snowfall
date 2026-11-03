@@ -1,4 +1,6 @@
 #include "FX/SFSnowfall.h"
+#include "Misc/Parse.h"
+#include "Misc/CommandLine.h"
 #include "Components/InstancedStaticMeshComponent.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "Materials/MaterialInterface.h"
@@ -15,6 +17,12 @@ ASFSnowfall::ASFSnowfall()
 	Flakes->SetCastShadow(false);
 	Flakes->bAffectDistanceFieldLighting = false;
 	Flakes->SetGenerateOverlapEvents(false);
+	Mist = CreateDefaultSubobject<UInstancedStaticMeshComponent>(TEXT("Mist"));
+	Mist->SetupAttachment(Flakes);
+	Mist->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	Mist->SetCastShadow(false);
+	Mist->bAffectDistanceFieldLighting = false;
+	Mist->SetGenerateOverlapEvents(false);
 }
 
 void ASFSnowfall::BeginPlay()
@@ -37,6 +45,22 @@ void ASFSnowfall::BeginPlay()
 	}
 	Flakes->AddInstances(T, false, false);
 	MID->SetVectorParameterValue(TEXT("Box"), FLinearColor(Box.X, Box.Y, Box.Z, 0));
+	// drifting mist cards: off by default. In the L_Blizzard walk capture (tag af) they showed up as hard-edged grey
+	// discs against the brighter fog, so the height fog carries the atmosphere; -mist turns them back on for experiments.
+	UMaterialInterface* MM = FParse::Param(FCommandLine::Get(), TEXT("mist")) ? LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/FX/M_MistCard.M_MistCard")) : nullptr;
+	if (MM)
+	{
+		Mist->SetStaticMesh(Mesh);
+		MistMID = UMaterialInstanceDynamic::Create(MM, this);
+		Mist->SetMaterial(0, MistMID);
+		Mist->SetBoundsScale(20000.f);
+		TArray<FTransform> M2; M2.Reserve(MistCount);
+		for (int32 i = 0; i < MistCount; ++i) M2.Add(FTransform(FRotator::ZeroRotator, FVector(R.FRand() * 100.f, R.FRand() * 100.f, 0.f)));
+		Mist->AddInstances(M2, false, false);
+		MistMID->SetVectorParameterValue(TEXT("Box"), FLinearColor(MistBox.X, MistBox.Y, MistBox.Z, 0));
+		MistMID->SetVectorParameterValue(TEXT("Color"), MistColor);
+		MistMID->SetScalarParameterValue(TEXT("Opacity"), MistOpacity);
+	}
 }
 
 void ASFSnowfall::Tick(float Dt)
@@ -58,4 +82,14 @@ void ASFSnowfall::Tick(float Dt)
 	MID->SetScalarParameterValue(TEXT("Bright"), Brightness);
 	MID->SetScalarParameterValue(TEXT("Density"), Density);
 	MID->SetScalarParameterValue(TEXT("TimeScale"), Ts);
+	if (MistMID)
+	{
+		// the box is centred on the camera in the shader, so the mist shares the flakes' wind offset
+		MistMID->SetVectorParameterValue(TEXT("Offset"), FLinearColor(Offset.X * 0.6f, Offset.Y * 0.6f, 0, 0));
+		MistMID->SetVectorParameterValue(TEXT("CamPos"), FLinearColor(Cam.X, Cam.Y, Cam.Z + 300.f, 0));
+		MistMID->SetVectorParameterValue(TEXT("Vel"), FLinearColor(Wind.X * Gust * 0.6f, Wind.Y * Gust * 0.6f, 0, 0));
+		MistMID->SetScalarParameterValue(TEXT("LocalTime"), LocalTime);
+		MistMID->SetScalarParameterValue(TEXT("Density"), FMath::Clamp(0.35f + Density * 0.65f, 0.f, 1.f));
+		MistMID->SetScalarParameterValue(TEXT("Bright"), Brightness * 0.75f);
+	}
 }

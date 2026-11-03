@@ -16,6 +16,13 @@ ASFFigure::ASFFigure()
 	Body->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	Posed = CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("Posed")); Posed->SetupAttachment(Root);
 	Posed->SetCollisionEnabled(ECollisionEnabled::NoCollision); Posed->SetVisibility(false);
+	// no per-bone motion blur: an animation switch/loop snaps bones in one frame, and the resulting velocity smeared the
+	// dark Shadow figure into a screen-sized black disc in the L_Blizzard walk captures (tags dk0-dk7)
+	Body->bPerBoneMotionBlur = false; Posed->bPerBoneMotionBlur = false;
+	// always LOD0 and full-rate animation: the Shadow figure ~15 m ahead (scaled x126 from a metre-unit import) flickered
+	// into a screen-sized dark ellipse while its distance hovered around a LOD / update-rate threshold (walk tags dk0-dk11)
+	Body->SetForcedLOD(1); Posed->SetForcedLOD(1);
+	Body->bEnableUpdateRateOptimizations = false;
 	Glow = CreateDefaultSubobject<UPointLightComponent>(TEXT("Glow")); Glow->SetupAttachment(Root);
 	Glow->SetRelativeLocation(FVector(15, 0, 100)); Glow->SetIntensity(0.f); Glow->SetAttenuationRadius(350.f);
 	Glow->SetCastShadows(false); Glow->SetLightColor(FLinearColor(1.f, 0.85f, 0.68f));

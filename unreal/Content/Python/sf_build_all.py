@@ -4,8 +4,8 @@ import glob, os, sys, time, traceback
 import unreal
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import importlib
-import sf_common, sf_fetch, sf_materials, sf_import, sf_levels
-for m in (sf_common, sf_fetch, sf_materials, sf_import, sf_levels):
+import sf_common, sf_fetch, sf_materials, sf_import, sf_levels, sf_art
+for m in (sf_common, sf_fetch, sf_materials, sf_import, sf_levels, sf_art):
     importlib.reload(m)
 from sf_common import SCENES, step, error, save_report, log
 
@@ -16,6 +16,8 @@ def main():
     present = [l for l in ALL if os.path.exists(os.path.join(SCENES, l, 'scene.json'))]
     want = [l.strip() for l in os.environ.get('SF_LEVELS', '').split(',') if l.strip()] or present
     stages = [s.strip() for s in os.environ.get('SF_STAGES', 'fetch,materials,import,levels').split(',')]
+    if 'noart' in stages:   # regenerate the plain WebGL-export level (baseline captures for before/after comparisons)
+        os.environ['SF_NOART'] = '1'
     step('build start', levels=want, stages=stages)
     try:
         if 'clean' in stages:
@@ -27,6 +29,9 @@ def main():
             sf_fetch.run()
         if 'materials' in stages:
             sf_materials.build_all()
+        if 'artimport' in stages:
+            for lv in want:
+                sf_art.import_pass(lv)
         scenes = {}
         if 'import' in stages or 'levels' in stages:
             scenes = sf_import.run(want)
@@ -34,7 +39,7 @@ def main():
             calib = sf_import.calibration()
             for lv in want:
                 if lv in scenes:
-                    sf_levels.build_level(lv, scenes[lv], calib)
+                    sf_levels.build_level(lv, sf_art.merge_scene(lv, scenes[lv]), calib)
         unreal.EditorAssetLibrary.save_directory('/Game', only_if_is_dirty=True, recursive=True)
     except Exception as e:
         error(f'build crashed: {e}\n{traceback.format_exc()}')

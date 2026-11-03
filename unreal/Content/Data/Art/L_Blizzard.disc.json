@@ -1,0 +1,44 @@
+{
+ "warmup": 5.0,
+ "note": "first 12 s of walk.json: isolates the dark-disc artefact (t=8-9 s)",
+ "keys": [
+  {
+   "t": 0.0,
+   "fwd": 0.0,
+   "yaw": 0,
+   "pitch": -2
+  },
+  {
+   "t": 2.0,
+   "fwd": 0.0,
+   "yaw": -12,
+   "pitch": 0
+  },
+  {
+   "t": 3.5,
+   "fwd": 0.0,
+   "yaw": 0,
+   "pitch": -2
+  },
+  {
+   "t": 4.5,
+   "fwd": 1.0,
+   "yaw": 0,
+   "pitch": -2
+  },
+  {
+   "t": 11.0,
+   "fwd": 1.0,
+   "yaw": -38,
+   "pitch": 4,
+   "heading": 0
+  },
+  {
+   "t": 12,
+   "fwd": 1.0,
+   "yaw": -38,
+   "pitch": 4,
+   "heading": 0
+  }
+ ]
+}

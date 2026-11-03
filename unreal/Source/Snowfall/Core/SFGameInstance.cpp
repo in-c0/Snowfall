@@ -27,7 +27,7 @@ void USFGameInstance::Init()
 	FParse::Value(FCommandLine::Get(), TEXT("autoplayspeed="), AutoPlaySpeed);
 	FParse::Value(FCommandLine::Get(), TEXT("autochoice="), AutoPlayChoice);
 	if (bAutoPlay && AutoShotTag.IsEmpty()) AutoShotTag = TEXT("play");
-	bSkipTitle = bAutoShot || bAutoPlay || FParse::Param(FCommandLine::Get(), TEXT("notitle"));
+	bSkipTitle = bAutoShot || bAutoPlay || FParse::Param(FCommandLine::Get(), TEXT("notitle")) || FCString::Strifind(FCommandLine::Get(), TEXT("walkcapture=")) != nullptr;
 	if (bSkipTitle) bStarted = true;
 	FString Fl;
 	if (FParse::Value(FCommandLine::Get(), TEXT("flags="), Fl))

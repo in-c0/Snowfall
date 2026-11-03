@@ -24,10 +24,11 @@ while ($true) {
     if ($job.contentStages) { $a += @("-ContentStages", $job.contentStages) }
     if ($job.shotDelay) { $a += @("-ShotDelay", [string]$job.shotDelay) }
     if ($job.noScript) { $a += "-NoScript" }
+    if ($job.walk) { $a += @("-Walk", $job.walk) }
     if ($job.playSpeed) { $a += @("-PlaySpeed", [string]$job.playSpeed) }
     if ($job.playChoice -ne $null) { $a += @("-PlayChoice", [string]$job.playChoice) }
     Write-Host ((Get-Date).ToString("T") + "  job $tag : " + ($a -join " "))
-    & powershell.exe @a
+    & powershell.exe @a *>&1 | Tee-Object -FilePath (Join-Path $Root "Saved\Verify\runner_$tag.log")
     Move-Item $running (Join-Path $Done "$tag.json") -Force
     Write-Host ((Get-Date).ToString("T") + "  job $tag finished")
   }

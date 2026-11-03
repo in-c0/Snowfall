@@ -76,6 +76,13 @@ def _mat_for(level, mid, m, cache):
         vec['Tint'] = (col[0], col[1], col[2], 1)
         sc['RoughMul'] = 1.0 if m.get('roughness') is None else max(0.05, float(m['roughness']))
         parent = '/Game/Materials/M_SF_PBR'
+    elif kind == 'snowground' and m.get('art_ground'):
+        g = m['art_ground']   # art layer (Content/Data/Art/<level>.json): scanned snow at real scale
+        s = sf_import.pbr_set(g['texture'])
+        tex = {'BaseTex': s.get('diff'), 'NormalTex': s.get('nor'), 'ARMTex': s.get('arm'), 'DispTex': s.get('disp')}
+        sc = {'WorldTile': g.get('world_tile_cm', 260), 'DispScale': min(1.0, g.get('displacement_cm', 5.0) / 8.0), 'Sparkle': g.get('sparkle', 0.15)}
+        vec = {'Color': tuple(g.get('tint', [1, 1, 1])) + (1,)}
+        parent = '/Game/Materials/M_SF_SnowGround'
     elif kind == 'snowground':
         s = sf_import.pbr_set(m['polyhaven']) if m.get('polyhaven') else {}
         tex = {'NormalTex': s.get('nor'), 'ARMTex': s.get('arm')}
@@ -285,7 +292,13 @@ def _sky_sphere(level, env, hdri, cal):
     smc.set_static_mesh(sph)
     bd.set_actor_scale3d(unreal.Vector(4000, 4000, 4000))
     smc.set_editor_property('cast_shadow', False)
+    # the 2 km sphere must not collide: with BasicShapes' simple sphere collision the player spawns *on top of the sky*
+    # (found by the L_Blizzard walk capture: player at Z = +2000 m)
+    smc.set_collision_profile_name('NoCollision')
     smc.set_collision_enabled(unreal.CollisionEnabled.NO_COLLISION)
+    smc.set_editor_property('can_character_step_up_on', unreal.CanBeCharacterBase.ECB_NO)
+    smc.set_editor_property('generate_overlap_events', False)
+    bd.set_actor_enable_collision(False)
     smc.set_material(0, mi)
     for prop in ('visible_in_ray_tracing', 'affect_distance_field_lighting', 'affect_dynamic_indirect_lighting'):
         try:
@@ -308,7 +321,7 @@ def _light(l, cal, i):
         c.set_editor_property('cast_shadows', bool(l.get('castShadow', True)))
         c.set_editor_property('atmosphere_sun_light', False)
         try:
-            c.set_editor_property('light_source_angle', 1.0)
+            c.set_editor_property('light_source_angle', float(l.get('source_angle', 1.0)))
         except Exception:
             pass
     elif t in ('point', 'spot'):
@@ -472,6 +485,12 @@ def build_level(level, scene, calib):
         json.dump(dump, open(os.path.join(REPORT_DIR, f'{level}_actors.json'), 'w'), indent=0)
     except Exception as e:
         warn(f'actor dump: {e}')
+    try:
+        import sf_art
+        sf_art.apply(level, scene, calib)   # versioned art layer (Content/Data/Art/<level>.json) on top of the export
+    except Exception as e:
+        import traceback
+        error(f'{level}: art layer failed: {e}\n{traceback.format_exc()}')
     les.save_current_level()
     step(f'level {level}', meshes=len(scene.get('meshes', [])), instances=n_inst, lights=len(scene.get('lights', [])), markers=len(scene.get('markers', [])))
     return True

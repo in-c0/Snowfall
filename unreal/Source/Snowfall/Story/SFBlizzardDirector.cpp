@@ -213,7 +213,8 @@ void ASFBlizzardDirector::Tick(float Dt)
 		if (GetWorld()->LineTraceSingleByChannel(Hit, N + FVector(0, 0, 300), N - FVector(0, 0, 600), ECC_Visibility)) N.Z = Hit.ImpactPoint.Z;
 		Shadow->SetActorLocation(N);
 		Shadow->SetActorRotation(FRotator(0, YawCenter - 90.f, 0));
-		if (ShadowSpeed > 0.25f) Shadow->Play(TEXT("walk"), ShadowSpeed / 1.35f); else Shadow->Play(TEXT("idle"));
+		// hysteresis: flipping walk/idle every frame around one threshold restarted the animation each time
+		if (ShadowSpeed > 0.3f || (ShadowSpeed > 0.15f && Shadow->GetAnim() == TEXT("walk"))) Shadow->Play(TEXT("walk"), FMath::Max(ShadowSpeed / 1.35f, 0.2f)); else Shadow->Play(TEXT("idle"));
 	}
 	// ending: children running in loops far out on the snow
 	for (int32 i = 0; i < Kids.Num(); ++i)

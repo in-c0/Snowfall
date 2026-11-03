@@ -1,5 +1,5 @@
 <#
-  Snowfall — automated build verification.
+  Snowfall - automated build verification.
   Usage (PowerShell, from anywhere):
     powershell -ExecutionPolicy Bypass -File <project>\Tools\verify.ps1 [-Stages build,content,shots] [-Levels L_Park,L_Field] [-Tag run1] [-Engine "E:\Epic Games\UE_5.8"]
   Writes everything to <project>\Saved\Verify\<tag>\ : build.log, content.log, shots.log, summary.json, and screenshots under Saved\AutoShots\<tag>\.
@@ -16,6 +16,7 @@ param(
   [switch]$NoScript,
   [string]$ContentStages = "fetch,materials,import,levels",
   [double]$PlaySpeed = 2.0,
+  [string]$Walk = "walk",
   [int]$PlayChoice = 0
 )
 $ErrorActionPreference = "Continue"
@@ -41,12 +42,22 @@ function Run-Proc($exe, $argList, $log, $timeoutMin) {
   # stay out of the way of whoever is using the PC
   $null = $p.Handle   # makes ExitCode available after WaitForExit
   try { $p.PriorityClass = [System.Diagnostics.ProcessPriorityClass]::BelowNormal } catch {}
-  if (-not $p.WaitForExit($timeoutMin * 60 * 1000)) { try { $p.Kill() } catch {}; return @{ code = -999; timeout = $true } }
+  # watchdog: after a fatal error (OOM, device removed) the crash handler can hang for the whole timeout -> kill it
+  $deadline = (Get-Date).AddMinutes($timeoutMin); $fatalAt = $null
+  while (-not $p.WaitForExit(15000)) {
+    if ((Get-Date) -gt $deadline) { try { $p.Kill() } catch {}; return @{ code = -999; timeout = $true } }
+    if (-not $fatalAt -and (Test-Path $log) -and (Select-String -Path $log -Pattern "=== Critical error: ===|Ran out of memory allocating|GPU crash detected" -Quiet)) { $fatalAt = Get-Date }
+    if ($fatalAt -and ((Get-Date) - $fatalAt).TotalSeconds -gt 90) { try { $p.Kill() } catch {}; return @{ code = -998; timeout = $false; killed_after_fatal = $true } }
+  }
   return @{ code = $p.ExitCode; timeout = $false }
 }
 
 if (-not (Test-Path $Editor)) { $summary.fatal = "UnrealEditor.exe not found at $Editor"; Save-Summary; "done" | Set-Content (Join-Path $Out "VERIFY_DONE.txt"); exit 1 }
 $st = $Stages.Split(",") | ForEach-Object { $_.Trim() }
+# optional extra command-line switches for the game runs (diagnostics), from Saved\Verify\extra_<tag>.txt
+$Extra = @()
+$ef = Join-Path $Root "Saved\Verify\extra_$Tag.txt"
+if (Test-Path $ef) { $Extra = @((Get-Content $ef -Raw).Trim().Split(" ") | Where-Object { $_ }) ; $summary.extra_args = $Extra }
 
 # ---------------------------------------------------------------- 1. C++ build
 if ($st -contains "build") {
@@ -64,11 +75,27 @@ if ($st -contains "content") {
   $log = Join-Path $Out "content.log"
   $py = Join-Path $Root "Content\Python\sf_build_all.py"
   if ($Levels) { $env:SF_LEVELS = $Levels } else { Remove-Item Env:SF_LEVELS -ErrorAction SilentlyContinue }
-  $env:SF_STAGES = $ContentStages
-  $r = Run-Proc $Editor @("`"$Proj`"", "-ExecutePythonScript=`"$py`"", "-unattended", "-nosplash", "-nopause", "-RenderOffscreen", "-stdout", "-FullStdOutLogOutput", "-log=SFContent.log") $log $ContentTimeoutMin
+  $edArgs = @("`"$Proj`"", "-ExecutePythonScript=`"$py`"", "-unattended", "-nosplash", "-nopause", "-RenderOffscreen", "-stdout", "-FullStdOutLogOutput", "-log=SFContent.log")
+  $cs = @($ContentStages.Split(",") | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+  $passes = @()
+  if ($cs -contains "artimport") {
+    # huge scans are imported a few pieces per editor process: one process importing a whole 7M-triangle tree runs out of RAM
+    $env:SF_STAGES = "artimport"
+    for ($i = 1; $i -le 30; $i++) {
+      $plog = Join-Path $Out "content_import_$i.log"
+      $pr = Run-Proc $Editor $edArgs $plog $ContentTimeoutMin
+      $complete = [bool](Select-String -Path $plog -Pattern "ART_IMPORT_COMPLETE" -Quiet)
+      $passes += @{ pass = $i; exit = $pr.code; complete = $complete; imported = @(Select-String -Path $plog -Pattern "\[SF\] model " | ForEach-Object { $_.Line.Trim() }).Count }
+      if ($complete) { break }
+    }
+    $cs = @($cs | Where-Object { $_ -ne "artimport" })
+  }
+  $env:SF_STAGES = ($cs -join ",")
+  $r = @{ code = 0; timeout = $false }
+  if ($cs.Count -gt 0) { $r = Run-Proc $Editor $edArgs $log $ContentTimeoutMin } else { "artimport only" | Set-Content $log }
   $report = Join-Path $Root "Saved\ContentBuild\report.json"
   $rep = $null; if (Test-Path $report) { $rep = Get-Content $report -Raw | ConvertFrom-Json }
-  $summary.stages.content = @{ exit = $r.code; timeout = $r.timeout; seconds = [int]((Get-Date) - $t).TotalSeconds;
+  $summary.stages.content = @{ exit = $r.code; timeout = $r.timeout; seconds = [int]((Get-Date) - $t).TotalSeconds; import_passes = $passes;
     done = [bool](Select-String -Path $log -Pattern "SF_BUILD_DONE" -Quiet);
     report_errors = if ($rep) { @($rep.errors | Select-Object -First 40) } else { @("no report.json") };
     report_warnings = if ($rep) { @($rep.warnings).Count } else { 0 };
@@ -87,12 +114,53 @@ if ($st -contains "shots") {
   $shotArgs = @("`"$Proj`"", "/Game/Maps/$first", "-game", "-RenderOffscreen", "-ResX=1920", "-ResY=1080", "-autoshot", "-shotlevels=$lv", "-shotdelay=$ShotDelay", "-shottag=$Tag",
             "-nosplash", "-unattended", "-stdout", "-FullStdOutLogOutput", "-log=SFShots.log", "-NoSound")
   if ($NoScript) { $shotArgs += "-noscript" }
+  $shotArgs += $Extra
   $r = Run-Proc $Editor $shotArgs $log $ShotTimeoutMin
+  $retries = 0
+  while ($r.code -ne 0 -and -not $r.timeout -and $retries -lt 2 -and -not (Select-String -Path $log -Pattern "AUTOSHOT done" -Quiet)) {
+    # a crash mid-run (seen: transient D3D12 E_OUTOFMEMORY) -> render only the missing views in a fresh process
+    $retries++
+    Copy-Item $log (Join-Path $Out "shots_crash$retries.log") -Force
+    $r = Run-Proc $Editor ($shotArgs + @("-shotresume")) $log $ShotTimeoutMin
+  }
   $shotDir = Join-Path $Root "Saved\AutoShots\$Tag"
   $pngs = @(Get-ChildItem $shotDir -Filter *.png -ErrorAction SilentlyContinue | ForEach-Object { $_.Name })
   $perf = @(Select-String -Path $log -Pattern "AUTOSHOT shot=.*avg=([0-9.]+)ms" -ErrorAction SilentlyContinue | ForEach-Object { $_.Line.Trim() })
-  $summary.stages.shots = @{ exit = $r.code; timeout = $r.timeout; seconds = [int]((Get-Date) - $t).TotalSeconds; levels = $lv; shots = $pngs; perf = $perf;
+  $summary.stages.shots = @{ exit = $r.code; timeout = $r.timeout; retries = $retries; seconds = [int]((Get-Date) - $t).TotalSeconds; levels = $lv; shots = $pngs; perf = $perf;
     done = [bool](Select-String -Path $log -Pattern "AUTOSHOT done" -Quiet); log_errors = (Log-Errors $log 60) }
+  Save-Summary
+}
+# ---------------------------------------------------------------- 3b. walk capture: the real pawn on a scripted timeline, every frame saved, encoded to mp4
+if ($st -contains "walk") {
+  $t = Get-Date
+  $log = Join-Path $Out "walk.log"
+  $lvl = if ($Levels) { $Levels.Split(",")[0] } else { "L_Blizzard" }
+  $walkArgs = @("`"$Proj`"", "/Game/Maps/$lvl", "-game", "-RenderOffscreen", "-ResX=1280", "-ResY=720", "-walkcapture=$Walk", "-benchmark", "-fps=30",
+                "-shottag=$Tag", "-nosplash", "-unattended", "-stdout", "-FullStdOutLogOutput", "-log=SFWalk.log") + $Extra
+  $r = Run-Proc $Editor $walkArgs $log 40
+  $frames = Join-Path $Root "Saved\AutoShots\$Tag\$Walk"
+  $mp4 = Join-Path $Root "Saved\AutoShots\$Tag\$($lvl)_$($Walk).mp4"
+  $ff = (Get-Command ffmpeg -ErrorAction SilentlyContinue).Source
+  if (-not $ff) { $ff = @(Get-ChildItem $env:USERPROFILE -Directory -Filter "ffmpeg*" -ErrorAction SilentlyContinue | ForEach-Object { Join-Path $_.FullName "bin\ffmpeg.exe" } | Where-Object { Test-Path $_ })[0] }
+  $enc = "no ffmpeg"
+  if ($ff -and (Test-Path (Join-Path $frames "f_00000.png"))) {
+    & $ff -y -loglevel error -framerate 30 -i (Join-Path $frames "f_%05d.png") -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p $mp4
+    $enc = if (Test-Path $mp4) { "ok" } else { "failed" }
+  }
+  $summary.stages.walk = @{ exit = $r.code; timeout = $r.timeout; seconds = [int]((Get-Date) - $t).TotalSeconds; frames = @(Get-ChildItem $frames -Filter "f_*.png" -ErrorAction SilentlyContinue).Count;
+    mp4 = $mp4; encode = $enc; result = @(Select-String -Path $log -Pattern "WALKCAPTURE" -ErrorAction SilentlyContinue | ForEach-Object { $_.Line.Trim() }); log_errors = (Log-Errors $log 40) }
+  Save-Summary
+}
+# ---------------------------------------------------------------- 3c. walk perf: the same walk in real time without screenshots (frame times)
+if ($st -contains "walkperf") {
+  $t = Get-Date
+  $log = Join-Path $Out "walkperf.log"
+  $lvl = if ($Levels) { $Levels.Split(",")[0] } else { "L_Blizzard" }
+  $perfArgs = @("`"$Proj`"", "/Game/Maps/$lvl", "-game", "-RenderOffscreen", "-ResX=1920", "-ResY=1080", "-walkcapture=$Walk", "-walkperf",
+                "-shottag=$Tag", "-nosplash", "-unattended", "-stdout", "-FullStdOutLogOutput", "-log=SFWalkPerf.log") + $Extra
+  $r = Run-Proc $Editor $perfArgs $log 20
+  $summary.stages.walkperf = @{ exit = $r.code; timeout = $r.timeout; seconds = [int]((Get-Date) - $t).TotalSeconds; resolution = "1920x1080";
+    result = @(Select-String -Path $log -Pattern "WALKCAPTURE" -ErrorAction SilentlyContinue | ForEach-Object { $_.Line.Trim() }); log_errors = (Log-Errors $log 40) }
   Save-Summary
 }
 # ---------------------------------------------------------------- 4. autoplay: the whole story, hands-free

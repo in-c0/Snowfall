@@ -24,10 +24,17 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Snow") float FlakeSize = 1.0f;
 	UPROPERTY(EditAnywhere, Category = "Snow") float Turbulence = 40.f;
 	UPROPERTY(EditAnywhere, Category = "Snow") float Brightness = 1.4f;
+	/** Wind-driven mist sheets: big soft cards drifting through the trees (depth-faded, never closer than ~2.5 m). */
+	UPROPERTY(EditAnywhere, Category = "Snow") int32 MistCount = 56;
+	UPROPERTY(EditAnywhere, Category = "Snow") FVector MistBox = FVector(7000, 7000, 1600);
+	UPROPERTY(EditAnywhere, Category = "Snow") float MistOpacity = 0.3f;
+	UPROPERTY(EditAnywhere, Category = "Snow") FLinearColor MistColor = FLinearColor(0.52f, 0.545f, 0.575f);   // ~ blizzard fog colour at Brightness 1.4
 	float TimeScale = 1.f;
 	float Density = 1.f;
 	UPROPERTY(VisibleAnywhere) UInstancedStaticMeshComponent* Flakes;
+	UPROPERTY(VisibleAnywhere) UInstancedStaticMeshComponent* Mist;
 private:
 	UPROPERTY() UMaterialInstanceDynamic* MID;
+	UPROPERTY() UMaterialInstanceDynamic* MistMID;
 	FVector Offset = FVector::ZeroVector; float LocalTime = 0.f;
 };

@@ -4,6 +4,7 @@
 #include "Story/SFDirector.h"
 #include "Story/SFAutoShot.h"
 #include "Story/SFAutoPilot.h"
+#include "Story/SFWalkCapture.h"
 #include "Story/SFBlizzardDirector.h"
 #include "Story/SFLevelDirectors.h"
 #include "Kismet/GameplayStatics.h"
@@ -51,6 +52,13 @@ void ASFGameMode::StartPlay()
 	{
 		ASFDirector* D = GetWorld()->SpawnActor<ASFDirector>(Cls, FTransform::Identity, DP);
 		if (ASFBlizzardDirector* B = Cast<ASFBlizzardDirector>(D)) B->bEnding = Map == TEXT("L_Bench");
+	}
+	FString WalkName;
+	if (FParse::Value(FCommandLine::Get(), TEXT("walkcapture="), WalkName))
+	{
+		FActorSpawnParameters P; P.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn; P.bDeferConstruction = true;
+		ASFWalkCapture* W = GetWorld()->SpawnActor<ASFWalkCapture>(ASFWalkCapture::StaticClass(), FTransform::Identity, P);
+		if (W) { W->CaptureName = WalkName; W->FinishSpawning(FTransform::Identity); }
 	}
 	if (GI && GI->bAutoPlay)
 	{

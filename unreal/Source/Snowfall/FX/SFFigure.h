@@ -26,6 +26,7 @@ public:
 	void SetGlow(float G);
 	FString Who;
 	float HipHeight = 95.f;
+	const FString& GetAnim() const { return CurAnim; }
 
 	UPROPERTY(VisibleAnywhere) USceneComponent* Root;
 	UPROPERTY(VisibleAnywhere) USkeletalMeshComponent* Body;

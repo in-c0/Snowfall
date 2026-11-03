@@ -161,10 +161,15 @@ def _inst_color(mat, x, y):
     a2 = _e(mat, unreal.MaterialExpressionAppendVector, x + 350, y + 80); _con(a1, '', a2, 'A'); _con(ch[2], '', a2, 'B')
     return a2
 
-@guarded
-def build_pbr():
-    """Scanned PBR surfaces (+ optional accumulated snow)."""
-    mat = _new('M_SF_PBR')
+def _build_pbr(name, foliage=False, masked=True):
+    """Scanned PBR surfaces (+ optional accumulated snow). foliage: two-sided foliage shading for needles/leaves,
+    thin-surface transmission, alpha from the base colour texture. masked=False: geometric needles whose texture
+    has no alpha - opaque keeps Nanite on its fast raster path (masked foliage cost ~4x frame time in L_Blizzard)."""
+    if foliage:
+        mat = _new(name, blend=unreal.BlendMode.BLEND_MASKED if masked else unreal.BlendMode.BLEND_OPAQUE,
+                   shading=unreal.MaterialShadingModel.MSM_TWO_SIDED_FOLIAGE, two_sided=True, clip=0.4)
+    else:
+        mat = _new(name)
     uv = _uv_tiled(mat)
     base = _tex(mat, 'BaseTex', WHITE, S_COLOR, -800, -300); _con(uv, '', base, 'UVs')
     nor = _tex(mat, 'NormalTex', FLATN, S_NORMAL, -800, 0); _con(uv, '', nor, 'UVs')
@@ -182,6 +187,85 @@ def build_pbr():
     zero = _e(mat, unreal.MaterialExpressionConstant, -500, 500)
     lm = _e(mat, unreal.MaterialExpressionLinearInterpolate, -250, 420); _con(m, '', lm, 'A'); _con(zero, '', lm, 'B'); _con(snow, '', lm, 'Alpha')
     _prop(lb, '', MP.MP_BASE_COLOR); _prop(nor, 'RGB', MP.MP_NORMAL); _prop(lr, '', MP.MP_ROUGHNESS); _prop(lm, '', MP.MP_METALLIC); _prop(arm, 'R', MP.MP_AMBIENT_OCCLUSION)
+    if foliage:
+        tr = _scalar(mat, 'Transmission', 0.35, -500, 900)
+        sub = _e(mat, unreal.MaterialExpressionMultiply, -250, 860); _con(lb, '', sub, 'A'); _con(tr, '', sub, 'B')
+        _prop(sub, '', MP.MP_SUBSURFACE_COLOR)
+        if masked:
+            _prop(base, 'A', MP.MP_OPACITY_MASK)
+    return _done(mat)
+
+@guarded
+def build_pbr():
+    return _build_pbr('M_SF_PBR')
+
+@guarded
+def build_pbr_foliage():
+    return _build_pbr('M_SF_PBRFoliage', foliage=True)
+
+@guarded
+def build_pbr_foliage_opaque():
+    return _build_pbr('M_SF_PBRFoliageOpaque', foliage=True, masked=False)
+
+GROUND_UV_HLSL = '''
+// world-aligned snow: detail UV, a rotated second layer and a macro mask to break tiling
+float2 p = WP.xy / Tile;
+float2 q = float2(p.x * 0.8 - p.y * 0.6, p.x * 0.6 + p.y * 0.8) * 0.71 + 0.37;
+return float4(p, q);
+'''
+
+@guarded
+def build_snow_terrain():
+    """Art-directed ground: scanned fresh snow (diffuse, normal, ARM, displacement), world-aligned at real scale,
+    two rotated layers blended by a macro mask so the tiling never reads, Nanite tessellation displacement."""
+    mat = _new('M_SF_SnowGround')
+    for prop, val in (('enable_tessellation', True),):
+        try:
+            mat.set_editor_property(prop, val)
+        except Exception as e:
+            warn(f'snow ground {prop}: {e}')
+    try:
+        mat.set_editor_property('displacement_scaling', unreal.DisplacementScaling(magnitude=8.0, center=0.5))
+    except Exception as e:
+        warn(f'snow ground displacement scaling: {e}')
+    wp = _e(mat, unreal.MaterialExpressionWorldPosition, -1700, 0)
+    tile = _scalar(mat, 'WorldTile', 260.0, -1700, 100)
+    uvs = _custom(mat, GROUND_UV_HLSL, ['WP', 'Tile'], unreal.CustomMaterialOutputType.CMOT_FLOAT4, -1450, 0, 'GroundUV')
+    _con(wp, '', uvs, 'WP'); _con(tile, '', uvs, 'Tile')
+    uva = _e(mat, unreal.MaterialExpressionComponentMask, -1250, -60); uva.set_editor_property('r', True); uva.set_editor_property('g', True); _con(uvs, '', uva, '')
+    uvb = _e(mat, unreal.MaterialExpressionComponentMask, -1250, 60); uvb.set_editor_property('b', True); uvb.set_editor_property('a', True); uvb.set_editor_property('r', False); uvb.set_editor_property('g', False); _con(uvs, '', uvb, '')
+    macro = _vnoise(mat, wp, 1.0 / 2400.0, 3, -1250, 500)
+    mk = _custom(mat, 'return smoothstep(0.35, 0.65, N);', ['N'], unreal.CustomMaterialOutputType.CMOT_FLOAT1, -1050, 500, 'MacroMask'); _con(macro, '', mk, 'N')
+    out = {}
+    for i, (pname, default, samp) in enumerate((('BaseTex', WHITE, S_COLOR), ('NormalTex', FLATN, S_NORMAL), ('ARMTex', DEF_ARM, S_LINEAR), ('DispTex', DEF_ARM, S_LINEAR))):
+        a = _tex(mat, pname, default, samp, -900, -500 + i * 330); _con(uva, '', a, 'UVs')
+        b = _e(mat, unreal.MaterialExpressionTextureSampleParameter2D, -900, -340 + i * 330)
+        b.set_editor_property('parameter_name', pname)   # same parameter -> same texture, second UV layer
+        t = eal.load_asset(default)
+        if t: b.set_editor_property('texture', t)
+        b.set_editor_property('sampler_type', samp)
+        _con(uvb, '', b, 'UVs')
+        l = _e(mat, unreal.MaterialExpressionLinearInterpolate, -650, -420 + i * 330); _con(a, 'RGBA', l, 'A'); _con(b, 'RGBA', l, 'B'); _con(mk, '', l, 'Alpha')
+        out[pname] = l
+    col = _vec(mat, 'Color', (1, 1, 1, 1), -650, -700)
+    rgb = _e(mat, unreal.MaterialExpressionComponentMask, -500, -500); rgb.set_editor_property('r', True); rgb.set_editor_property('g', True); rgb.set_editor_property('b', True); _con(out['BaseTex'], '', rgb, '')
+    bc = _e(mat, unreal.MaterialExpressionMultiply, -350, -520); _con(rgb, '', bc, 'A'); _con(col, '', bc, 'B')
+    nrm = _e(mat, unreal.MaterialExpressionComponentMask, -500, -180); nrm.set_editor_property('r', True); nrm.set_editor_property('g', True); nrm.set_editor_property('b', True); _con(out['NormalTex'], '', nrm, '')
+    rgh = _e(mat, unreal.MaterialExpressionComponentMask, -500, 160); rgh.set_editor_property('g', True); rgh.set_editor_property('r', False); _con(out['ARMTex'], '', rgh, '')
+    ao = _e(mat, unreal.MaterialExpressionComponentMask, -500, 240); ao.set_editor_property('r', True); _con(out['ARMTex'], '', ao, '')
+    rmul = _scalar(mat, 'RoughMul', 1.0, -500, 320)
+    r = _e(mat, unreal.MaterialExpressionMultiply, -350, 200); _con(rgh, '', r, 'A'); _con(rmul, '', r, 'B')
+    dsp = _e(mat, unreal.MaterialExpressionComponentMask, -500, 480); dsp.set_editor_property('r', True); _con(out['DispTex'], '', dsp, '')
+    ds = _scalar(mat, 'DispScale', 0.6, -500, 560)
+    dm = _custom(mat, 'return lerp(0.5, D, S);', ['D', 'S'], unreal.CustomMaterialOutputType.CMOT_FLOAT1, -350, 500, 'Disp'); _con(dsp, '', dm, 'D'); _con(ds, '', dm, 'S')
+    cam = _e(mat, unreal.MaterialExpressionCameraPositionWS, -900, 900)
+    amt = _scalar(mat, 'Sparkle', 0.15, -900, 980)
+    sp = _custom(mat, SPARKLE_HLSL, ['WP', 'Cam', 'Amt'], unreal.CustomMaterialOutputType.CMOT_FLOAT1, -650, 900, 'Sparkle'); _con(wp, '', sp, 'WP'); _con(cam, '', sp, 'Cam'); _con(amt, '', sp, 'Amt')
+    _prop(bc, '', MP.MP_BASE_COLOR); _prop(nrm, '', MP.MP_NORMAL); _prop(r, '', MP.MP_ROUGHNESS); _prop(ao, '', MP.MP_AMBIENT_OCCLUSION); _prop(sp, '', MP.MP_EMISSIVE_COLOR)
+    try:
+        _prop(dm, '', MP.MP_DISPLACEMENT)
+    except Exception as e:
+        warn(f'snow ground displacement output: {e}')
     return _done(mat)
 
 @guarded
@@ -355,9 +439,36 @@ float3 corner = (sside * c.x + sdir * c.y * stretch) * sz;
 return center + corner - WPEx;
 '''
 
+MIST_HLSL = '''
+// soft drifting sheet: noisy, round, and faded where it meets geometry or comes too close to the eye
+float2 c = (UV - 0.5) * 2.0;
+float r = length(c);
+float2 q = UV * 2.3 + float2(Rand * 17.0, Rand * 9.0) + Time * float2(0.021, 0.007);
+float n = 0.0, a = 0.55;
+for (int o = 0; o < 4; o++) {
+  float2 i = floor(q); float2 f = frac(q); float2 u = f * f * (3.0 - 2.0 * f);
+  float h00 = frac(sin(dot(i, float2(127.1, 311.7))) * 43758.5453);
+  float h10 = frac(sin(dot(i + float2(1, 0), float2(127.1, 311.7))) * 43758.5453);
+  float h01 = frac(sin(dot(i + float2(0, 1), float2(127.1, 311.7))) * 43758.5453);
+  float h11 = frac(sin(dot(i + float2(1, 1), float2(127.1, 311.7))) * 43758.5453);
+  n += lerp(lerp(h00, h10, u.x), lerp(h01, h11, u.x), u.y) * a; a *= 0.5; q = q * 2.07 + 3.1;
+}
+float shape = saturate(1.0 - r) * saturate(1.0 - r);
+float sheet = smoothstep(0.35, 0.85, n);
+float nearFade = saturate((CamDist - 250.0) / 450.0);
+return shape * sheet * nearFade * Opac;
+'''
+
 @guarded
 def build_flake():
-    mat = _new('M_Snowflake', folder='/Game/FX', blend=unreal.BlendMode.BLEND_TRANSLUCENT, shading=unreal.MaterialShadingModel.MSM_UNLIT,
+    return _build_particles('M_Snowflake', mist=False)
+
+@guarded
+def build_mist():
+    return _build_particles('M_MistCard', mist=True)
+
+def _build_particles(name, mist):
+    mat = _new(name, folder='/Game/FX', blend=unreal.BlendMode.BLEND_TRANSLUCENT, shading=unreal.MaterialShadingModel.MSM_UNLIT,
                two_sided=True, extra={'used_with_instanced_static_meshes': True})
     pr = _e(mat, unreal.MaterialExpressionPerInstanceRandom, -1400, 0)
     uv = _e(mat, unreal.MaterialExpressionTextureCoordinate, -1400, 80)
@@ -369,7 +480,7 @@ def build_flake():
     params = {}
     for i, (n, v) in enumerate([('Box', (2600, 2600, 1800, 0)), ('Offset', (0, 0, 0, 0)), ('CamPos', (0, 0, 0, 0)), ('Vel', (0, 0, -160, 0))]):
         params[n] = _vec(mat, n, v, -1400, 240 + i * 80)
-    for i, (n, v) in enumerate([('LocalTime', 0), ('Turb', 40), ('Size', 2.2), ('Density', 1.0), ('TimeScale', 1.0), ('Streak', 1.0)]):
+    for i, (n, v) in enumerate([('LocalTime', 0), ('Turb', 300 if mist else 40), ('Size', 650.0 if mist else 2.2), ('Density', 1.0), ('TimeScale', 1.0), ('Streak', 0.0 if mist else 1.0)]):
         params[n] = _scalar(mat, n, v, -1400, 560 + i * 60)
     c = _custom(mat, FLAKE_HLSL, ['Rand', 'UV', 'WPEx', 'Box', 'Offset', 'CamPos', 'Vel', 'LocalTime', 'Turb', 'Size', 'Density', 'TimeScale', 'Streak'],
                 unreal.CustomMaterialOutputType.CMOT_FLOAT3, -900, 200, 'FlakeWrap')
@@ -378,11 +489,27 @@ def build_flake():
         _con(params[n], '', c, n)
     # soft round sprite
     uv2 = _e(mat, unreal.MaterialExpressionTextureCoordinate, -900, -300)
-    disc = _custom(mat, 'float2 c = (UV - 0.5) * 2.0; float r = length(c); return saturate(1.0 - r * r) * saturate(1.0 - r);', ['UV'],
-                   unreal.CustomMaterialOutputType.CMOT_FLOAT1, -700, -300, 'Disc')
-    _con(uv2, '', disc, 'UV')
-    op = _scalar(mat, 'Opacity', 0.85, -700, -200)
-    om = _e(mat, unreal.MaterialExpressionMultiply, -450, -260); _con(disc, '', om, 'A'); _con(op, '', om, 'B')
+    op = _scalar(mat, 'Opacity', 0.32 if mist else 0.85, -700, -200)
+    if mist:
+        t2 = _e(mat, unreal.MaterialExpressionTime, -1100, -260)
+        pr2 = _e(mat, unreal.MaterialExpressionPerInstanceRandom, -1100, -200)
+        cd = _e(mat, unreal.MaterialExpressionPixelDepth, -1100, -140)
+        sh = _custom(mat, MIST_HLSL, ['UV', 'Rand', 'Time', 'CamDist', 'Opac'], unreal.CustomMaterialOutputType.CMOT_FLOAT1, -700, -300, 'MistSheet')
+        _con(uv2, '', sh, 'UV'); _con(pr2, '', sh, 'Rand'); _con(t2, '', sh, 'Time'); _con(cd, '', sh, 'CamDist'); _con(op, '', sh, 'Opac')
+        dfade = _e(mat, unreal.MaterialExpressionDepthFade, -700, -150)
+        try:
+            dfade.set_editor_property('fade_distance_default', 300.0)
+        except Exception as e:
+            warn(f'depth fade: {e}')
+        om = _e(mat, unreal.MaterialExpressionMultiply, -450, -260); _con(sh, '', om, 'A'); _con(dfade, '', om, 'B')
+    else:
+        # flakes fade out inside ~1 m of the eye: a flake brushing the lens filled the frame as a dark/grey disc in
+        # every walk capture (same deterministic flake, same seconds, before and after)
+        cdf = _e(mat, unreal.MaterialExpressionPixelDepth, -1100, -140)
+        disc = _custom(mat, 'float2 c = (UV - 0.5) * 2.0; float r = length(c); return saturate(1.0 - r * r) * saturate(1.0 - r) * saturate((CamDist - 40.0) / 80.0);', ['UV', 'CamDist'],
+                       unreal.CustomMaterialOutputType.CMOT_FLOAT1, -700, -300, 'Disc')
+        _con(uv2, '', disc, 'UV'); _con(cdf, '', disc, 'CamDist')
+        om = _e(mat, unreal.MaterialExpressionMultiply, -450, -260); _con(disc, '', om, 'A'); _con(op, '', om, 'B')
     col = _vec(mat, 'Color', (0.9, 0.92, 0.96, 1), -700, -500)
     br = _scalar(mat, 'Bright', 1.0, -700, -420)
     em = _e(mat, unreal.MaterialExpressionMultiply, -450, -460); _con(col, '', em, 'A'); _con(br, '', em, 'B')
@@ -627,9 +754,9 @@ def build_glow_card():
 def build_all():
     step('materials')
     ensure_defaults()
-    for f in (build_pbr, lambda: build_basic('M_SF_Basic', False, False), lambda: build_basic('M_SF_Basic2S', True, True),
+    for f in (build_pbr, build_pbr_foliage, build_pbr_foliage_opaque, build_snow_terrain, lambda: build_basic('M_SF_Basic', False, False), lambda: build_basic('M_SF_Basic2S', True, True),
               build_leaf, build_grass, build_snow_ground, build_flake, build_silhouette, build_light_figure, build_stain,
-              build_pp_warp, build_window, build_glass, build_emissive, build_sky, build_sky_dome, build_glow_card):
+              build_pp_warp, build_window, build_glass, build_emissive, build_sky, build_sky_dome, build_glow_card, build_mist):
         f()
 
 def instance(name, parent_path, folder='/Game/Materials/Instances', scalars=None, vectors=None, textures=None):

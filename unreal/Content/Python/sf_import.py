@@ -49,11 +49,16 @@ def _tri_count(sm):
         return 0
 
 def _set_nanite(sm, on):
+    """Through StaticMeshEditorSubsystem so the mesh is rebuilt: setting the property alone left the first piece of
+    every pine (850k triangles) without Nanite data, rendered 350 times on the classic path (60 ms/frame, tag gp1)."""
     try:
         ns = sm.get_editor_property('nanite_settings')
         if ns.get_editor_property('enabled') != on:
             ns.set_editor_property('enabled', on)
-            sm.set_editor_property('nanite_settings', ns)
+            try:
+                unreal.get_editor_subsystem(unreal.StaticMeshEditorSubsystem).set_nanite_settings(sm, ns, True)
+            except Exception:
+                sm.set_editor_property('nanite_settings', ns)
     except Exception as e:
         warn(f'nanite {sm.get_name()}: {e}')
 
@@ -204,7 +209,7 @@ def import_pbr_set(name):
     folder = f'/Game/Textures/{name}'
     src = os.path.join(DOWNLOADS, 'textures', name)
     out = {}
-    for short, kind in (('diff', 'color'), ('nor', 'normal'), ('arm', 'masks')):
+    for short, kind in (('diff', 'color'), ('nor', 'normal'), ('arm', 'masks'), ('disp', 'masks')):
         f = (glob.glob(os.path.join(src, f'{name}_{short}.*')) or [None])[0]
         if f:
             out[short] = _texture(f, folder, f'T_{name}_{short}', kind)
@@ -212,17 +217,19 @@ def import_pbr_set(name):
 
 def pbr_set(name):
     folder = f'/Game/Textures/{name}'
-    got = {s: load(f'{folder}/T_{name}_{s}') for s in ('diff', 'nor', 'arm')}
+    got = {s: load(f'{folder}/T_{name}_{s}') for s in ('diff', 'nor', 'arm', 'disp')}
     if not got['diff']:
         got = import_pbr_set(name) or {}
     return got
 
+FOLIAGE_SLOT = ('twig', 'needle', 'leaf', 'leaves', 'foliage')
+
 @guarded
-def import_model(name, node=None):
+def import_model(name, node=None, collide=True):
     """node: use only that mesh of a multi-object scan sheet (asset /Game/Models/<name>/<node>).
     Poly Haven glTF → /Game/Models/<name>/<name> (+ its textures and one M_SF_PBR instance per slot, so snow can settle on it)."""
     folder = f'/Game/Models/{name}'
-    want = node or name
+    want = re.sub(r'[^A-Za-z0-9_]', '_', node or name)   # asset names cannot contain '.'
     if load(f'{folder}/{want}'):
         return load(f'{folder}/{want}')
     src0 = os.path.join(DOWNLOADS, 'models', name, name + '.gltf')
@@ -231,10 +238,13 @@ def import_model(name, node=None):
     # flatten: bake node transforms, merge all meshes into one (or keep just `node`)
     import sf_gltf
     src = os.path.join(DOWNLOADS, 'models', name, f'{name}__{node or "flat"}.gltf')
-    try:
-        tris = sf_gltf.flatten(src0, src, node=node, mesh_name=want)
-    except Exception as e:
-        warn(f'model {name}: flatten failed ({e}); importing raw'); src = src0; tris = -1
+    if node and os.path.exists(src) and os.path.getmtime(src) >= os.path.getmtime(src0):
+        tris = -1   # prepared by Tools/art/prepare_assets.py (numpy splitter; huge scans)
+    else:
+        try:
+            tris = sf_gltf.flatten(src0, src, node=node, mesh_name=want)
+        except Exception as e:
+            warn(f'model {name}: flatten failed ({e}); importing raw'); src = src0; tris = -1
     assets = _import_gltf(src, f'{folder}/_imp_{want}')
     meshes = [a for a in assets if isinstance(a, unreal.StaticMesh)]
     if not meshes:
@@ -268,15 +278,22 @@ def import_model(name, node=None):
         if 'nor_gl' in s: tx['NormalTex'] = _texture(s['nor_gl'], f'{folder}/Tex', f'T_{key}_nor', 'normal')
         if 'arm' in s: tx['ARMTex'] = _texture(s['arm'], f'{folder}/Tex', f'T_{key}_arm', 'masks')
         # model UVs come from a real glTF (top-left origin), so no V flip: TileV = -1 cancels the master's flip
-        new = sf_materials.instance(f'MI_{key}', '/Game/Materials/M_SF_PBR', folder, scalars={'TileU': 1, 'TileV': -1}, textures=tx)
+        foliage = any(k in key.lower() for k in FOLIAGE_SLOT)
+        # foliage whose base colour has no alpha (JPEG scans with geometric needles) is opaque: Nanite's fast path
+        opaque_fol = foliage and os.path.splitext(s['diff'])[1].lower() in ('.jpg', '.jpeg')
+        parent = ('/Game/Materials/M_SF_PBRFoliageOpaque' if opaque_fol else '/Game/Materials/M_SF_PBRFoliage') if foliage else '/Game/Materials/M_SF_PBR'
+        new = sf_materials.instance(f'MI_{key}', parent, folder, scalars={'TileU': 1, 'TileV': -1}, textures=tx)
         sl.set_editor_property('material_interface', new)
         statics[i] = sl; changed = True
     if changed:
         sm.set_editor_property('static_materials', statics)
     _set_nanite(sm, _tri_count(sm) > 3000)
-    _set_collision(sm, True)
+    if collide:
+        _set_collision(sm, True)
+    else:
+        _no_collision(sm)   # e.g. million-triangle trees: invisible capsule colliders are placed instead
     eal.save_loaded_asset(sm)
-    log(f'model {name} ({_tri_count(sm)} tris)')
+    log(f'model {want} ({_tri_count(sm)} tris)')
     return sm
 
 @guarded
