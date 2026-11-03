@@ -315,9 +315,19 @@ ANIMS = {'Xbot': ['idle', 'walk', 'run', 'sad_pose', 'sneak_pose', 'agree', 'hea
 def import_characters():
     for c, anims in ANIMS.items():
         folder = f'/Game/Characters/{c}'
-        if load(f'{folder}/SK_{c}'):
-            continue
-        src = os.path.join(DOWNLOADS, 'chars', c + '.glb')
+        unit = os.path.join(DOWNLOADS, 'chars', c + '.unit.glb')   # Tools/art/fix_mixamo_glb.py: armature scale baked
+        old = load(f'{folder}/SK_{c}')
+        if old:
+            try:
+                tall = old.get_bounds().box_extent.z * 2.0
+            except Exception:
+                tall = 999.0
+            if not (tall < 20.0 and os.path.exists(unit)):
+                continue
+            # imported at 1/100 scale from the unbaked glb (runtime x126 broke its rendering): replace it
+            log(f'{c}: re-importing at real size (was {tall:.1f} cm tall)')
+            unreal.EditorAssetLibrary.delete_directory(folder)
+        src = unit if os.path.exists(unit) else os.path.join(DOWNLOADS, 'chars', c + '.glb')
         if not os.path.exists(src):
             warn(f'character {c} missing'); continue
         assets = _import_gltf(src, folder)

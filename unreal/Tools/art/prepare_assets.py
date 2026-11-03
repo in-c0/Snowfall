@@ -309,6 +309,13 @@ def main(level):
             get(u, os.path.join(DL, 'hdri', f'{aid}_{res}.hdr')); rec['files'].append(u)
         print(f'{aid}: ok ({kind})')
         man['assets'].append(rec)
+    # Mixamo characters: bake the 0.01 armature scale so Unreal imports them at real size (see fix_mixamo_glb.py)
+    import glob as _g
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import fix_mixamo_glb
+    for g in sorted(_g.glob(os.path.join(DL, 'chars', '*.glb'))):
+        if not g.endswith('.unit.glb') and not os.path.exists(os.path.splitext(g)[0] + '.unit.glb'):
+            fix_mixamo_glb.fix(g)
     for dst, cfg in art.get('derived_textures', {}).items():
         man.setdefault('derived', []).append(derive_clean_snow(cfg['from'], dst, cfg))
     json.dump(man, open(os.path.join(DL, f'art_manifest_{level}.json'), 'w'), indent=1)
