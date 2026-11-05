@@ -171,6 +171,7 @@ class Placer:
         self.colliders = []     # (x, y, z, radius, height) three metres
         self.meshes = {}        # (asset, variant) -> StaticMesh
         self.collide = set()
+        self.tsets = {}         # (asset, variant, tint) -> [transforms]   (instances that replace an export mesh)
 
     def mesh(self, asset, vi):
         """-> list of StaticMeshes that together make this variant (huge scans are pre-split into chunks)."""
@@ -237,8 +238,85 @@ class Placer:
         self.add(p['asset'], p.get('variant', 0), p['pos'][0], p['pos'][1], p.get('yaw', 0.0), p.get('scale', 1.0),
                  p.get('sink', 0.0), 0.0, rng, sink_frac=p.get('sink_frac'), collider=p.get('collider'), collide=p.get('collide', False))
 
+    def replace(self, r, scene):
+        """Swap every instance of an exported primitive (e.g. the WebGL library's 8439 book boxes) for a scanned asset,
+        fitted to the box: thinnest box axis <- asset X (thickness), longest <- asset Y (height), middle <- asset Z
+        (depth, spine on +Z turned toward 'face_point'). The box keeps its place, size and tilt; only the look changes."""
+        m = next((m for m in scene.get('meshes', []) if m['id'] == r['mesh']), None)
+        if m is None or not m.get('instances'):
+            warn(f'art replace: mesh {r["mesh"]} has no instances'); return 0
+        data = open(os.path.join(SCENES, self.level, m['instances']), 'rb').read()   # no numpy in the editor's Python
+        n = int(m.get('count', 1)); stride = len(data) // 4 // max(n, 1)
+        spec = self.a['assets'][r['asset']]
+        dims = r['asset_dims']                       # per variant [thickness, height, depth] in metres
+        nv = len(spec['variants']); tints = r.get('tints', [[1, 1, 1]])
+        face = r.get('face_point')                   # spines turn toward this point (x, z), e.g. the aisle
+        rng = random.Random(r.get('seed', 1))
+        dot = lambda a, b: a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
+        cross = lambda a, b: [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]
+        cnt = 0
+        for i in range(n):
+            M = struct.unpack_from('<16f', data, i * stride * 4)
+            cols = [list(M[0:3]), list(M[4:7]), list(M[8:11])]
+            lens = [math.sqrt(dot(c, c)) for c in cols]
+            if min(lens) < 1e-6:
+                continue
+            thin, mid, long_ = sorted(range(3), key=lambda k: lens[k])
+            U = [[v / lens[k] for v in cols[k]] for k in range(3)]
+            p = list(M[12:15])
+            Y = U[long_]; Z = U[mid]
+            if face is not None:                                      # spine (+Z) toward the face point, in plan
+                fx = face[0] if face[0] is not None else p[0]; fz = face[1] if face[1] is not None else p[2]   # null = a line
+                if dot(Z, [fx - p[0], 0.0, fz - p[2]]) < 0:
+                    Z = [-v for v in Z]
+            X = cross(Y, Z)
+            vi = rng.randrange(nv)
+            t, h, d = dims[vi % len(dims)]
+            kx, ky, kz = lens[thin] / t, lens[long_] / h, lens[mid] / d
+            base = [p[k] - Y[k] * lens[long_] / 2.0 for k in range(3)]   # assets sit on their base, boxes are centred
+            cv = lambda v: unreal.Vector(float(-v[2]), float(v[0]), float(v[1]))
+            rot = unreal.MathLibrary.make_rot_from_xy(cv(X), cv(Z))
+            tf = unreal.Transform(c3(base), rot, unreal.Vector(kx, kz, ky))
+            ti = rng.randrange(len(tints))
+            if not self.mesh(r['asset'], vi):
+                continue
+            self.tsets.setdefault((r['asset'], vi, ti), []).append(tf)
+            cnt += 1
+        self.tints = getattr(self, 'tints', {}); self.tints[r['asset']] = tints
+        return cnt
+
+    def _tinted(self, asset, sm, ti):
+        """Child instances of the asset's materials with a Tint (few meshes, many colours: one cover scan reads as a
+        whole library)."""
+        tint = self.tints[asset][ti]
+        out = []
+        for sl in sm.get_editor_property('static_materials'):
+            mi = sl.get_editor_property('material_interface')
+            if ti == 0 or mi is None or not mi.get_name().startswith('MI_') or 'paper' in mi.get_name().lower():
+                out.append(mi); continue
+            out.append(sf_materials.instance(f'{mi.get_name()}_t{ti}', mi.get_path_name().split('.')[0], f'/Game/Models/{asset}/Tints',
+                                             vectors={'Tint': (tint[0], tint[1], tint[2], 1.0)}))
+        return out
+
     def spawn(self):
         total = 0
+        for (asset, vi, ti), xs in sorted(self.tsets.items()):
+            for sm in self.meshes[(asset, vi)]:
+                act = eas.spawn_actor_from_class(unreal.SFInstanceSet, unreal.Vector(0, 0, 0), unreal.Rotator(0, 0, 0))
+                act.set_actor_label(f'Art_{asset}_{vi}_t{ti}')
+                act.tags = [unreal.Name('Art'), unreal.Name(asset)]
+                comp = act.get_editor_property('instances')
+                comp.set_static_mesh(sm)
+                for si, mi in enumerate(self._tinted(asset, sm, ti)):
+                    if mi is not None:
+                        comp.set_material(si, mi)
+                comp.add_instances(xs, False, True)
+                act.configure(True, False, 0.0, True)
+                try:
+                    act.set_folder_path('Art')
+                except Exception:
+                    pass
+            total += len(xs)
         for (asset, vi), xs in sorted(self.sets.items(), key=lambda kv: (kv[0][0], kv[0][1])):
             for pi, sm in enumerate(self.meshes[(asset, vi)]):
                 act = eas.spawn_actor_from_class(unreal.SFInstanceSet, unreal.Vector(0, 0, 0), unreal.Rotator(0, 0, 0))
@@ -408,8 +486,12 @@ def apply(level, scene, calib):
         counts[s['name']] = pl.scatter(s)
     for p in a.get('place', []):
         pl.place(p)
+    if a.get('replace'):
+        orig = json.load(open(os.path.join(SCENES, level, 'scene.json'), encoding='utf-8'))   # suppressed meshes included
+        for r in a['replace']:
+            counts[r['name']] = pl.replace(r, orig)
     for asset, spec in a.get('assets', {}).items():
-        if spec.get('type', 'model') == 'model' and 'snow' in spec and any(k[0] == asset for k in pl.sets):
+        if spec.get('type', 'model') == 'model' and 'snow' in spec and any(k[0] == asset for k in list(pl.sets) + list(pl.tsets)):
             _snow_on_asset(asset, spec['snow'])
     _ensure_nanite(pl)
     _repair_slots(pl)

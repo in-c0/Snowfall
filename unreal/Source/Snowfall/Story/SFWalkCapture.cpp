@@ -38,6 +38,7 @@ void ASFWalkCapture::BeginPlay()
 		return;
 	}
 	Root->TryGetNumberField(TEXT("warmup"), Warmup);
+	Root->TryGetBoolField(TEXT("absolute_yaw"), bAbsoluteYaw);   // keys in world yaw (0 = +X), not relative to the spawn
 	const TArray<TSharedPtr<FJsonValue>>* Arr;
 	if (Root->TryGetArrayField(TEXT("keys"), Arr))
 		for (const TSharedPtr<FJsonValue>& V : *Arr)
@@ -97,7 +98,7 @@ void ASFWalkCapture::Tick(float Dt)
 	P->bCanMove = true; P->bCanLook = true; P->bYawLimit = false; P->SpeedScale = 1.f;
 	if (T < 0.f)
 	{
-		YawStart = P->GetYaw(); T = 0.f; LastPos = P->GetActorLocation();
+		YawStart = bAbsoluteYaw ? 0.f : P->GetYaw(); T = 0.f; LastPos = P->GetActorLocation();
 		UE_LOG(LogSnowfall, Display, TEXT("WALKCAPTURE start at %s yaw=%.1f"), *LastPos.ToString(), YawStart);
 		for (TActorIterator<ASFFigure> It(GetWorld()); It; ++It)
 		{

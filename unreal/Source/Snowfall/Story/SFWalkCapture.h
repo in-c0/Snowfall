@@ -21,7 +21,7 @@ public:
 private:
 	struct FKey { float T, Fwd, Side, Yaw, Pitch, Heading; bool bHeading; };
 	TArray<FKey> Keys;
-	float Warmup = 4.f, Duration = 0.f, T = -1.f, YawStart = 0.f;
+	float Warmup = 4.f, Duration = 0.f, T = -1.f, YawStart = 0.f; bool bAbsoluteYaw = false;
 	int32 Frame = 0;
 	double LastReal = 0.0;
 	FString OutDir, Timings;

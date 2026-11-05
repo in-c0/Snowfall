@@ -1,0 +1,23 @@
+{
+ "note": "60 s through the opening of L_Library: wake in the daisies, walk the meadow into the library mouth, the left shelf up close (books at arm's length), up the shelf, back to the aisle, glance right, turn round to the bright entrance, walk on, look up. Yaw is world yaw (0 = into the library, -90 = left shelves).",
+ "warmup": 8,
+ "absolute_yaw": true,
+ "keys": [
+  {"t": 0,  "fwd": 0,   "yaw": 0,   "pitch": 35},
+  {"t": 2,  "fwd": 0,   "yaw": -10, "pitch": 20},
+  {"t": 3,  "fwd": 1,   "yaw": 0,   "pitch": 2},
+  {"t": 11, "fwd": 1,   "yaw": 0,   "pitch": 6},
+  {"t": 14, "fwd": 0.8, "yaw": 0,   "pitch": 14},
+  {"t": 17, "fwd": 0.4, "side": -0.7, "yaw": -70, "pitch": -4, "heading": 0},
+  {"t": 21, "fwd": 0,   "side": 0, "yaw": -88, "pitch": -12, "heading": 0},
+  {"t": 25, "fwd": 0,   "yaw": -88, "pitch": 18, "heading": 0},
+  {"t": 28, "fwd": 0.6, "side": 0.6, "yaw": -20, "pitch": 0, "heading": 0},
+  {"t": 32, "fwd": 0.8, "side": 0, "yaw": 65, "pitch": -6, "heading": 0},
+  {"t": 35, "fwd": 0,   "yaw": 120, "pitch": 0},
+  {"t": 40, "fwd": 0,   "yaw": 180, "pitch": 4},
+  {"t": 44, "fwd": 0,   "yaw": 360, "pitch": 0},
+  {"t": 46, "fwd": 1,   "yaw": 360, "pitch": 0},
+  {"t": 53, "fwd": 0.6, "yaw": 345, "pitch": 30},
+  {"t": 60, "fwd": 0,   "yaw": 360, "pitch": 10}
+ ]
+}

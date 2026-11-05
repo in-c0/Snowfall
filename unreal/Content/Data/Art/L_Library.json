@@ -1,0 +1,397 @@
+{
+ "level": "L_Library",
+ "version": 1,
+ "intent": "v1: keep the WebGL library's golden, hazy, dreamy mood exactly (env, fog, lights and grading untouched - the lesson from L_Blizzard) and replace only what reads as procedural up close: the 8439 book boxes on the lower shelves and the 31 lying books become a scanned 1900s encyclopedia set (20 books) in six leather tints. Upper shelves (spine texture, high and fogged), plants, ladders and furniture stay.",
+ "suppress_meshes": {
+  "ids": [
+   "m2",
+   "m54"
+  ],
+  "note": "m2 = book boxes on the shelves (8439), m54 = books lying on tables/floor (31)"
+ },
+ "assets": {
+  "book_encyclopedia_set_01": {
+   "source": "polyhaven",
+   "type": "model",
+   "res": "2k",
+   "license": "CC0 1.0",
+   "variants": [
+    "book_encyclopedia_set_01_book01",
+    "book_encyclopedia_set_01_book02",
+    "book_encyclopedia_set_01_book03",
+    "book_encyclopedia_set_01_book04",
+    "book_encyclopedia_set_01_book05",
+    "book_encyclopedia_set_01_book06",
+    "book_encyclopedia_set_01_book07",
+    "book_encyclopedia_set_01_book08",
+    "book_encyclopedia_set_01_book09",
+    "book_encyclopedia_set_01_book10",
+    "book_encyclopedia_set_01_book11",
+    "book_encyclopedia_set_01_book12",
+    "book_encyclopedia_set_01_book13",
+    "book_encyclopedia_set_01_book14",
+    "book_encyclopedia_set_01_book15",
+    "book_encyclopedia_set_01_book16",
+    "book_encyclopedia_set_01_book17",
+    "book_encyclopedia_set_01_book18",
+    "book_encyclopedia_set_01_book19",
+    "book_encyclopedia_set_01_book20"
+   ],
+   "note": "20 separate scanned books, brown leather with gold spine lettering"
+  }
+ },
+ "replace": [
+  {
+   "name": "shelf_books",
+   "mesh": "m2",
+   "asset": "book_encyclopedia_set_01",
+   "asset_dims": [
+    [
+     0.0387,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0284,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0228,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0246,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0192,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0184,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.024,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0216,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0216,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0216,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0179,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0228,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0366,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0326,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0353,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0247,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0356,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0218,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0192,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0238,
+     0.2374,
+     0.1631
+    ]
+   ],
+   "face_point": [
+    0,
+    null
+   ],
+   "seed": 7,
+   "tints": [
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     1.18,
+     0.72,
+     0.66
+    ],
+    [
+     0.62,
+     0.86,
+     0.62
+    ],
+    [
+     0.58,
+     0.68,
+     1.05
+    ],
+    [
+     0.6,
+     0.56,
+     0.52
+    ],
+    [
+     1.25,
+     1.12,
+     0.9
+    ]
+   ],
+   "note": "spines turn toward the aisle (x = 0); tints: original brown, oxblood, green, navy, near-black, tan"
+  },
+  {
+   "name": "lying_books",
+   "mesh": "m54",
+   "asset": "book_encyclopedia_set_01",
+   "asset_dims": [
+    [
+     0.0387,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0284,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0228,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0246,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0192,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0184,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.024,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0216,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0216,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0216,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0179,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0228,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0366,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0326,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0353,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0247,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0356,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0218,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0192,
+     0.2374,
+     0.1631
+    ],
+    [
+     0.0238,
+     0.2374,
+     0.1631
+    ]
+   ],
+   "seed": 8,
+   "tints": [
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     1.18,
+     0.72,
+     0.66
+    ],
+    [
+     0.62,
+     0.86,
+     0.62
+    ],
+    [
+     0.58,
+     0.68,
+     1.05
+    ],
+    [
+     0.6,
+     0.56,
+     0.52
+    ],
+    [
+     1.25,
+     1.12,
+     0.9
+    ]
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "name": "shot_shelf_near",
+   "position": [
+    -1.3,
+    1.5,
+    -6.0
+   ],
+   "lookAt": [
+    -2.6,
+    1.2,
+    -7.2
+   ]
+  },
+  {
+   "name": "shot_shelf_eye",
+   "position": [
+    0.0,
+    1.6,
+    -10.0
+   ],
+   "lookAt": [
+    -2.6,
+    1.6,
+    -12.0
+   ]
+  },
+  {
+   "name": "shot_books_low",
+   "position": [
+    1.2,
+    0.9,
+    -15.0
+   ],
+   "lookAt": [
+    2.6,
+    0.5,
+    -16.0
+   ]
+  },
+  {
+   "name": "shot_aisle_back",
+   "position": [
+    0.0,
+    1.6,
+    -20.0
+   ],
+   "lookAt": [
+    0.0,
+    2.0,
+    -5.0
+   ]
+  },
+  {
+   "name": "shot_up",
+   "position": [
+    0.0,
+    1.5,
+    -12.0
+   ],
+   "lookAt": [
+    -1.0,
+    9.0,
+    -14.0
+   ]
+  }
+ ]
+}
