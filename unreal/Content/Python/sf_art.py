@@ -254,6 +254,10 @@ class Placer:
         rng = random.Random(r.get('seed', 1))
         dot = lambda a, b: a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
         cross = lambda a, b: [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]
+        cols_in = None                               # the export's per-book colour picks the leather tint (art direction kept)
+        if r.get('palette') and m.get('instanceColors'):
+            cd = open(os.path.join(SCENES, self.level, m['instanceColors']), 'rb').read()
+            cols_in = [struct.unpack_from('<3f', cd, k * 12) for k in range(min(n, len(cd) // 12))]
         cnt = 0
         for i in range(n):
             M = struct.unpack_from('<16f', data, i * stride * 4)
@@ -277,7 +281,11 @@ class Placer:
             cv = lambda v: unreal.Vector(float(-v[2]), float(v[0]), float(v[1]))
             rot = unreal.MathLibrary.make_rot_from_xy(cv(X), cv(Z))
             tf = unreal.Transform(c3(base), rot, unreal.Vector(kx, kz, ky))
-            ti = rng.randrange(len(tints))
+            if cols_in is not None and i < len(cols_in):
+                ci = cols_in[i]
+                ti = min(range(len(r['palette'])), key=lambda k: sum((ci[q] - r['palette'][k][q]) ** 2 for q in range(3)))
+            else:
+                ti = rng.randrange(len(tints))
             if not self.mesh(r['asset'], vi):
                 continue
             self.tsets.setdefault((r['asset'], vi, ti), []).append(tf)
@@ -292,7 +300,7 @@ class Placer:
         out = []
         for sl in sm.get_editor_property('static_materials'):
             mi = sl.get_editor_property('material_interface')
-            if ti == 0 or mi is None or not mi.get_name().startswith('MI_') or 'paper' in mi.get_name().lower():
+            if mi is None or not mi.get_name().startswith('MI_') or 'paper' in mi.get_name().lower():
                 out.append(mi); continue
             out.append(sf_materials.instance(f'{mi.get_name()}_t{ti}', mi.get_path_name().split('.')[0], f'/Game/Models/{asset}/Tints',
                                              vectors={'Tint': (tint[0], tint[1], tint[2], 1.0)}))

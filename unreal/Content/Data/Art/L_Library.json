@@ -1,6 +1,6 @@
 {
  "level": "L_Library",
- "version": 1,
+ "version": 2,
  "intent": "v1: keep the WebGL library's golden, hazy, dreamy mood exactly (env, fog, lights and grading untouched - the lesson from L_Blizzard) and replace only what reads as procedural up close: the 8439 book boxes on the lower shelves and the 31 lying books become a scanned 1900s encyclopedia set (20 books) in six leather tints. Upper shelves (spine texture, high and fogged), plants, ladders and furniture stay.",
  "suppress_meshes": {
   "ids": [
@@ -154,37 +154,89 @@
    "seed": 7,
    "tints": [
     [
-     1,
-     1,
-     1
+     1.088,
+     1.215,
+     0.712
     ],
     [
-     1.18,
-     0.72,
-     0.66
+     3.012,
+     5.063,
+     3.722
     ],
     [
-     0.62,
-     0.86,
-     0.62
+     2.205,
+     3.464,
+     2.252
     ],
     [
-     0.58,
-     0.68,
-     1.05
+     1.578,
+     2.122,
+     1.184
     ],
     [
-     0.6,
-     0.56,
-     0.52
+     0.186,
+     0.646,
+     0.907
     ],
     [
-     1.25,
-     1.12,
-     0.9
+     0.744,
+     0.572,
+     0.41
+    ],
+    [
+     0.319,
+     1.14,
+     0.98
+    ],
+    [
+     0.269,
+     0.278,
+     0.27
     ]
    ],
-   "note": "spines turn toward the aisle (x = 0); tints: original brown, oxblood, green, navy, near-black, tan"
+   "note": "v2: the leather tint follows each book's colour in the WebGL export (8 clusters of its 8439 colours, tint = cluster colour / the scan's mean cover colour, normalised to the scan's brightness) - v1's six invented tints all read brown",
+   "palette": [
+    [
+     0.0951,
+     0.0414,
+     0.014
+    ],
+    [
+     0.263,
+     0.1727,
+     0.073
+    ],
+    [
+     0.1926,
+     0.1181,
+     0.0442
+    ],
+    [
+     0.1379,
+     0.0724,
+     0.0232
+    ],
+    [
+     0.0163,
+     0.022,
+     0.0178
+    ],
+    [
+     0.065,
+     0.0195,
+     0.0081
+    ],
+    [
+     0.0279,
+     0.0389,
+     0.0192
+    ],
+    [
+     0.0235,
+     0.0095,
+     0.0053
+    ]
+   ]
   },
   {
    "name": "lying_books",
@@ -295,36 +347,89 @@
    "seed": 8,
    "tints": [
     [
-     1,
-     1,
-     1
+     1.088,
+     1.215,
+     0.712
     ],
     [
-     1.18,
-     0.72,
-     0.66
+     3.012,
+     5.063,
+     3.722
     ],
     [
-     0.62,
-     0.86,
-     0.62
+     2.205,
+     3.464,
+     2.252
     ],
     [
-     0.58,
-     0.68,
-     1.05
+     1.578,
+     2.122,
+     1.184
     ],
     [
-     0.6,
-     0.56,
-     0.52
+     0.186,
+     0.646,
+     0.907
     ],
     [
-     1.25,
-     1.12,
-     0.9
+     0.744,
+     0.572,
+     0.41
+    ],
+    [
+     0.319,
+     1.14,
+     0.98
+    ],
+    [
+     0.269,
+     0.278,
+     0.27
     ]
-   ]
+   ],
+   "palette": [
+    [
+     0.0951,
+     0.0414,
+     0.014
+    ],
+    [
+     0.263,
+     0.1727,
+     0.073
+    ],
+    [
+     0.1926,
+     0.1181,
+     0.0442
+    ],
+    [
+     0.1379,
+     0.0724,
+     0.0232
+    ],
+    [
+     0.0163,
+     0.022,
+     0.0178
+    ],
+    [
+     0.065,
+     0.0195,
+     0.0081
+    ],
+    [
+     0.0279,
+     0.0389,
+     0.0192
+    ],
+    [
+     0.0235,
+     0.0095,
+     0.0053
+    ]
+   ],
+   "note": "v2: the leather tint follows each book's colour in the WebGL export (8 clusters of its 8439 colours, tint = cluster colour / the scan's mean cover colour, normalised to the scan's brightness) - v1's six invented tints all read brown"
   }
  ],
  "shots": [

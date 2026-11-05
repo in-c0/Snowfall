@@ -446,7 +446,10 @@ def build_level(level, scene, calib):
             a.set_single([float(v) for v in m['matrix']], sm, mi, gx, gy, gz); n_inst += 1
         kind = md.get('kind', 'basic')
         foliage = kind in sf_import.FOLIAGE_KINDS
-        a.configure(bool(m.get('castShadow', True)), not foliage and kind != 'glass', 0.0, True)
+        # scatter of thousands of small things (the daisies' stem planes in L_Library: 13400) must not collide - the
+        # walk capture (tag lb0) found the player stuck 1 m after waking in the meadow
+        scatter = int(m.get('count', 1)) >= 5000
+        a.configure(bool(m.get('castShadow', True)), not foliage and kind != 'glass' and not scatter, 0.0, True)
         if m.get('hidden'):
             a.set_actor_hidden_in_game(True)
         _folder(a, 'Geometry/Foliage' if foliage else 'Geometry')
