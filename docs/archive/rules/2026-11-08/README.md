@@ -15,4 +15,5 @@ unless a file turned out to matter — then it has already been promoted to `CLA
 
 | archived path | original path | bytes |
 |---|---|---|
-| `docs/archive/rules/2026-11-08/CLAUDE.md` | `CLAUDE.md` | 808 |
+| `docs/archive/rules/2026-11-08/CLAUDE.md` | `CLAUDE.md` | 774 |
+| `docs/archive/rules/2026-11-08/docs/archive/rules/2026-11-08/CLAUDE.md` | `docs/archive/rules/2026-11-08/CLAUDE.md` | 808 |
