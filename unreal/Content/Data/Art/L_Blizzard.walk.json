@@ -1,0 +1,123 @@
+{
+ "note": "60 s first-person traversal for evidence: walk the road, look into the forest, step to the wheelchair and look down at it, turn fully around, walk on and look up into the canopy. yaw is relative to the spawn heading (+ = right), pitch in degrees. heading (optional) is the walk direction, independent of the view.",
+ "warmup": 5.0,
+ "keys": [
+  {
+   "t": 0.0,
+   "fwd": 0.0,
+   "yaw": 0,
+   "pitch": -2
+  },
+  {
+   "t": 2.0,
+   "fwd": 0.0,
+   "yaw": -12,
+   "pitch": 0
+  },
+  {
+   "t": 3.5,
+   "fwd": 0.0,
+   "yaw": 0,
+   "pitch": -2
+  },
+  {
+   "t": 4.5,
+   "fwd": 1.0,
+   "yaw": 0,
+   "pitch": -2
+  },
+  {
+   "t": 11.0,
+   "fwd": 1.0,
+   "yaw": -38,
+   "pitch": 4,
+   "heading": 0
+  },
+  {
+   "t": 14.5,
+   "fwd": 1.0,
+   "yaw": 0,
+   "pitch": -3,
+   "heading": 0
+  },
+  {
+   "t": 18.5,
+   "fwd": 1.0,
+   "yaw": 0,
+   "pitch": -5,
+   "heading": 0
+  },
+  {
+   "t": 20.5,
+   "fwd": 0.6,
+   "yaw": 28,
+   "pitch": -16,
+   "heading": 30
+  },
+  {
+   "t": 22.5,
+   "fwd": 0.3,
+   "yaw": 40,
+   "pitch": -30,
+   "heading": 38
+  },
+  {
+   "t": 23.5,
+   "fwd": 0.0,
+   "yaw": 40,
+   "pitch": -38,
+   "heading": 38
+  },
+  {
+   "t": 26.5,
+   "fwd": 0.0,
+   "yaw": 40,
+   "pitch": -38,
+   "heading": 38
+  },
+  {
+   "t": 30.0,
+   "fwd": 0.0,
+   "yaw": 210,
+   "pitch": -2
+  },
+  {
+   "t": 33.0,
+   "fwd": 0.0,
+   "yaw": 180,
+   "pitch": 0
+  },
+  {
+   "t": 37.0,
+   "fwd": 0.0,
+   "yaw": 360,
+   "pitch": -2
+  },
+  {
+   "t": 38.0,
+   "fwd": 1.0,
+   "yaw": 360,
+   "pitch": -2
+  },
+  {
+   "t": 47.0,
+   "fwd": 1.0,
+   "yaw": 296,
+   "pitch": 18,
+   "heading": 360
+  },
+  {
+   "t": 52.0,
+   "fwd": 1.0,
+   "yaw": 360,
+   "pitch": -2,
+   "heading": 360
+  },
+  {
+   "t": 60.0,
+   "fwd": 0.0,
+   "yaw": 360,
+   "pitch": -2
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+# Unreal
+unreal/Binaries/
+unreal/Intermediate/
+unreal/Saved/
+unreal/DerivedDataCache/
+unreal/Build/
+unreal/.vs/
+unreal/*.sln
+# generated content: rebuilt by Content/Python/sf_build_all.py (only Data, Fonts and Python are sources)
+unreal/Content/*
+!unreal/Content/Data/
+!unreal/Content/Fonts/
+!unreal/Content/Python/
+unreal/SourceArt/Downloads/
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store

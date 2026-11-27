@@ -1,0 +1,19 @@
+{
+ "level_bias": {
+  "L_Park": 2.656,
+  "L_Red": 0.62,
+  "L_Bench": 1.077,
+  "L_Blizzard": 0.33,
+  "L_Field": 0.61,
+  "L_Library": 1.4,
+  "L_Road": -0.547
+ },
+ "skylight_leaking": {
+  "L_Library": 0.8,
+  "L_Red": 0.1,
+  "L_Road": 0.15
+ },
+ "fog_start_scale": {
+  "L_Library": 0.15
+ }
+}

@@ -1,0 +1,2785 @@
+{
+ "level": "L_Red",
+ "source": "red.js opts.frag=3 (room exported once with the fragment-3 props; those are tagged Frag3Only)",
+ "env": {
+  "hdri": null,
+  "envIntensity": 0.35,
+  "background": [
+   0,
+   0,
+   0
+  ],
+  "fog": {
+   "type": "exp2",
+   "color": [
+    0.00304,
+    0.00061,
+    0.0003
+   ],
+   "density": 0.06
+  },
+  "sky": {
+   "kind": "color",
+   "top": [
+    0,
+    0,
+    0
+   ],
+   "horizon": [
+    0,
+    0,
+    0
+   ]
+  }
+ },
+ "look": {
+  "exposure": 0.85,
+  "bloom": 0.13,
+  "halation": 0.22,
+  "focus": 1.3546217184144067,
+  "focusRange": 0.4,
+  "dof": 0.55,
+  "dofNear": 0.25,
+  "lift": [
+   0.02,
+   0.004,
+   0
+  ],
+  "gamma": [
+   1,
+   1,
+   1
+  ],
+  "gain": [
+   1,
+   0.92,
+   0.88
+  ],
+  "sat": 1,
+  "contrast": 1.15,
+  "tint": [
+   1.12,
+   0.72,
+   0.6
+  ],
+  "vignette": 0.62,
+  "ca": 0.5,
+  "grain": 0.07,
+  "rays": 0,
+  "raysTint": [
+   1,
+   0.45,
+   0.25
+  ],
+  "raysThreshold": 0.55,
+  "raysDecay": 0.95,
+  "raysLen": 0.85,
+  "raysSky": 0,
+  "raysLight": [
+   3.004035667593684,
+   4.905935040284799
+  ]
+ },
+ "lights": [
+  {
+   "type": "hemisphere",
+   "sky": [
+    0.10224,
+    0.01033,
+    0.00304
+   ],
+   "ground": [
+    0.00152,
+    0.0003,
+    0.0003
+   ],
+   "intensity": 0.12
+  },
+  {
+   "type": "spot",
+   "color": [
+    1,
+    0.03434,
+    0.00605
+   ],
+   "intensity": 6.75858,
+   "position": [
+    1,
+    2.26389,
+    -2.15294
+   ],
+   "target": [
+    0.5,
+    0,
+    0.4
+   ],
+   "distance": 0,
+   "decay": 1.8,
+   "angle": 1,
+   "penumbra": 0.9,
+   "castShadow": true,
+   "shadowMapSize": 1024,
+   "shadowBias": -0.0006,
+   "shadowNormalBias": 0.02,
+   "tag": "RedLampSpot"
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.03434,
+    0.00605
+   ],
+   "intensity": 0.57931,
+   "position": [
+    1,
+    2.23389,
+    -2.00294
+   ],
+   "distance": 5.5,
+   "decay": 1.6,
+   "castShadow": false,
+   "tag": "RedLampFill"
+  },
+  {
+   "type": "spot",
+   "color": [
+    1,
+    0.03434,
+    0.00605
+   ],
+   "intensity": 1.44827,
+   "position": [
+    1,
+    2.33389,
+    -1.90294
+   ],
+   "target": [
+    1,
+    0.3,
+    -2.5
+   ],
+   "distance": 4,
+   "decay": 1.6,
+   "angle": 0.7,
+   "penumbra": 1,
+   "castShadow": false,
+   "tag": "RedLampWash"
+  },
+  {
+   "type": "point",
+   "color": [
+    0.21586,
+    0.27889,
+    0.43415
+   ],
+   "intensity": 0.5,
+   "position": [
+    2.65,
+    1.6,
+    -0.6
+   ],
+   "distance": 3,
+   "decay": 2,
+   "castShadow": false,
+   "tag": "WindowCold"
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.19462,
+    0.02315
+   ],
+   "intensity": 0.42568,
+   "position": [
+    0.75,
+    1.0796,
+    -2.38
+   ],
+   "distance": 3.5,
+   "decay": 2,
+   "castShadow": false,
+   "tag": "Frag3Only"
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.19462,
+    0.02315
+   ],
+   "intensity": 0.51089,
+   "position": [
+    2.15,
+    1.1676,
+    0.01
+   ],
+   "distance": 3.5,
+   "decay": 2,
+   "castShadow": false,
+   "tag": "Frag3Only"
+  }
+ ],
+ "materials": {
+  "mat0": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.25415,
+    0.19462,
+    0.16203
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1,
+   "polyhaven": "old_wood_floor",
+   "tiling": [
+    2.2,
+    2.4
+   ],
+   "wind": 0
+  },
+  "mat1": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.10224,
+    0.06848,
+    0.05781
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1,
+   "polyhaven": "rough_plaster_03",
+   "tiling": [
+    2,
+    2
+   ],
+   "wind": 0
+  },
+  "mat2": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.32314,
+    0.19462,
+    0.14413
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1.4,
+   "polyhaven": "red_plaster_weathered",
+   "tiling": [
+    1.6,
+    1
+   ],
+   "wind": 0
+  },
+  "mat3": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.32314,
+    0.19462,
+    0.14413
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1.4,
+   "polyhaven": "red_plaster_weathered",
+   "tiling": [
+    1.8,
+    1
+   ],
+   "wind": 0
+  },
+  "mat4": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.32314,
+    0.19462,
+    0.14413
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1.4,
+   "polyhaven": "red_plaster_weathered",
+   "tiling": [
+    0.486,
+    1
+   ],
+   "wind": 0
+  },
+  "mat5": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.32314,
+    0.19462,
+    0.14413
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1.4,
+   "polyhaven": "red_plaster_weathered",
+   "tiling": [
+    0.918,
+    1
+   ],
+   "wind": 0
+  },
+  "mat6": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.32314,
+    0.19462,
+    0.14413
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1.4,
+   "polyhaven": "red_plaster_weathered",
+   "tiling": [
+    0.396,
+    0.32692
+   ],
+   "wind": 0
+  },
+  "mat7": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.32314,
+    0.19462,
+    0.14413
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1.4,
+   "polyhaven": "red_plaster_weathered",
+   "tiling": [
+    0.396,
+    0.23077
+   ],
+   "wind": 0
+  },
+  "mat8": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.01161,
+    0.00518,
+    0.00368
+   ],
+   "roughness": 0.55,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat9": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.00605,
+    0.00243,
+    0.00182
+   ],
+   "roughness": 0.6,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat10": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.01764,
+    0.00802,
+    0.00605
+   ],
+   "roughness": 0.6,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat11": {
+   "kind": "glass",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.016,
+    0.02956,
+    0.05127
+   ],
+   "roughness": 0.05,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": true,
+   "opacity": 0.14,
+   "depthWrite": false,
+   "wind": 0
+  },
+  "mat12": {
+   "kind": "emissive",
+   "name": "",
+   "three": "ShaderMaterial",
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "unlit": true,
+   "shader": "custom",
+   "color": [
+    0.03,
+    0.035,
+    0.05
+   ],
+   "emissive": [
+    0.03,
+    0.035,
+    0.05
+   ],
+   "emissiveIntensity": 1,
+   "wind": 0
+  },
+  "mat13": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.00212,
+    0.00243
+   ],
+   "roughness": 0.82,
+   "metalness": 0,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat14": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.02315,
+    0.01444,
+    0.00913
+   ],
+   "roughness": 0.4,
+   "metalness": 0.7,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat15": {
+   "kind": "basic",
+   "name": "industrial_caged_sconce",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "emissive": [
+    1,
+    0.03434,
+    0.00605
+   ],
+   "emissiveIntensity": 6.75858,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1,
+   "map": "tex/industrial_caged_sconce_diff.png",
+   "sourceModel": "industrial_caged_sconce",
+   "wind": 0
+  },
+  "mat16": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.32314,
+    0.25415,
+    0.23074
+   ],
+   "roughness": 0.3,
+   "metalness": 0.95,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "envMapIntensity": 2.2,
+   "wind": 0
+  },
+  "mat17": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshPhysicalMaterial",
+   "color": [
+    0.06848,
+    0.00061,
+    0.00304
+   ],
+   "roughness": 0.16,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "envMapIntensity": 1.5,
+   "clearcoat": 1,
+   "clearcoatRoughness": 0.06,
+   "wind": 0
+  },
+  "mat18": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.04231,
+    0.007
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat19": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.00121,
+    0.00802,
+    0.00304
+   ],
+   "roughness": 0.1,
+   "metalness": 0,
+   "emissive": [
+    0.00061,
+    0.01033,
+    0.00243
+   ],
+   "emissiveIntensity": 0.4,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat20": {
+   "kind": "glass",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.01033,
+    0.14413,
+    0.02956
+   ],
+   "roughness": 0.06,
+   "metalness": 0.1,
+   "emissive": [
+    0.00439,
+    0.10224,
+    0.016
+   ],
+   "emissiveIntensity": 0.55,
+   "doubleSided": false,
+   "transparent": true,
+   "opacity": 0.7,
+   "envMapIntensity": 2.2,
+   "depthWrite": false,
+   "wind": 0
+  },
+  "mat21": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.25415,
+    0.21586,
+    0.16203
+   ],
+   "roughness": 0.32,
+   "metalness": 0.9,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "envMapIntensity": 1.5,
+   "wind": 0
+  },
+  "mat22": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.80695,
+    0.71569,
+    0.57758
+   ],
+   "roughness": 0.55,
+   "metalness": 0,
+   "emissive": [
+    1,
+    0.19462,
+    0.02956
+   ],
+   "emissiveIntensity": 0.05,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat23": {
+   "kind": "emissive",
+   "name": "",
+   "three": "MeshBasicMaterial",
+   "color": [
+    0.00561,
+    0.00243,
+    0.00152
+   ],
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "unlit": true,
+   "emissive": [
+    0.00561,
+    0.00243,
+    0.00152
+   ],
+   "emissiveIntensity": 1,
+   "wind": 0
+  },
+  "mat24": {
+   "kind": "glass",
+   "name": "",
+   "three": "MeshPhysicalMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.04,
+   "metalness": 0,
+   "doubleSided": true,
+   "transparent": true,
+   "opacity": 0.32,
+   "envMapIntensity": 3,
+   "clearcoat": 1,
+   "clearcoatRoughness": 0.05,
+   "depthWrite": false,
+   "wind": 0
+  },
+  "mat25": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshPhysicalMaterial",
+   "color": [
+    0.06848,
+    0.00121,
+    0.00518
+   ],
+   "roughness": 0.05,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "envMapIntensity": 1.5,
+   "clearcoat": 1,
+   "clearcoatRoughness": 0,
+   "wind": 0
+  },
+  "mat26": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshPhysicalMaterial",
+   "color": [
+    0.09306,
+    0.0648,
+    0.05781
+   ],
+   "roughness": 0.92,
+   "metalness": 0,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "sheen": 0.35,
+   "sheenColor": [
+    1,
+    1,
+    1
+   ],
+   "sheenRoughness": 0.7,
+   "wind": 0
+  }
+ },
+ "meshes": [
+  {
+   "id": "m0",
+   "file": "meshes/g6239f22e_161.glb",
+   "material": "mat16",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 264,
+   "animated": true,
+   "instances": "inst/m0.bin",
+   "count": 463,
+   "customFloats": 0
+  },
+  {
+   "id": "m1",
+   "file": "meshes/g86c2582b_3705.glb",
+   "material": "mat26",
+   "name": "Plane basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 7168,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -0.52,
+    0.61,
+    -1.2,
+    1
+   ]
+  },
+  {
+   "id": "m2",
+   "file": "meshes/gc3a027bf_165.glb",
+   "material": "mat17",
+   "name": "Sphere basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 252,
+   "instances": "inst/m2.bin",
+   "count": 15,
+   "customFloats": 0
+  },
+  {
+   "id": "m3",
+   "file": "meshes/g3222ecf5_14466n.glb",
+   "material": "mat15",
+   "name": "RedLamp industrial_caged_sconce_b Mesh industrial_caged_sconce_diff",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2444,
+   "tag": "RedLamp",
+   "matrix": [
+    1.02865,
+    0,
+    0,
+    0,
+    0,
+    1.02865,
+    0,
+    0,
+    0,
+    0,
+    1.02865,
+    0,
+    0.14999,
+    2.63123,
+    -2.24023,
+    1
+   ]
+  },
+  {
+   "id": "m4",
+   "file": "meshes/gf66e6441_396.glb",
+   "material": "mat24",
+   "name": "Frag3Only Lathe glass",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 704,
+   "tag": "Frag3Only",
+   "instances": "inst/m4.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m5",
+   "file": "meshes/g8c6f9552_621.glb",
+   "material": "mat13",
+   "name": "Plane basic",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 1144,
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    2.16,
+    1.375,
+    -1.37,
+    1
+   ]
+  },
+  {
+   "id": "m6",
+   "file": "meshes/g63d4bcb0_621.glb",
+   "material": "mat13",
+   "name": "Plane basic",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 1144,
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    2.16,
+    1.375,
+    0.17,
+    1
+   ]
+  },
+  {
+   "id": "m7",
+   "file": "meshes/gce817917_100.glb",
+   "material": "mat16",
+   "name": "Cylinder basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 64,
+   "instances": "inst/m7.bin",
+   "count": 14,
+   "customFloats": 0
+  },
+  {
+   "id": "m8",
+   "file": "meshes/g4852edbc_319.glb",
+   "material": "mat20",
+   "name": "BottleFull Lathe glass",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 560,
+   "tag": "BottleFull",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0.41,
+    0.7,
+    -2.15,
+    1
+   ]
+  },
+  {
+   "id": "m9",
+   "file": "meshes/g4852edbc_319.glb",
+   "material": "mat20",
+   "name": "BottleEmpty Lathe glass",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 560,
+   "tag": "BottleEmpty",
+   "hidden": true,
+   "matrix": [
+    0,
+    1,
+    0,
+    0,
+    -0.87758,
+    0,
+    0.47943,
+    0,
+    0.47943,
+    0,
+    0.87758,
+    0,
+    0.45,
+    0.7195,
+    -2.13,
+    1
+   ]
+  },
+  {
+   "id": "m10",
+   "file": "meshes/g8221b7a2_125.glb",
+   "material": "mat25",
+   "name": "Frag3Only Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 192,
+   "tag": "Frag3Only",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0.57,
+    0.7,
+    -2.35,
+    1
+   ]
+  },
+  {
+   "id": "m11",
+   "file": "meshes/gfef62f01_125.glb",
+   "material": "mat25",
+   "name": "Frag3Only Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 192,
+   "tag": "Frag3Only",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0.47,
+    0.7,
+    -2.37,
+    1
+   ]
+  },
+  {
+   "id": "m12",
+   "file": "meshes/g05926323_84.glb",
+   "material": "mat19",
+   "name": "BottleFull Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 120,
+   "tag": "BottleFull",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0.41,
+    0.7,
+    -2.15,
+    1
+   ]
+  },
+  {
+   "id": "m13",
+   "file": "meshes/g76fea640_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    -0.65655,
+    -0.2057,
+    0.72569,
+    0,
+    -0.00265,
+    0.96272,
+    0.27049,
+    0,
+    -0.75428,
+    0.17567,
+    -0.63262,
+    0,
+    0.65961,
+    0.74103,
+    -2.19493,
+    1
+   ]
+  },
+  {
+   "id": "m14",
+   "file": "meshes/g888c3a2c_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    -0.14775,
+    -0.20746,
+    -0.96702,
+    0,
+    -0.06939,
+    0.97752,
+    -0.19911,
+    0,
+    0.98659,
+    0.03768,
+    -0.15882,
+    0,
+    0.61589,
+    0.73344,
+    -2.17591,
+    1
+   ]
+  },
+  {
+   "id": "m15",
+   "file": "meshes/g8309434f_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    -0.85793,
+    -0.11504,
+    -0.50071,
+    0,
+    0.09508,
+    0.92222,
+    -0.37479,
+    0,
+    0.50488,
+    -0.36915,
+    -0.78027,
+    0,
+    0.67908,
+    0.73136,
+    -2.25852,
+    1
+   ]
+  },
+  {
+   "id": "m16",
+   "file": "meshes/gc6dc22db_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    0.85821,
+    -0.30456,
+    0.41317,
+    0,
+    0.33697,
+    0.9415,
+    -0.00593,
+    0,
+    -0.38719,
+    0.14432,
+    0.91063,
+    0,
+    0.60645,
+    0.73456,
+    -2.21406,
+    1
+   ]
+  },
+  {
+   "id": "m17",
+   "file": "meshes/gcff5e13a_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    -0.91546,
+    0.24944,
+    -0.31579,
+    0,
+    0.08291,
+    0.88479,
+    0.45855,
+    0,
+    0.39379,
+    0.39359,
+    -0.83067,
+    0,
+    0.68984,
+    0.73554,
+    -2.21026,
+    1
+   ]
+  },
+  {
+   "id": "m18",
+   "file": "meshes/g49b5ad2a_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    -0.5631,
+    -0.53256,
+    -0.6319,
+    0,
+    -0.26723,
+    0.84092,
+    -0.47058,
+    0,
+    0.78199,
+    -0.09612,
+    -0.61584,
+    0,
+    0.66471,
+    0.73523,
+    -2.17166,
+    1
+   ]
+  },
+  {
+   "id": "m19",
+   "file": "meshes/gfb922d16_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    0.96268,
+    0.08084,
+    -0.25829,
+    0,
+    -0.10527,
+    0.99104,
+    -0.08218,
+    0,
+    0.24933,
+    0.1063,
+    0.96257,
+    0,
+    0.61482,
+    0.7338,
+    -2.17911,
+    1
+   ]
+  },
+  {
+   "id": "m20",
+   "file": "meshes/g3c7622d2_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    -0.9989,
+    -0.0065,
+    -0.04648,
+    0,
+    -0.02385,
+    0.9232,
+    0.38358,
+    0,
+    0.04042,
+    0.38426,
+    -0.92234,
+    0,
+    0.63345,
+    0.73096,
+    -2.26575,
+    1
+   ]
+  },
+  {
+   "id": "m21",
+   "file": "meshes/gd6070114_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    -0.55047,
+    0.42245,
+    0.72009,
+    0,
+    0.14526,
+    0.89783,
+    -0.41568,
+    0,
+    -0.82212,
+    -0.12422,
+    -0.55559,
+    0,
+    0.59843,
+    0.73218,
+    -2.19658,
+    1
+   ]
+  },
+  {
+   "id": "m22",
+   "file": "meshes/ged7ea5ca_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    0.26116,
+    -0.50132,
+    -0.82491,
+    0,
+    0.07515,
+    0.86253,
+    -0.50039,
+    0,
+    0.96237,
+    0.06869,
+    0.26293,
+    0,
+    0.7036,
+    0.73121,
+    -2.19013,
+    1
+   ]
+  },
+  {
+   "id": "m23",
+   "file": "meshes/g30aca146_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    0.88592,
+    0.45434,
+    0.09334,
+    0,
+    -0.41006,
+    0.86125,
+    -0.30017,
+    0,
+    -0.21677,
+    0.22766,
+    0.94931,
+    0,
+    0.64496,
+    0.76275,
+    -2.20022,
+    1
+   ]
+  },
+  {
+   "id": "m24",
+   "file": "meshes/gc34c41ec_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    -0.64373,
+    0.37191,
+    0.6688,
+    0,
+    0.13786,
+    0.91602,
+    -0.3767,
+    0,
+    -0.75273,
+    -0.15029,
+    -0.64094,
+    0,
+    0.67364,
+    0.75327,
+    -2.25284,
+    1
+   ]
+  },
+  {
+   "id": "m25",
+   "file": "meshes/g404d8389_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    -0.94871,
+    -0.31504,
+    0.02639,
+    0,
+    -0.31,
+    0.94341,
+    0.1178,
+    0,
+    -0.062,
+    0.10357,
+    -0.99269,
+    0,
+    0.68767,
+    0.75099,
+    -2.16585,
+    1
+   ]
+  },
+  {
+   "id": "m26",
+   "file": "meshes/gff990368_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    0.34511,
+    -0.01319,
+    -0.93847,
+    0,
+    -0.12371,
+    0.99054,
+    -0.05941,
+    0,
+    0.93037,
+    0.1366,
+    0.34021,
+    0,
+    0.63511,
+    0.7539,
+    -2.25396,
+    1
+   ]
+  },
+  {
+   "id": "m27",
+   "file": "meshes/g77447c33_45.glb",
+   "material": "mat18",
+   "name": "Tube basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "matrix": [
+    0.19994,
+    -0.5511,
+    0.81013,
+    0,
+    0.05483,
+    0.83182,
+    0.55232,
+    0,
+    -0.97827,
+    -0.06601,
+    0.19653,
+    0,
+    0.63877,
+    0.75292,
+    -2.16096,
+    1
+   ]
+  },
+  {
+   "id": "m28",
+   "file": "meshes/g981df3bd_100.glb",
+   "material": "mat21",
+   "name": "BottleFull Cylinder basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "tag": "BottleFull",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0.41,
+    0.784,
+    -2.15,
+    1
+   ]
+  },
+  {
+   "id": "m29",
+   "file": "meshes/g48173775_100.glb",
+   "material": "mat22",
+   "name": "Frag3Only Cylinder basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 64,
+   "tag": "Frag3Only",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0.75,
+    0.9646,
+    -2.38,
+    1
+   ]
+  },
+  {
+   "id": "m30",
+   "file": "meshes/gac5add75_100.glb",
+   "material": "mat22",
+   "name": "Frag3Only Cylinder basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 64,
+   "tag": "Frag3Only",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2.15,
+    1.0726,
+    0.01,
+    1
+   ]
+  },
+  {
+   "id": "m31",
+   "file": "meshes/g981df3bd_100.glb",
+   "material": "mat21",
+   "name": "BottleEmpty Cylinder basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 64,
+   "tag": "BottleEmpty",
+   "hidden": true,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0.35,
+    0.707,
+    -2.08,
+    1
+   ]
+  },
+  {
+   "id": "m32",
+   "file": "meshes/ge36e3651_28.glb",
+   "material": "mat23",
+   "name": "Frag3Only Cylinder emissive",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 16,
+   "tag": "Frag3Only",
+   "instances": "inst/m32.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m33",
+   "file": "meshes/g2c52d1a1_24.glb",
+   "material": "mat8",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "instances": "inst/m33.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m34",
+   "file": "meshes/gb2ef35b1_24.glb",
+   "material": "mat10",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "instances": "inst/m34.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m35",
+   "file": "meshes/g83cf7eb1_24.glb",
+   "material": "mat10",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 12,
+   "instances": "inst/m35.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m36",
+   "file": "meshes/g4044c1e1_24.glb",
+   "material": "mat10",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 12,
+   "instances": "inst/m36.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m37",
+   "file": "meshes/g83cf7eb1_24.glb",
+   "material": "mat10",
+   "name": "Frag3Only Box basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 12,
+   "tag": "Frag3Only",
+   "instances": "inst/m37.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m38",
+   "file": "meshes/g4044c1e1_24.glb",
+   "material": "mat10",
+   "name": "Frag3Only Box basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 12,
+   "tag": "Frag3Only",
+   "instances": "inst/m38.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m39",
+   "file": "meshes/g83cf7eb1_24.glb",
+   "material": "mat10",
+   "name": "Frag12Only Box basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 12,
+   "tag": "Frag12Only",
+   "instances": "inst/m39.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m40",
+   "file": "meshes/g4044c1e1_24.glb",
+   "material": "mat10",
+   "name": "Frag12Only Box basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 12,
+   "tag": "Frag12Only",
+   "instances": "inst/m40.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m41",
+   "file": "meshes/g1f29e8a1_24.glb",
+   "material": "mat8",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.05,
+    -2.49,
+    1
+   ]
+  },
+  {
+   "id": "m42",
+   "file": "meshes/ge5a06591_24.glb",
+   "material": "mat9",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1.05,
+    2.48,
+    1
+   ]
+  },
+  {
+   "id": "m43",
+   "file": "meshes/g7bd70729_24.glb",
+   "material": "mat10",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2.23,
+    0.83,
+    -0.6,
+    1
+   ]
+  },
+  {
+   "id": "m44",
+   "file": "meshes/ge0d70729_24.glb",
+   "material": "mat10",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2.25,
+    2.02,
+    -0.6,
+    1
+   ]
+  },
+  {
+   "id": "m45",
+   "file": "meshes/g7d276349_24.glb",
+   "material": "mat8",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2.15,
+    0.81,
+    -0.6,
+    1
+   ]
+  },
+  {
+   "id": "m46",
+   "file": "meshes/g205ec2c1_24.glb",
+   "material": "mat10",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 12,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2.24,
+    1.4825,
+    -0.875,
+    1
+   ]
+  },
+  {
+   "id": "m47",
+   "file": "meshes/g205ec2c1_24.glb",
+   "material": "mat10",
+   "name": "Frag3Only Box basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 12,
+   "tag": "Frag3Only",
+   "matrix": [
+    0.85252,
+    0,
+    -0.52269,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.52269,
+    0,
+    0.85252,
+    0,
+    2.09626,
+    1.4825,
+    -0.28444,
+    1
+   ]
+  },
+  {
+   "id": "m48",
+   "file": "meshes/gfa9ffa29_24.glb",
+   "material": "mat14",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2.16,
+    2.54,
+    -0.6,
+    1
+   ]
+  },
+  {
+   "id": "m49",
+   "file": "meshes/g205ec2c1_24.glb",
+   "material": "mat10",
+   "name": "Frag12Only Box basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 12,
+   "tag": "Frag12Only",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2.24,
+    1.4825,
+    -0.325,
+    1
+   ]
+  },
+  {
+   "id": "m50",
+   "file": "meshes/gb344d3dc_4.glb",
+   "material": "mat2",
+   "name": "Plane red_plaster_weathered",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m50.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m51",
+   "file": "meshes/g5c1721dc_4.glb",
+   "material": "mat0",
+   "name": "Plane old_wood_floor",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m52",
+   "file": "meshes/g5c1721dc_4.glb",
+   "material": "mat1",
+   "name": "Plane rough_plaster_03",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    2.6,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m53",
+   "file": "meshes/ged04d3dc_4.glb",
+   "material": "mat3",
+   "name": "Plane red_plaster_weathered",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "matrix": [
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    -2.25,
+    1.3,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m54",
+   "file": "meshes/g31ca7340_4.glb",
+   "material": "mat4",
+   "name": "Plane red_plaster_weathered",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    2.25,
+    1.3,
+    -1.825,
+    1
+   ]
+  },
+  {
+   "id": "m55",
+   "file": "meshes/g20c0e498_4.glb",
+   "material": "mat5",
+   "name": "Plane red_plaster_weathered",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    2.25,
+    1.3,
+    1.225,
+    1
+   ]
+  },
+  {
+   "id": "m56",
+   "file": "meshes/g41bf1280_4.glb",
+   "material": "mat6",
+   "name": "Plane red_plaster_weathered",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    2.25,
+    0.425,
+    -0.6,
+    1
+   ]
+  },
+  {
+   "id": "m57",
+   "file": "meshes/g75bf1280_4.glb",
+   "material": "mat7",
+   "name": "Plane red_plaster_weathered",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    2.25,
+    2.3,
+    -0.6,
+    1
+   ]
+  },
+  {
+   "id": "m58",
+   "file": "meshes/g3201a384_4.glb",
+   "material": "mat11",
+   "name": "Plane glass",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "matrix": [
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    2.24,
+    1.425,
+    -0.875,
+    1
+   ]
+  },
+  {
+   "id": "m59",
+   "file": "meshes/g3201a384_4.glb",
+   "material": "mat11",
+   "name": "Frag3Only Plane glass",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "tag": "Frag3Only",
+   "matrix": [
+    -0.52269,
+    0,
+    -0.85252,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.85252,
+    0,
+    -0.52269,
+    0,
+    2.09626,
+    1.425,
+    -0.28444,
+    1
+   ]
+  },
+  {
+   "id": "m60",
+   "file": "meshes/g7eb721dc_4.glb",
+   "material": "mat12",
+   "name": "Plane emissive",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    4.45,
+    1.4,
+    -0.6,
+    1
+   ]
+  },
+  {
+   "id": "m61",
+   "file": "meshes/g3201a384_4.glb",
+   "material": "mat11",
+   "name": "Frag12Only Plane glass",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "tag": "Frag12Only",
+   "matrix": [
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    2.24,
+    1.425,
+    -0.325,
+    1
+   ]
+  }
+ ],
+ "models": [
+  {
+   "name": "GothicBed_01",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -0.55,
+    0,
+    -1.44,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    0.2,
+    0.2,
+    0.2
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "ClassicNightstand_01",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0.55,
+    0,
+    -2.25,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "wooden_bowl_01",
+   "matrix": [
+    0.72,
+    0,
+    0,
+    0,
+    0,
+    0.72,
+    0,
+    0,
+    0,
+    0,
+    0.72,
+    0,
+    0.65,
+    0.7,
+    -2.21,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "wooden_candlestick",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0.75,
+    0.7,
+    -2.38,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false,
+   "tag": "Frag3Only"
+  },
+  {
+   "name": "wooden_candlestick",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2.15,
+    0.828,
+    0.01,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false,
+   "tag": "Frag3Only"
+  },
+  {
+   "name": "wine_bottles_01",
+   "node": "wine_bottles_01_bordeaux",
+   "nodeNote": "only this node of the scan, placed with matrix (its own transform included)",
+   "matrix": [
+    0.31134,
+    0,
+    -0.13163,
+    0,
+    0,
+    0.33802,
+    0,
+    0,
+    0.13163,
+    0,
+    0.31134,
+    0,
+    0.97,
+    0.16568,
+    -2.13,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true,
+   "tag": "Frag3Only"
+  }
+ ],
+ "markers": [
+  {
+   "tag": "PlayerStart",
+   "spawn": "default",
+   "position": [
+    1,
+    0,
+    1.95
+   ],
+   "yaw": 0.22,
+   "pitch": 0.12,
+   "note": "frag 1 entry at the door"
+  },
+  {
+   "tag": "PlayerStart",
+   "spawn": "bedside",
+   "position": [
+    0.78,
+    0,
+    -1.5
+   ],
+   "yaw": 0.88507,
+   "pitch": -0.70119,
+   "note": "frag 2 start (BEDSIDE), looking at her head"
+  },
+  {
+   "tag": "PlayerStart",
+   "spawn": "bedside3",
+   "position": [
+    0.78,
+    0,
+    -1.35
+   ],
+   "yaw": 0.80787,
+   "pitch": -0.42805,
+   "note": "frag 3 start"
+  },
+  {
+   "tag": "HerBed",
+   "position": [
+    -0.13,
+    0.6,
+    -0.7
+   ],
+   "yaw": -1.5708,
+   "pitch": 1.2508,
+   "roll": 1.5708,
+   "quat": [
+    -0.69808,
+    0.11265,
+    -0.11265,
+    0.69808
+   ],
+   "figureFront": "+Z",
+   "euler": [
+    -1.5707963267948966,
+    0.32,
+    0,
+    "XYZ"
+   ],
+   "note": "frags 1/2: lying, feet at the group origin, head toward the headboard (−Z), rolled 0.32 toward the player"
+  },
+  {
+   "tag": "HerBedFrag3",
+   "position": [
+    -0.18,
+    0.6,
+    -0.7
+   ],
+   "yaw": 1.5708,
+   "pitch": 1.0208,
+   "roll": -1.5708,
+   "quat": [
+    -0.68054,
+    -0.19201,
+    0.19201,
+    0.68054
+   ],
+   "figureFront": "+Z",
+   "note": "frag 3 after the fade: lying close (layDown(herB, herX-0.05, -0.55))"
+  },
+  {
+   "tag": "HerSitFrag3",
+   "position": [
+    -0.13,
+    -0.40074,
+    -1.55837
+   ],
+   "yaw": 3.14159,
+   "pitch": 0.36,
+   "roll": 0,
+   "quat": [
+    -0.17903,
+    0,
+    0,
+    0.98384
+   ],
+   "figureFront": "+Z",
+   "note": "frag 3: sitting up against the headboard (sitUp)"
+  },
+  {
+   "tag": "HerHead",
+   "position": [
+    -0.1,
+    0.66,
+    -2.22
+   ],
+   "note": "frags 1/2 head (capsule / talk target)"
+  },
+  {
+   "tag": "I_cherries",
+   "position": [
+    0.65,
+    0.7,
+    -2.21
+   ],
+   "radius": 0.14
+  },
+  {
+   "tag": "I_bedGive",
+   "position": [
+    -0.13,
+    1.12,
+    -2.22
+   ],
+   "radius": 0.35,
+   "note": "her head in frag 3 (give the cherry)"
+  },
+  {
+   "tag": "PillowView",
+   "position": [
+    -0.63,
+    0.92,
+    -1.72
+   ],
+   "yaw": -0.7854,
+   "pitch": -0.28652,
+   "roll": 0.14,
+   "lookAt": [
+    -0.15,
+    0.72,
+    -2.2
+   ],
+   "note": "camera position (not feet)"
+  },
+  {
+   "tag": "BedsideView",
+   "position": [
+    0.12,
+    1,
+    -1.82
+   ],
+   "lookAt": [
+    0.45000000000000007,
+    0.72,
+    -2.13
+   ],
+   "roll": 0.05,
+   "note": "frag 3: camB looking at the empty bottle"
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_entry",
+   "position": [
+    1,
+    1.62,
+    1.95
+   ],
+   "lookAt": [
+    0.13336,
+    2.09885,
+    -1.92552
+   ],
+   "fov": 62,
+   "yaw": 0.22,
+   "pitch": 0.12
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_candles",
+   "position": [
+    0.05,
+    1.3,
+    -0.85
+   ],
+   "lookAt": [
+    0.75,
+    0.9,
+    -2.38
+   ],
+   "fov": 62
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_pillow",
+   "position": [
+    -0.63,
+    0.92,
+    -1.72
+   ],
+   "lookAt": [
+    -0.15,
+    0.72,
+    -2.2
+   ],
+   "fov": 62
+  },
+  {
+   "tag": "LightCone",
+   "position": [
+    1,
+    2.28389,
+    -2.25294
+   ],
+   "lookAt": [
+    0.51925,
+    0.08793,
+    0.29787
+   ],
+   "length": 3.4,
+   "radiusTop": 0.06,
+   "radiusBottom": 1.75,
+   "color": [
+    0.07,
+    0.0024,
+    0.00042
+   ],
+   "intensity": 0.96551
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1,
+    2.28389,
+    -2.00294
+   ],
+   "color": [
+    1,
+    0.03434,
+    0.00605
+   ],
+   "size": 2.4,
+   "intensity": 0.12
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1,
+    2.28389,
+    -2.07294
+   ],
+   "color": [
+    1,
+    0.35,
+    0.3
+   ],
+   "size": 0.55,
+   "intensity": 0.4
+  },
+  {
+   "tag": "Glow",
+   "kind": "flame",
+   "position": [
+    0.75,
+    1.0456,
+    -2.38
+   ],
+   "color": [
+    1,
+    0.55,
+    0.2
+   ],
+   "size": 0.05,
+   "intensity": 6,
+   "group": "Frag3Only"
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.75,
+    1.0496,
+    -2.38
+   ],
+   "color": [
+    1,
+    0.25415,
+    0.04231
+   ],
+   "size": 0.4,
+   "intensity": 0.22,
+   "group": "Frag3Only"
+  },
+  {
+   "tag": "Glow",
+   "kind": "flame",
+   "position": [
+    2.15,
+    1.1336,
+    0.01
+   ],
+   "color": [
+    1,
+    0.55,
+    0.2
+   ],
+   "size": 0.05,
+   "intensity": 6,
+   "group": "Frag3Only"
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    2.15,
+    1.1376,
+    0.01
+   ],
+   "color": [
+    1,
+    0.25415,
+    0.04231
+   ],
+   "size": 0.4,
+   "intensity": 0.22,
+   "group": "Frag3Only"
+  }
+ ],
+ "uvConvention": "glTF: v=0 at the top of the stored PNG / Poly Haven image (three uv flipped on export)",
+ "stats": {
+  "meshEntries": 62,
+  "instances": 562,
+  "triangles": 143414,
+  "models": 6,
+  "markers": 21,
+  "lights": 7,
+  "skipped": {
+   "points": 2,
+   "her": 4,
+   "cameraAttached": 1
+  },
+  "figureLightsSkipped": 2,
+  "animatedObjects": 10,
+  "uniqueGeometries": 51,
+  "textures": [
+   "tex/industrial_caged_sconce_diff.png",
+   "tex/glow.png"
+  ]
+ },
+ "notes": [
+  "env/look/lights are the fragment-3 (WARM) values. Fragments 1/2 differ: lamp colour 0xff0d06, spot 12, fill 0.9, wash 3, hemi 0x3a0404 @0.06, fog 0x070001 density 0.08, wall tint 0x8a6a62, sconce emissive 14, cold window light 0.25, look tint [1.12,0.62,0.68] (frag 3: [1.12,0.72,0.6]).",
+  "environment is a PMREM of a tiny generated room (no HDRI): near-black sphere + red lamp blob",
+  "chains are a per-frame animated InstancedMesh (exported snapshot, animated:true); curtains are vertex-animated (snapshot)",
+  "window: the cracked-open right casement (frag 3) is tagged Frag3Only; a closed copy is tagged Frag12Only (hide it in frag 3)",
+  "BottleEmpty = the end-of-frag-3 state (tipped glass, liquid hidden, cap beside it), hidden by default",
+  "light cone, lamp halo and candle flames are exported as LightCone / Glow markers; window snow + dust motes are not exported"
+ ]
+}

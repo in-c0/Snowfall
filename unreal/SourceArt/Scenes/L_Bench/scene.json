@@ -1,0 +1,768 @@
+{
+ "level": "L_Bench",
+ "source": "blizzard.js mode=end",
+ "env": {
+  "hdri": "snowy_field",
+  "envIntensity": 0.55,
+  "background": [
+   0.57758,
+   0.60383,
+   0.64448
+  ],
+  "fog": {
+   "type": "exp2",
+   "color": [
+    0.57758,
+    0.60383,
+    0.64448
+   ],
+   "density": 0.03
+  },
+  "sky": {
+   "kind": "color",
+   "top": [
+    0.57758,
+    0.60383,
+    0.64448
+   ],
+   "horizon": [
+    0.57758,
+    0.60383,
+    0.64448
+   ]
+  }
+ },
+ "look": {
+  "exposure": 1,
+  "bloom": 0.08,
+  "halation": 0,
+  "focus": 14,
+  "focusRange": 10,
+  "dof": 0.35,
+  "dofNear": 0,
+  "lift": [
+   0.035,
+   0.032,
+   0.03
+  ],
+  "gamma": [
+   1,
+   1,
+   1
+  ],
+  "gain": [
+   1,
+   0.99,
+   0.97
+  ],
+  "sat": 0.55,
+  "contrast": 1,
+  "tint": [
+   1.02,
+   1,
+   0.97
+  ],
+  "vignette": 0.45,
+  "ca": 0.4,
+  "grain": 0.05,
+  "rays": 0,
+  "raysTint": [
+   1,
+   1,
+   1
+  ],
+  "raysThreshold": 0.8,
+  "raysDecay": 0.96,
+  "raysLen": 0.9,
+  "raysSky": 1,
+  "raysLight": [
+   0.5,
+   0.8
+  ]
+ },
+ "lights": [
+  {
+   "type": "hemisphere",
+   "sky": [
+    0.72306,
+    0.77582,
+    0.8388
+   ],
+   "ground": [
+    0.32314,
+    0.35153,
+    0.39157
+   ],
+   "intensity": 1.1
+  },
+  {
+   "type": "directional",
+   "color": [
+    1,
+    0.87962,
+    0.7454
+   ],
+   "intensity": 0.9,
+   "position": [
+    -30,
+    40,
+    20
+   ],
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "castShadow": true,
+   "shadowMapSize": 2048,
+   "shadowBias": -0.0004,
+   "shadowNormalBias": 0.04,
+   "shadowExtent": [
+    -30,
+    30,
+    -30,
+    30,
+    1,
+    120
+   ]
+  },
+  {
+   "type": "spot",
+   "color": [
+    1,
+    0.7913,
+    0.55201
+   ],
+   "intensity": 0,
+   "position": [
+    0.5,
+    3.2,
+    9
+   ],
+   "target": [
+    0,
+    0,
+    -10
+   ],
+   "distance": 80,
+   "decay": 1.2,
+   "angle": 0.55,
+   "penumbra": 0.6,
+   "castShadow": true,
+   "shadowMapSize": 1024,
+   "shadowBias": -0.0005,
+   "shadowNormalBias": 0
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.58408,
+    0.25415
+   ],
+   "intensity": 4,
+   "position": [
+    3.3,
+    3.6,
+    -71.6
+   ],
+   "distance": 14,
+   "decay": 2,
+   "castShadow": false,
+   "tag": "LampLight"
+  }
+ ],
+ "materials": {
+  "mat0": {
+   "kind": "snowground",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.90466,
+    0.92158,
+    0.95597
+   ],
+   "roughness": 0.82,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "sparkle": 0.8,
+   "relief": 1,
+   "wind": 0
+  },
+  "mat1": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.25415,
+    0.23455,
+    0.21586
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1,
+   "polyhaven": "bark_brown_02",
+   "tiling": [
+    1,
+    1
+   ],
+   "snow": 0.85,
+   "snowDir": [
+    -0.85,
+    0,
+    -0.35
+   ],
+   "wind": 0
+  },
+  "mat2": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.0356,
+    0.0319
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "alphaTest": 0.35,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/twig0.png",
+   "wind": 0
+  },
+  "mat3": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.0356,
+    0.0319
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "alphaTest": 0.35,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/twig1.png",
+   "wind": 0
+  },
+  "mat4": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.0356,
+    0.0319
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "alphaTest": 0.35,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/twig2.png",
+   "wind": 0
+  },
+  "mat5": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshBasicMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "doubleSided": false,
+   "transparent": true,
+   "opacity": 1,
+   "depthWrite": false,
+   "unlit": true,
+   "map": "tex/contactShadow.png",
+   "wind": 0
+  },
+  "mat6": {
+   "kind": "glass",
+   "name": "",
+   "three": "MeshPhysicalMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.04,
+   "metalness": 0,
+   "doubleSided": true,
+   "transparent": true,
+   "opacity": 0.32,
+   "envMapIntensity": 3,
+   "clearcoat": 1,
+   "clearcoatRoughness": 0.05,
+   "depthWrite": false,
+   "wind": 0
+  },
+  "mat7": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshPhysicalMaterial",
+   "color": [
+    0.06848,
+    0.00121,
+    0.00518
+   ],
+   "roughness": 0.05,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "envMapIntensity": 1.5,
+   "clearcoat": 1,
+   "clearcoatRoughness": 0,
+   "wind": 0
+  }
+ },
+ "meshes": [
+  {
+   "id": "m0",
+   "file": "meshes/g3ed82dcc_1616.glb",
+   "material": "mat1",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1284,
+   "instances": "inst/m0.bin",
+   "count": 245,
+   "customFloats": 0
+  },
+  {
+   "id": "m1",
+   "file": "meshes/gef052f54_1524.glb",
+   "material": "mat1",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1212,
+   "instances": "inst/m1.bin",
+   "count": 245,
+   "customFloats": 0
+  },
+  {
+   "id": "m2",
+   "file": "meshes/g1f8031fb_1512.glb",
+   "material": "mat1",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1204,
+   "instances": "inst/m2.bin",
+   "count": 246,
+   "customFloats": 0
+  },
+  {
+   "id": "m3",
+   "file": "meshes/g4fa3d557_1464.glb",
+   "material": "mat1",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1168,
+   "instances": "inst/m3.bin",
+   "count": 246,
+   "customFloats": 0
+  },
+  {
+   "id": "m4",
+   "file": "meshes/gc171be8d_1324.glb",
+   "material": "mat1",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1060,
+   "instances": "inst/m4.bin",
+   "count": 246,
+   "customFloats": 0
+  },
+  {
+   "id": "m5",
+   "file": "meshes/g4c72eaab_48521.glb",
+   "material": "mat0",
+   "name": "Plane snowground",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 96000,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m6",
+   "file": "meshes/g2013f279_520.glb",
+   "material": "mat3",
+   "name": "Mesh twig1",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 260,
+   "instances": "inst/m6.bin",
+   "count": 245,
+   "customFloats": 0
+  },
+  {
+   "id": "m7",
+   "file": "meshes/g7c7f48aa_480.glb",
+   "material": "mat2",
+   "name": "Mesh twig0",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 240,
+   "instances": "inst/m7.bin",
+   "count": 245,
+   "customFloats": 0
+  },
+  {
+   "id": "m8",
+   "file": "meshes/g84b77994_472.glb",
+   "material": "mat4",
+   "name": "Mesh twig2",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 236,
+   "instances": "inst/m8.bin",
+   "count": 246,
+   "customFloats": 0
+  },
+  {
+   "id": "m9",
+   "file": "meshes/gbebb4f8f_448.glb",
+   "material": "mat3",
+   "name": "Mesh twig1",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 224,
+   "instances": "inst/m9.bin",
+   "count": 246,
+   "customFloats": 0
+  },
+  {
+   "id": "m10",
+   "file": "meshes/g80b75ff4_384.glb",
+   "material": "mat2",
+   "name": "Mesh twig0",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 192,
+   "instances": "inst/m10.bin",
+   "count": 246,
+   "customFloats": 0
+  },
+  {
+   "id": "m11",
+   "file": "meshes/gf66e6441_396.glb",
+   "material": "mat6",
+   "name": "WineGlass Lathe glass",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 704,
+   "tag": "WineGlass",
+   "hidden": true,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m12",
+   "file": "meshes/g2cccdfc4_125.glb",
+   "material": "mat7",
+   "name": "WineGlass Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 192,
+   "tag": "WineGlass",
+   "hidden": true,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m13",
+   "file": "meshes/gf65e2c5c_4.glb",
+   "material": "mat5",
+   "name": "Plane contactShadow",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "matrix": [
+    0.9968,
+    0,
+    -0.07991,
+    0,
+    -0.07991,
+    0,
+    -0.9968,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1.8,
+    -0.02639,
+    -70,
+    1
+   ]
+  }
+ ],
+ "models": [
+  {
+   "name": "painted_wooden_bench",
+   "matrix": [
+    -0.07991,
+    0,
+    -0.9968,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.9968,
+    0,
+    -0.07991,
+    0,
+    1.8,
+    -0.09587,
+    -70,
+    1
+   ],
+   "snow": 0.7,
+   "tint": [
+    0.42,
+    0.5,
+    0.46
+   ],
+   "castShadow": true,
+   "tag": "Bench"
+  },
+  {
+   "name": "street_lamp_01",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    3.3,
+    -0.09622,
+    -71.6,
+    1
+   ],
+   "snow": 0.6,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true,
+   "tag": "Lamp"
+  }
+ ],
+ "markers": [
+  {
+   "tag": "PlayerStart",
+   "spawn": "default",
+   "position": [
+    0,
+    -0.21867,
+    0
+   ],
+   "yaw": 0,
+   "pitch": 0
+  },
+  {
+   "tag": "SitPoint",
+   "position": [
+    1.8,
+    -0.03341,
+    -70
+   ],
+   "note": "ground under the interact point; the game interact sits 0.8 m above (1.8,0.8,-70)"
+  },
+  {
+   "tag": "SeatPoint",
+   "position": [
+    1.62,
+    0.38659,
+    -70
+   ],
+   "yaw": 1.6508,
+   "pitch": 0,
+   "benchYaw": 1.6508,
+   "note": "hip/seat point at seat height (ground+0.42); yaw = direction the sitter faces"
+  },
+  {
+   "tag": "GlassPoint",
+   "position": [
+    1.05,
+    -0.02892,
+    -70.15
+   ]
+  },
+  {
+   "tag": "KidsCenter",
+   "position": [
+    15.8,
+    1.0524,
+    -78.3
+   ],
+   "radius": 5,
+   "note": "4 children run ellipses r 3..7 m around centres (11+3.2i, BZ-5-2.2i)"
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_approach",
+   "position": [
+    0.2,
+    1.52992,
+    -60
+   ],
+   "lookAt": [
+    2.5,
+    1.27741,
+    -70.8
+   ],
+   "fov": 62
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_bench",
+   "position": [
+    -0.7,
+    0.62,
+    -68.25
+   ],
+   "lookAt": [
+    1.25,
+    0.42,
+    -70.15
+   ],
+   "fov": 62
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_pullback_end",
+   "position": [
+    -9,
+    3.4,
+    -59
+   ],
+   "lookAt": [
+    3,
+    0.9,
+    -72
+   ],
+   "fov": 62
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    3.3,
+    3.6,
+    -71.6
+   ],
+   "color": [
+    1,
+    0.69387,
+    0.35153
+   ],
+   "size": 1.4,
+   "opacity": 0.9
+  }
+ ],
+ "uvConvention": "glTF: v=0 at the top of the stored PNG / Poly Haven image (three uv flipped on export)",
+ "stats": {
+  "meshEntries": 14,
+  "instances": 2460,
+  "triangles": 1835582,
+  "models": 2,
+  "markers": 9,
+  "lights": 4,
+  "skipped": {
+   "snow": 1,
+   "fogcards": 1,
+   "character": 12,
+   "glowInvisible": 1,
+   "stain": 1
+  },
+  "figureLightsSkipped": 0,
+  "animatedObjects": 8,
+  "uniqueGeometries": 14,
+  "textures": [
+   "tex/twig0.png",
+   "tex/twig1.png",
+   "tex/twig2.png",
+   "tex/contactShadow.png",
+   "tex/glow.png"
+  ]
+ },
+ "notes": [
+  "WineGlass mesh is hidden until the cutscene (director spawns SM_WineGlass at GlassPoint)"
+ ]
+}

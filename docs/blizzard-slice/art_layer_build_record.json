@@ -1,0 +1,85 @@
+{
+ "level": "L_Blizzard",
+ "version": 2,
+ "scatter": {
+  "pines_left": 312,
+  "pines_right": 35,
+  "deadwood_edge": 11,
+  "rocks_left": 25,
+  "branches": 45,
+  "deadwood_right": 4
+ },
+ "instances": 435,
+ "colliders": 348,
+ "meshes": {
+  "pine_tree_01#0": [
+   "/Game/Models/pine_tree_01/pine_tree_01_a_LOD0_k0.pine_tree_01_a_LOD0_k0",
+   "/Game/Models/pine_tree_01/pine_tree_01_a_LOD0_k1.pine_tree_01_a_LOD0_k1",
+   "/Game/Models/pine_tree_01/pine_tree_01_a_LOD0_k2.pine_tree_01_a_LOD0_k2",
+   "/Game/Models/pine_tree_01/pine_tree_01_a_LOD0_k3.pine_tree_01_a_LOD0_k3",
+   "/Game/Models/pine_tree_01/pine_tree_01_a_LOD0_k4.pine_tree_01_a_LOD0_k4",
+   "/Game/Models/pine_tree_01/pine_tree_01_a_LOD0_k5.pine_tree_01_a_LOD0_k5",
+   "/Game/Models/pine_tree_01/pine_tree_01_a_LOD0_k6.pine_tree_01_a_LOD0_k6",
+   "/Game/Models/pine_tree_01/pine_tree_01_a_LOD0_k7.pine_tree_01_a_LOD0_k7"
+  ],
+  "pine_tree_01#1": [
+   "/Game/Models/pine_tree_01/pine_tree_01_b_LOD0_k0.pine_tree_01_b_LOD0_k0",
+   "/Game/Models/pine_tree_01/pine_tree_01_b_LOD0_k1.pine_tree_01_b_LOD0_k1",
+   "/Game/Models/pine_tree_01/pine_tree_01_b_LOD0_k2.pine_tree_01_b_LOD0_k2",
+   "/Game/Models/pine_tree_01/pine_tree_01_b_LOD0_k3.pine_tree_01_b_LOD0_k3",
+   "/Game/Models/pine_tree_01/pine_tree_01_b_LOD0_k4.pine_tree_01_b_LOD0_k4",
+   "/Game/Models/pine_tree_01/pine_tree_01_b_LOD0_k5.pine_tree_01_b_LOD0_k5",
+   "/Game/Models/pine_tree_01/pine_tree_01_b_LOD0_k6.pine_tree_01_b_LOD0_k6",
+   "/Game/Models/pine_tree_01/pine_tree_01_b_LOD0_k7.pine_tree_01_b_LOD0_k7"
+  ],
+  "pine_tree_01#2": [
+   "/Game/Models/pine_tree_01/pine_tree_01_c_LOD0_k0.pine_tree_01_c_LOD0_k0",
+   "/Game/Models/pine_tree_01/pine_tree_01_c_LOD0_k1.pine_tree_01_c_LOD0_k1",
+   "/Game/Models/pine_tree_01/pine_tree_01_c_LOD0_k2.pine_tree_01_c_LOD0_k2",
+   "/Game/Models/pine_tree_01/pine_tree_01_c_LOD0_k3.pine_tree_01_c_LOD0_k3",
+   "/Game/Models/pine_tree_01/pine_tree_01_c_LOD0_k4.pine_tree_01_c_LOD0_k4",
+   "/Game/Models/pine_tree_01/pine_tree_01_c_LOD0_k5.pine_tree_01_c_LOD0_k5",
+   "/Game/Models/pine_tree_01/pine_tree_01_c_LOD0_k6.pine_tree_01_c_LOD0_k6",
+   "/Game/Models/pine_tree_01/pine_tree_01_c_LOD0_k7.pine_tree_01_c_LOD0_k7"
+  ],
+  "dead_tree_trunk#0": [
+   "/Game/Models/dead_tree_trunk/dead_tree_trunk.dead_tree_trunk"
+  ],
+  "tree_stump_02#0": [
+   "/Game/Models/tree_stump_02/tree_stump_02.tree_stump_02"
+  ],
+  "tree_stump_01#0": [
+   "/Game/Models/tree_stump_01/tree_stump_01.tree_stump_01"
+  ],
+  "dead_tree_trunk_02#0": [
+   "/Game/Models/dead_tree_trunk_02/dead_tree_trunk_02.dead_tree_trunk_02"
+  ],
+  "rock_moss_set_01#5": [
+   "/Game/Models/rock_moss_set_01/rock_moss_set_01_rock06.rock_moss_set_01_rock06"
+  ],
+  "rock_moss_set_01#3": [
+   "/Game/Models/rock_moss_set_01/rock_moss_set_01_rock04.rock_moss_set_01_rock04"
+  ],
+  "rock_moss_set_01#0": [
+   "/Game/Models/rock_moss_set_01/rock_moss_set_01_rock01.rock_moss_set_01_rock01"
+  ],
+  "rock_moss_set_01#2": [
+   "/Game/Models/rock_moss_set_01/rock_moss_set_01_rock03.rock_moss_set_01_rock03"
+  ],
+  "rock_moss_set_01#1": [
+   "/Game/Models/rock_moss_set_01/rock_moss_set_01_rock02.rock_moss_set_01_rock02"
+  ],
+  "rock_moss_set_01#4": [
+   "/Game/Models/rock_moss_set_01/rock_moss_set_01_rock05.rock_moss_set_01_rock05"
+  ],
+  "dry_branches_medium_01#2": [
+   "/Game/Models/dry_branches_medium_01/dry_branches_medium_01_c.dry_branches_medium_01_c"
+  ],
+  "dry_branches_medium_01#1": [
+   "/Game/Models/dry_branches_medium_01/dry_branches_medium_01_b.dry_branches_medium_01_b"
+  ],
+  "dry_branches_medium_01#0": [
+   "/Game/Models/dry_branches_medium_01/dry_branches_medium_01_a.dry_branches_medium_01_a"
+  ]
+ }
+}
