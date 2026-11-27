@@ -1,0 +1,6165 @@
+{
+ "level": "L_Library",
+ "source": "library.js (hub: garden + nave + jungle chamber), loaded with spawn=hall, no story flags",
+ "env": {
+  "hdri": "sunny_rose_garden",
+  "envIntensity": 0.55,
+  "background": [
+   0.68669,
+   0.58408,
+   0.38133
+  ],
+  "fog": {
+   "type": "exp2",
+   "color": [
+    0.51662,
+    0.45411,
+    0.3316
+   ],
+   "density": 0.01704
+  },
+  "sky": {
+   "kind": "dome",
+   "top": [
+    0.07819,
+    0.2384,
+    0.57758
+   ],
+   "horizon": [
+    0.90466,
+    0.82279,
+    0.64448
+   ],
+   "uniforms": {
+    "uTop": [
+     0.07819,
+     0.2384,
+     0.57758
+    ],
+    "uHor": [
+     0.90466,
+     0.82279,
+     0.64448
+    ],
+    "uSun": [
+     0.29814,
+     0.74536,
+     0.59628
+    ]
+   },
+   "radius": 400
+  }
+ },
+ "look": {
+  "exposure": 1.05,
+  "bloom": 0.11,
+  "halation": 0.07,
+  "focus": 6,
+  "focusRange": 5,
+  "dof": 0.35,
+  "dofNear": 0,
+  "lift": [
+   0.015,
+   0.01,
+   0
+  ],
+  "gamma": [
+   1,
+   1,
+   1
+  ],
+  "gain": [
+   1.05,
+   1,
+   0.88
+  ],
+  "sat": 1.08,
+  "contrast": 1.14,
+  "tint": [
+   1.03,
+   1,
+   0.9
+  ],
+  "vignette": 0.5,
+  "ca": 0.5,
+  "grain": 0.045,
+  "rays": 0.24795918367346934,
+  "raysTint": [
+   1,
+   0.85,
+   0.6
+  ],
+  "raysThreshold": 0.9,
+  "raysDecay": 0.965,
+  "raysLen": 0.85,
+  "raysSky": 1,
+  "raysLight": [
+   0.5,
+   1.25
+  ]
+ },
+ "lights": [
+  {
+   "type": "directional",
+   "color": [
+    1,
+    0.76052,
+    0.43415
+   ],
+   "intensity": 3.2,
+   "position": [
+    14,
+    40,
+    26
+   ],
+   "target": [
+    0,
+    0,
+    -12
+   ],
+   "castShadow": true,
+   "shadowMapSize": 2048,
+   "shadowBias": -0.0003,
+   "shadowNormalBias": 0.05,
+   "shadowExtent": [
+    -26,
+    26,
+    -40,
+    40,
+    5,
+    110
+   ]
+  },
+  {
+   "type": "hemisphere",
+   "sky": [
+    1,
+    0.8388,
+    0.60383
+   ],
+   "ground": [
+    0.04231,
+    0.02315,
+    0.00913
+   ],
+   "intensity": 0.45
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.39157,
+    0.08022
+   ],
+   "intensity": 2.2,
+   "position": [
+    0.6,
+    3.4,
+    -9
+   ],
+   "distance": 9,
+   "decay": 2,
+   "castShadow": false
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.39157,
+    0.08022
+   ],
+   "intensity": 2.2,
+   "position": [
+    -0.5,
+    3.8,
+    -22
+   ],
+   "distance": 9,
+   "decay": 2,
+   "castShadow": false
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.39157,
+    0.08022
+   ],
+   "intensity": 2.2,
+   "position": [
+    1,
+    3.2,
+    -30
+   ],
+   "distance": 9,
+   "decay": 2,
+   "castShadow": false
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.43415,
+    0.11697
+   ],
+   "intensity": 2.2,
+   "position": [
+    1.5,
+    1.05,
+    -41.45
+   ],
+   "distance": 6,
+   "decay": 2,
+   "castShadow": false
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.47932,
+    0.16203
+   ],
+   "intensity": 3,
+   "position": [
+    0,
+    4.5,
+    -40
+   ],
+   "distance": 12,
+   "decay": 2,
+   "castShadow": false
+  },
+  {
+   "type": "point",
+   "color": [
+    0.11444,
+    0.32314,
+    0.67244
+   ],
+   "intensity": 0.2,
+   "position": [
+    3.4,
+    1.8,
+    -14
+   ],
+   "distance": 8,
+   "decay": 2,
+   "castShadow": false,
+   "tag": "WindowGlow"
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.01444,
+    0.00518
+   ],
+   "intensity": 0,
+   "position": [
+    3.8,
+    0.08,
+    -24
+   ],
+   "distance": 4.5,
+   "decay": 1.6,
+   "castShadow": false,
+   "tag": "DoorLight1"
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.01444,
+    0.00518
+   ],
+   "intensity": 0,
+   "position": [
+    -3.8,
+    0.08,
+    -28
+   ],
+   "distance": 4.5,
+   "decay": 1.6,
+   "castShadow": false,
+   "tag": "DoorLight2"
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.01444,
+    0.00518
+   ],
+   "intensity": 0,
+   "position": [
+    3.8,
+    0.08,
+    -30.4
+   ],
+   "distance": 4.5,
+   "decay": 1.6,
+   "castShadow": false,
+   "tag": "DoorLight3"
+  }
+ ],
+ "materials": {
+  "mat0": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.80695,
+    0.87137,
+    0.68669
+   ],
+   "roughness": 0.9,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/meadow.png",
+   "tiling": [
+    26,
+    17
+   ],
+   "wind": 0
+  },
+  "mat1": {
+   "kind": "daisy",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.75,
+   "metalness": 0,
+   "alphaTest": 0.5,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 1,
+   "map": "tex/daisy.png"
+  },
+  "mat2": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.10224,
+    0.01298
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 1
+  },
+  "mat3": {
+   "kind": "grass",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.75,
+   "metalness": 0,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "colorA": [
+    0.06848,
+    0.14413,
+    0.01764
+   ],
+   "colorB": [
+    0.39157,
+    0.52712,
+    0.08022
+   ],
+   "wind": 1
+  },
+  "mat4": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.25415,
+    0.14413,
+    0.08022
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 0.6,
+   "polyhaven": "dark_wooden_planks",
+   "tiling": [
+    1,
+    1
+   ],
+   "wind": 0
+  },
+  "mat5": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "alphaTest": 0.45,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "grid": 4,
+   "translucency": 0.5,
+   "wind": 1,
+   "map": "tex/leafAtlas.png"
+  },
+  "mat6": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.35,
+   "metalness": 0.3,
+   "emissive": [
+    0.02315,
+    0.21223,
+    0.7454
+   ],
+   "emissiveIntensity": 0.15,
+   "alphaTest": 0.4,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/butterflyWing.png",
+   "wind": 0
+  },
+  "mat7": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.00561,
+    0.00561,
+    0.00561
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat8": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "emissive": [
+    0.05781,
+    0.05781,
+    0.05781
+   ],
+   "emissiveIntensity": 1,
+   "alphaTest": 0.05,
+   "doubleSided": true,
+   "transparent": true,
+   "opacity": 1,
+   "depthWrite": false,
+   "grid": 1,
+   "translucency": 0.5,
+   "wind": 0,
+   "map": "tex/seed.png"
+  },
+  "mat9": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.25415,
+    0.19462,
+    0.13843
+   ],
+   "roughness": 0.75,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/spineWarm.png",
+   "wind": 0
+  },
+  "mat10": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.7,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat11": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.43415,
+    0.27889,
+    0.16203
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1,
+   "polyhaven": "old_wood_floor",
+   "tiling": [
+    3,
+    22
+   ],
+   "wind": 0
+  },
+  "mat12": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "alphaTest": 0.45,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "grid": 4,
+   "translucency": 0.8,
+   "wind": 0.6,
+   "map": "tex/leafAtlas.png"
+  },
+  "mat13": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.10224,
+    0.0137,
+    0.00913
+   ],
+   "roughness": 0.6,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat14": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.80695,
+    0.71569,
+    0.52712
+   ],
+   "roughness": 0.9,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat15": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "alphaTest": 0.45,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "grid": 4,
+   "translucency": 0.2,
+   "wind": 0,
+   "map": "tex/mapleAtlas.png"
+  },
+  "mat16": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.016,
+    0.007
+   ],
+   "roughness": 0.5,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat17": {
+   "kind": "glass",
+   "name": "",
+   "three": "MeshPhysicalMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.03,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": true,
+   "opacity": 0.22,
+   "envMapIntensity": 2.2,
+   "clearcoat": 1,
+   "clearcoatRoughness": 0,
+   "depthWrite": false,
+   "wind": 0
+  },
+  "mat18": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.90466,
+    0.92158,
+    0.95597
+   ],
+   "roughness": 0.9,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat19": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.016,
+    0.016,
+    0.016
+   ],
+   "roughness": 0.4,
+   "metalness": 0.6,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat20": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.68669,
+    0.45641,
+    0.25415
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat21": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshPhysicalMaterial",
+   "color": [
+    0.69387,
+    0.22323,
+    0.02843
+   ],
+   "roughness": 0.55,
+   "metalness": 0,
+   "emissive": [
+    0.19462,
+    0.02519,
+    0.00182
+   ],
+   "emissiveIntensity": 0.25,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "sheen": 0.6,
+   "sheenColor": [
+    1,
+    0.52712,
+    0.21586
+   ],
+   "sheenRoughness": 1,
+   "wind": 0
+  },
+  "mat22": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.57758,
+    0.09531,
+    0.01161
+   ],
+   "roughness": 0.55,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat23": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.06848,
+    0.10224,
+    0.02315
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat24": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.68669,
+    0.63076,
+    0.16203
+   ],
+   "roughness": 0.6,
+   "metalness": 0,
+   "alphaTest": 0.5,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/bigLeaf0.png",
+   "wind": 0
+  },
+  "mat25": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.80695,
+    0.7454,
+    0.21586
+   ],
+   "roughness": 0.6,
+   "metalness": 0,
+   "alphaTest": 0.5,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/bigLeaf1.png",
+   "wind": 0
+  },
+  "mat26": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "alphaTest": 0.45,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "grid": 4,
+   "translucency": 0.1,
+   "wind": 0,
+   "map": "tex/leafAtlas.png"
+  },
+  "mat27": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.95,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/rug.png",
+   "wind": 0
+  },
+  "mat28": {
+   "kind": "emissive",
+   "name": "",
+   "three": "MeshBasicMaterial",
+   "color": [
+    1,
+    0.7454,
+    0.43415
+   ],
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "unlit": true,
+   "emissive": [
+    1,
+    0.7454,
+    0.43415
+   ],
+   "emissiveIntensity": 1,
+   "wind": 0
+  },
+  "mat29": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.06848,
+    0.10224,
+    0.02956
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1,
+   "polyhaven": "leafy_grass",
+   "tiling": [
+    14,
+    14
+   ],
+   "wind": 0
+  },
+  "mat30": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.03434,
+    0.02122
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1,
+   "polyhaven": "rough_plaster_03",
+   "tiling": [
+    4,
+    2
+   ],
+   "wind": 0
+  },
+  "mat31": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.007,
+    0.007,
+    0.00478
+   ],
+   "roughness": 0.6,
+   "metalness": 0.4,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat32": {
+   "kind": "grass",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.75,
+   "metalness": 0,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "colorA": [
+    0.0137,
+    0.03434,
+    0.00518
+   ],
+   "colorB": [
+    0.10224,
+    0.19462,
+    0.02315
+   ],
+   "wind": 1
+  },
+  "mat33": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.86316,
+    0.81485,
+    0.73791
+   ],
+   "roughness": 0.9,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat34": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshPhysicalMaterial",
+   "color": [
+    0.69387,
+    0.65141,
+    0.57758
+   ],
+   "roughness": 0.95,
+   "metalness": 0,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "sheen": 0.5,
+   "sheenColor": [
+    1,
+    1,
+    1
+   ],
+   "sheenRoughness": 0.8,
+   "wind": 0
+  },
+  "mat35": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "alphaTest": 0.45,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "grid": 4,
+   "translucency": 0.25,
+   "wind": 0.3,
+   "map": "tex/leafAtlas.png"
+  },
+  "mat36": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.55,
+   "metalness": 0,
+   "alphaTest": 0.5,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/bigLeaf0.png",
+   "wind": 0
+  },
+  "mat37": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.55,
+   "metalness": 0,
+   "alphaTest": 0.5,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/bigLeaf1.png",
+   "wind": 0
+  },
+  "mat38": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1,
+   "polyhaven": "bark_brown_02",
+   "tiling": [
+    1,
+    1
+   ],
+   "wind": 0
+  },
+  "mat39": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    1,
+    1
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "alphaTest": 0.45,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "grid": 4,
+   "translucency": 0.4,
+   "wind": 1,
+   "map": "tex/leafAtlas.png"
+  },
+  "mat40": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshPhysicalMaterial",
+   "color": [
+    0.14413,
+    0.00243,
+    0.00605
+   ],
+   "roughness": 0.15,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "clearcoat": 1,
+   "clearcoatRoughness": 0.08,
+   "wind": 0
+  },
+  "mat41": {
+   "kind": "glass",
+   "name": "",
+   "three": "MeshPhysicalMaterial",
+   "color": [
+    0.0137,
+    0.10224,
+    0.02519
+   ],
+   "roughness": 0.08,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": true,
+   "opacity": 0.82,
+   "envMapIntensity": 1.8,
+   "clearcoat": 1,
+   "clearcoatRoughness": 0,
+   "wind": 0
+  },
+  "mat42": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.52712,
+    0.43415,
+    0.27889
+   ],
+   "roughness": 0.3,
+   "metalness": 0.8,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat43": {
+   "kind": "emissive",
+   "name": "",
+   "three": "ShaderMaterial",
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "unlit": true,
+   "shader": "windowFrost",
+   "color": [
+    0.05,
+    0.13,
+    0.22
+   ],
+   "emissive": [
+    0.3,
+    0.42,
+    0.55
+   ],
+   "emissiveIntensity": 0.58,
+   "on": 0.15,
+   "wind": 0
+  },
+  "mat44": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.14413,
+    0.04231,
+    0.01938
+   ],
+   "roughness": 0.55,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat45": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.25415,
+    0.16203,
+    0.08022
+   ],
+   "roughness": 0.35,
+   "metalness": 0.8,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat46": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshBasicMaterial",
+   "color": [
+    1,
+    0.01033,
+    0.00605
+   ],
+   "doubleSided": false,
+   "transparent": true,
+   "opacity": 0,
+   "additive": true,
+   "depthWrite": false,
+   "unlit": true,
+   "map": "tex/glow.png",
+   "wind": 0
+  },
+  "mat47": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.43415,
+    0.39157,
+    0.35153
+   ],
+   "roughness": 0.35,
+   "metalness": 0.85,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat48": {
+   "kind": "leafcards",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    1,
+    0.63076,
+    0.27889
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "emissive": [
+    1,
+    0.43415,
+    0.11697
+   ],
+   "emissiveIntensity": 1,
+   "alphaTest": 0.05,
+   "doubleSided": true,
+   "transparent": true,
+   "opacity": 1,
+   "additive": true,
+   "depthWrite": false,
+   "grid": 1,
+   "translucency": 0.5,
+   "wind": 0,
+   "map": "tex/glow.png"
+  }
+ },
+ "meshes": [
+  {
+   "id": "m0",
+   "file": "meshes/g85de9509_10.glb",
+   "material": "mat3",
+   "name": "Mesh grass",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 8,
+   "instances": "inst/m0.bin",
+   "count": 21600,
+   "customFloats": 0,
+   "instanceColors": "inst/m0.col.bin"
+  },
+  {
+   "id": "m1",
+   "file": "meshes/g8ace662e_14.glb",
+   "material": "mat1",
+   "name": "Mesh daisy",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 12,
+   "instances": "inst/m1.bin",
+   "count": 13400,
+   "customFloats": 0,
+   "instanceColors": "inst/m1.col.bin"
+  },
+  {
+   "id": "m2",
+   "file": "meshes/g04a1f109_24.glb",
+   "material": "mat10",
+   "name": "Box basic",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 12,
+   "instances": "inst/m2.bin",
+   "count": 8439,
+   "customFloats": 0,
+   "instanceColors": "inst/m2.col.bin"
+  },
+  {
+   "id": "m3",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat12",
+   "name": "Plane leafAtlas",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m3.bin",
+   "count": 48059,
+   "customFloats": 4
+  },
+  {
+   "id": "m4",
+   "file": "meshes/gb7d20b76_8.glb",
+   "material": "mat2",
+   "name": "Plane basic",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 6,
+   "instances": "inst/m4.bin",
+   "count": 13400,
+   "customFloats": 0
+  },
+  {
+   "id": "m5",
+   "file": "meshes/gc77c66c3_10.glb",
+   "material": "mat32",
+   "name": "Mesh grass",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 8,
+   "instances": "inst/m5.bin",
+   "count": 9000,
+   "customFloats": 0,
+   "instanceColors": "inst/m5.col.bin"
+  },
+  {
+   "id": "m6",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat5",
+   "name": "Plane leafAtlas",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m6.bin",
+   "count": 26544,
+   "customFloats": 4
+  },
+  {
+   "id": "m7",
+   "file": "meshes/g04a1f109_24.glb",
+   "material": "mat4",
+   "name": "Box dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "instances": "inst/m7.bin",
+   "count": 2219,
+   "customFloats": 0
+  },
+  {
+   "id": "m8",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat39",
+   "name": "Plane leafAtlas",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m8.bin",
+   "count": 7050,
+   "customFloats": 4
+  },
+  {
+   "id": "m9",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat35",
+   "name": "Plane leafAtlas",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m9.bin",
+   "count": 5200,
+   "customFloats": 4
+  },
+  {
+   "id": "m10",
+   "file": "meshes/g470ca109_105.glb",
+   "material": "mat47",
+   "name": "DoorChains1 Torus basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 168,
+   "tag": "DoorChains1",
+   "hidden": true,
+   "instances": "inst/m10.bin",
+   "count": 44,
+   "customFloats": 0
+  },
+  {
+   "id": "m11",
+   "file": "meshes/g470ca109_105.glb",
+   "material": "mat47",
+   "name": "DoorChains2 Torus basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 168,
+   "tag": "DoorChains2",
+   "hidden": true,
+   "instances": "inst/m11.bin",
+   "count": 44,
+   "customFloats": 0
+  },
+  {
+   "id": "m12",
+   "file": "meshes/g470ca109_105.glb",
+   "material": "mat47",
+   "name": "DoorChains3 Torus basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 168,
+   "tag": "DoorChains3",
+   "hidden": true,
+   "instances": "inst/m12.bin",
+   "count": 44,
+   "customFloats": 0
+  },
+  {
+   "id": "m13",
+   "file": "meshes/g0dcda295_3355.glb",
+   "material": "mat34",
+   "name": "Plane basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 6480,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.56,
+    -40.12,
+    1
+   ]
+  },
+  {
+   "id": "m14",
+   "file": "meshes/g560cab29_165.glb",
+   "material": "mat40",
+   "name": "Cherries Sphere basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 252,
+   "tag": "Cherries",
+   "instances": "inst/m14.bin",
+   "count": 14,
+   "customFloats": 0
+  },
+  {
+   "id": "m15",
+   "file": "meshes/g7dff8de1_6728.glb",
+   "material": "mat9",
+   "name": "Mesh spineWarm",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 3364,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m16",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat26",
+   "name": "Plane leafAtlas",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m16.bin",
+   "count": 1600,
+   "customFloats": 4
+  },
+  {
+   "id": "m17",
+   "file": "meshes/gd8448004_63.glb",
+   "material": "mat28",
+   "name": "Sphere emissive",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 80,
+   "instances": "inst/m17.bin",
+   "count": 26,
+   "customFloats": 0
+  },
+  {
+   "id": "m18",
+   "file": "meshes/g21f042d6_825.glb",
+   "material": "mat17",
+   "name": "Sphere glass",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 1472,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.45,
+    0.82,
+    -19.95,
+    1
+   ]
+  },
+  {
+   "id": "m19",
+   "file": "meshes/g3358048c_1616.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1272,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    11.66327,
+    0,
+    35.63906,
+    1
+   ]
+  },
+  {
+   "id": "m20",
+   "file": "meshes/gb3bbb95b_1592.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1252,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    28.43864,
+    0,
+    17.49049,
+    1
+   ]
+  },
+  {
+   "id": "m21",
+   "file": "meshes/gba8b8ce7_1580.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1244,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    26.88238,
+    0,
+    12.10135,
+    1
+   ]
+  },
+  {
+   "id": "m22",
+   "file": "meshes/gb80e68ed_693.glb",
+   "material": "mat22",
+   "name": "Sphere basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 1216,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.4,
+    0.165,
+    -9.6,
+    1
+   ]
+  },
+  {
+   "id": "m23",
+   "file": "meshes/ge9d35d5a_693.glb",
+   "material": "mat22",
+   "name": "Sphere basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 1216,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.5,
+    0.135,
+    -17.5,
+    1
+   ]
+  },
+  {
+   "id": "m24",
+   "file": "meshes/gdb4d4997_693.glb",
+   "material": "mat22",
+   "name": "Sphere basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 1216,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.7,
+    0.195,
+    -30.5,
+    1
+   ]
+  },
+  {
+   "id": "m25",
+   "file": "meshes/g4b002c97_1508.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1188,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    29.48927,
+    0,
+    5.92668,
+    1
+   ]
+  },
+  {
+   "id": "m26",
+   "file": "meshes/gf7b874e0_1504.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1188,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -27.6887,
+    0,
+    17.39845,
+    1
+   ]
+  },
+  {
+   "id": "m27",
+   "file": "meshes/g9b03be83_1496.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1180,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -19.60058,
+    0,
+    33.73328,
+    1
+   ]
+  },
+  {
+   "id": "m28",
+   "file": "meshes/g9c3a27d5_1488.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1176,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -26.05344,
+    0,
+    6.86731,
+    1
+   ]
+  },
+  {
+   "id": "m29",
+   "file": "meshes/ge9658d0a_1476.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1164,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    28.69255,
+    0,
+    23.56661,
+    1
+   ]
+  },
+  {
+   "id": "m30",
+   "file": "meshes/g8f454467_1472.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1164,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    3.55482,
+    0,
+    34.70645,
+    1
+   ]
+  },
+  {
+   "id": "m31",
+   "file": "meshes/ga09d0066_1460.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1152,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -31.27446,
+    0,
+    11.79115,
+    1
+   ]
+  },
+  {
+   "id": "m32",
+   "file": "meshes/g6554a53e_1468.glb",
+   "material": "mat38",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1144,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -5.4,
+    0,
+    -44.6,
+    1
+   ]
+  },
+  {
+   "id": "m33",
+   "file": "meshes/g5d250ac1_1440.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1136,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    17.31644,
+    0,
+    31.43368,
+    1
+   ]
+  },
+  {
+   "id": "m34",
+   "file": "meshes/g8f575674_1452.glb",
+   "material": "mat38",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1132,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    5.5,
+    0,
+    -44.6,
+    1
+   ]
+  },
+  {
+   "id": "m35",
+   "file": "meshes/g08d33a9b_1408.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1116,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    25.49317,
+    0,
+    29.28599,
+    1
+   ]
+  },
+  {
+   "id": "m36",
+   "file": "meshes/g1a8f7798_1404.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1112,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -11.62702,
+    0,
+    35.5718,
+    1
+   ]
+  },
+  {
+   "id": "m37",
+   "file": "meshes/g5fef9a8a_1372.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1088,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -23.3532,
+    0,
+    28.00284,
+    1
+   ]
+  },
+  {
+   "id": "m38",
+   "file": "meshes/g78429f71_1356.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1076,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -3.74461,
+    0,
+    35.81195,
+    1
+   ]
+  },
+  {
+   "id": "m39",
+   "file": "meshes/ga14a48af_1352.glb",
+   "material": "mat4",
+   "name": "Mesh dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1072,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -30.1529,
+    0,
+    24.05352,
+    1
+   ]
+  },
+  {
+   "id": "m40",
+   "file": "meshes/gaef0f17c_325.glb",
+   "material": "mat34",
+   "name": "Sphere basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 528,
+   "instances": "inst/m40.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m41",
+   "file": "meshes/g7584c9db_1340.glb",
+   "material": "mat38",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1048,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    5.5,
+    0,
+    -36.8,
+    1
+   ]
+  },
+  {
+   "id": "m42",
+   "file": "meshes/g02c3f35e_1336.glb",
+   "material": "mat38",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1044,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -5.4,
+    0,
+    -36.8,
+    1
+   ]
+  },
+  {
+   "id": "m43",
+   "file": "meshes/ge03ad372_50.glb",
+   "material": "mat7",
+   "name": "Capsule basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 72,
+   "animated": true,
+   "instances": "inst/m43.bin",
+   "count": 7,
+   "customFloats": 0
+  },
+  {
+   "id": "m44",
+   "file": "meshes/ga5e38cb8_117.glb",
+   "material": "mat45",
+   "name": "Sphere basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 168,
+   "instances": "inst/m44.bin",
+   "count": 3,
+   "customFloats": 0
+  },
+  {
+   "id": "m45",
+   "file": "meshes/g7cd0dfa0_287.glb",
+   "material": "mat21",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 480,
+   "matrix": [
+    0.99908,
+    -0.04289,
+    0,
+    0,
+    0.04289,
+    0.99908,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.6,
+    0,
+    -11.5,
+    1
+   ]
+  },
+  {
+   "id": "m46",
+   "file": "meshes/gb747b6b5_287.glb",
+   "material": "mat21",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 480,
+   "matrix": [
+    0.99992,
+    0.01302,
+    0,
+    0,
+    -0.01302,
+    0.99992,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.9,
+    0,
+    -12.3,
+    1
+   ]
+  },
+  {
+   "id": "m47",
+   "file": "meshes/g473f32fe_287.glb",
+   "material": "mat21",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 480,
+   "matrix": [
+    0.99943,
+    -0.0338,
+    0,
+    0,
+    0.0338,
+    0.99943,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.3,
+    0,
+    -11,
+    1
+   ]
+  },
+  {
+   "id": "m48",
+   "file": "meshes/geefea783_287.glb",
+   "material": "mat21",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 480,
+   "matrix": [
+    0.99991,
+    -0.01304,
+    0,
+    0,
+    0.01304,
+    0.99991,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.85,
+    0,
+    -24.5,
+    1
+   ]
+  },
+  {
+   "id": "m49",
+   "file": "meshes/g3173295d_287.glb",
+   "material": "mat21",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 480,
+   "matrix": [
+    0.99996,
+    -0.00927,
+    0,
+    0,
+    0.00927,
+    0.99996,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.6,
+    0,
+    -25.3,
+    1
+   ]
+  },
+  {
+   "id": "m50",
+   "file": "meshes/g4050dfa0_287.glb",
+   "material": "mat21",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 480,
+   "matrix": [
+    0.99829,
+    -0.05849,
+    0,
+    0,
+    0.05849,
+    0.99829,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.9,
+    0,
+    -26,
+    1
+   ]
+  },
+  {
+   "id": "m51",
+   "file": "meshes/g79adca6a_287.glb",
+   "material": "mat21",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 480,
+   "matrix": [
+    0.99879,
+    -0.04914,
+    0,
+    0,
+    0.04914,
+    0.99879,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.85,
+    0,
+    -32,
+    1
+   ]
+  },
+  {
+   "id": "m52",
+   "file": "meshes/gb47d0e6e_570.glb",
+   "material": "mat36",
+   "name": "Mesh bigLeaf0",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 456,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m53",
+   "file": "meshes/g24047118_231.glb",
+   "material": "mat18",
+   "name": "Sphere basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 380,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.45,
+    0.82,
+    -19.95,
+    1
+   ]
+  },
+  {
+   "id": "m54",
+   "file": "meshes/g04a1f109_24.glb",
+   "material": "mat10",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "instances": "inst/m54.bin",
+   "count": 31,
+   "customFloats": 0,
+   "instanceColors": "inst/m54.col.bin"
+  },
+  {
+   "id": "m55",
+   "file": "meshes/ga24d1482_430.glb",
+   "material": "mat37",
+   "name": "Mesh bigLeaf1",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 344,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m56",
+   "file": "meshes/gba48ffcf_200.glb",
+   "material": "mat41",
+   "name": "Bottle Lathe glass",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 336,
+   "tag": "Bottle",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.6,
+    0.69,
+    -40.85,
+    1
+   ]
+  },
+  {
+   "id": "m57",
+   "file": "meshes/g619426d6_119.glb",
+   "material": "mat19",
+   "name": "Torus basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 192,
+   "matrix": [
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    -1.438,
+    0.795,
+    -19.95,
+    1
+   ]
+  },
+  {
+   "id": "m58",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat8",
+   "name": "Plane seed",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "animated": true,
+   "instances": "inst/m58.bin",
+   "count": 90,
+   "customFloats": 4
+  },
+  {
+   "id": "m59",
+   "file": "meshes/g5ff0e4f7_220.glb",
+   "material": "mat25",
+   "name": "Mesh bigLeaf1",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 176,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m60",
+   "file": "meshes/gfb3de920_210.glb",
+   "material": "mat24",
+   "name": "Mesh bigLeaf0",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 168,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m61",
+   "file": "meshes/g04a1f109_24.glb",
+   "material": "mat31",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "instances": "inst/m61.bin",
+   "count": 12,
+   "customFloats": 0
+  },
+  {
+   "id": "m62",
+   "file": "meshes/g70bcc8cf_196.glb",
+   "material": "mat16",
+   "name": "Cylinder basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 128,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.45,
+    0.72,
+    -19.95,
+    1
+   ]
+  },
+  {
+   "id": "m63",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat48",
+   "name": "Plane glow",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "animated": true,
+   "instances": "inst/m63.bin",
+   "count": 60,
+   "customFloats": 4
+  },
+  {
+   "id": "m64",
+   "file": "meshes/gd0ba5abf_52.glb",
+   "material": "mat20",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 72,
+   "matrix": [
+    0.99908,
+    -0.04289,
+    0,
+    0,
+    0.04289,
+    0.99908,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.6,
+    0,
+    -11.5,
+    1
+   ]
+  },
+  {
+   "id": "m65",
+   "file": "meshes/g855ff45e_52.glb",
+   "material": "mat20",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 72,
+   "matrix": [
+    0.99992,
+    0.01302,
+    0,
+    0,
+    -0.01302,
+    0.99992,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.9,
+    0,
+    -12.3,
+    1
+   ]
+  },
+  {
+   "id": "m66",
+   "file": "meshes/gbf6b1979_52.glb",
+   "material": "mat20",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 72,
+   "matrix": [
+    0.99943,
+    -0.0338,
+    0,
+    0,
+    0.0338,
+    0.99943,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.3,
+    0,
+    -11,
+    1
+   ]
+  },
+  {
+   "id": "m67",
+   "file": "meshes/g5981af3b_52.glb",
+   "material": "mat20",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 72,
+   "matrix": [
+    0.99991,
+    -0.01304,
+    0,
+    0,
+    0.01304,
+    0.99991,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.85,
+    0,
+    -24.5,
+    1
+   ]
+  },
+  {
+   "id": "m68",
+   "file": "meshes/ga6c7e9c4_52.glb",
+   "material": "mat20",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 72,
+   "matrix": [
+    0.99996,
+    -0.00927,
+    0,
+    0,
+    0.00927,
+    0.99996,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.6,
+    0,
+    -25.3,
+    1
+   ]
+  },
+  {
+   "id": "m69",
+   "file": "meshes/g993a5abf_52.glb",
+   "material": "mat20",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 72,
+   "matrix": [
+    0.99829,
+    -0.05849,
+    0,
+    0,
+    0.05849,
+    0.99829,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.9,
+    0,
+    -26,
+    1
+   ]
+  },
+  {
+   "id": "m70",
+   "file": "meshes/gfeaf89ec_52.glb",
+   "material": "mat20",
+   "name": "Lathe basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 72,
+   "matrix": [
+    0.99879,
+    -0.04914,
+    0,
+    0,
+    0.04914,
+    0.99879,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.85,
+    0,
+    -32,
+    1
+   ]
+  },
+  {
+   "id": "m71",
+   "file": "meshes/g04a1f109_24.glb",
+   "material": "mat30",
+   "name": "Box rough_plaster_03",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "instances": "inst/m71.bin",
+   "count": 6,
+   "customFloats": 0
+  },
+  {
+   "id": "m72",
+   "file": "meshes/g762d01f9_76.glb",
+   "material": "mat42",
+   "name": "Bottle Cylinder basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 48,
+   "tag": "Bottle",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.6,
+    0.77,
+    -40.85,
+    1
+   ]
+  },
+  {
+   "id": "m73",
+   "file": "meshes/gb799fbe9_24.glb",
+   "material": "mat4",
+   "name": "Box dark_wooden_planks",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "instances": "inst/m73.bin",
+   "count": 3,
+   "customFloats": 0
+  },
+  {
+   "id": "m74",
+   "file": "meshes/g9dd51fec_4.glb",
+   "material": "mat6",
+   "name": "Plane butterflyWing",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "animated": true,
+   "instances": "inst/m74.bin",
+   "count": 14,
+   "customFloats": 0
+  },
+  {
+   "id": "m75",
+   "file": "meshes/g2ae97f69_40.glb",
+   "material": "mat23",
+   "name": "Cylinder basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 24,
+   "matrix": [
+    0.95534,
+    0.29552,
+    0,
+    0,
+    -0.29552,
+    0.95534,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.4,
+    0.352,
+    -9.6,
+    1
+   ]
+  },
+  {
+   "id": "m76",
+   "file": "meshes/gff64ca85_40.glb",
+   "material": "mat23",
+   "name": "Cylinder basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 24,
+   "matrix": [
+    0.95534,
+    0.29552,
+    0,
+    0,
+    -0.29552,
+    0.95534,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.5,
+    0.288,
+    -17.5,
+    1
+   ]
+  },
+  {
+   "id": "m77",
+   "file": "meshes/ga39fe035_40.glb",
+   "material": "mat23",
+   "name": "Cylinder basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 24,
+   "matrix": [
+    0.95534,
+    0.29552,
+    0,
+    0,
+    -0.29552,
+    0.95534,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1.7,
+    0.416,
+    -30.5,
+    1
+   ]
+  },
+  {
+   "id": "m78",
+   "file": "meshes/gb5e5fa21_24.glb",
+   "material": "mat13",
+   "name": "Box basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "matrix": [
+    0.87758,
+    0,
+    -0.47943,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.47943,
+    0,
+    0.87758,
+    0,
+    -1.35,
+    0.47,
+    -8.2,
+    1
+   ]
+  },
+  {
+   "id": "m79",
+   "file": "meshes/gd8685761_24.glb",
+   "material": "mat14",
+   "name": "Box basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "matrix": [
+    0.87758,
+    0,
+    -0.47943,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.47943,
+    0,
+    0.87758,
+    0,
+    -1.34473,
+    0.47,
+    -8.20288,
+    1
+   ]
+  },
+  {
+   "id": "m80",
+   "file": "meshes/gd0883d39_24.glb",
+   "material": "mat4",
+   "name": "Box dark_wooden_planks",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.14,
+    -40.3,
+    1
+   ]
+  },
+  {
+   "id": "m81",
+   "file": "meshes/gd768a909_24.glb",
+   "material": "mat33",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.39,
+    -40.3,
+    1
+   ]
+  },
+  {
+   "id": "m82",
+   "file": "meshes/g3970b6a9_24.glb",
+   "material": "mat4",
+   "name": "Box dark_wooden_planks",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    4.37,
+    1.6,
+    -14,
+    1
+   ]
+  },
+  {
+   "id": "m83",
+   "file": "meshes/g841afb81_24.glb",
+   "material": "mat4",
+   "name": "Box dark_wooden_planks",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    4.3,
+    1.6,
+    -14,
+    1
+   ]
+  },
+  {
+   "id": "m84",
+   "file": "meshes/g05e7fc59_24.glb",
+   "material": "mat4",
+   "name": "Box dark_wooden_planks",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    4.3,
+    1.9,
+    -14,
+    1
+   ]
+  },
+  {
+   "id": "m85",
+   "file": "meshes/gc5472cf1_24.glb",
+   "material": "mat44",
+   "name": "Door1 Box basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "tag": "Door1",
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    4.3,
+    1.075,
+    -24,
+    1
+   ]
+  },
+  {
+   "id": "m86",
+   "file": "meshes/gc5472cf1_24.glb",
+   "material": "mat44",
+   "name": "Door2 Box basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "tag": "Door2",
+   "matrix": [
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    -4.3,
+    1.075,
+    -28,
+    1
+   ]
+  },
+  {
+   "id": "m87",
+   "file": "meshes/gc5472cf1_24.glb",
+   "material": "mat44",
+   "name": "Door3 Box basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "tag": "Door3",
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    4.3,
+    1.075,
+    -30.4,
+    1
+   ]
+  },
+  {
+   "id": "m88",
+   "file": "meshes/gdf4e3eac_4.glb",
+   "material": "mat11",
+   "name": "Plane old_wood_floor",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "instances": "inst/m88.bin",
+   "count": 5,
+   "customFloats": 0
+  },
+  {
+   "id": "m89",
+   "file": "meshes/g1cf2550c_4.glb",
+   "material": "mat46",
+   "name": "Plane glow",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "instances": "inst/m89.bin",
+   "count": 3,
+   "customFloats": 0
+  },
+  {
+   "id": "m90",
+   "file": "meshes/g9d5f21dc_4.glb",
+   "material": "mat0",
+   "name": "Plane meadow",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    18,
+    1
+   ]
+  },
+  {
+   "id": "m91",
+   "file": "meshes/g70ff7c88_4.glb",
+   "material": "mat11",
+   "name": "Plane old_wood_floor",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0.005,
+    -17.5,
+    1
+   ]
+  },
+  {
+   "id": "m92",
+   "file": "meshes/gbeb721dc_4.glb",
+   "material": "mat15",
+   "name": "Plane mapleAtlas",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m92.bin",
+   "count": 1,
+   "customFloats": 4
+  },
+  {
+   "id": "m93",
+   "file": "meshes/gf4558dec_4.glb",
+   "material": "mat27",
+   "name": "Plane rug",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.2,
+    0.012,
+    -9.5,
+    1
+   ]
+  },
+  {
+   "id": "m94",
+   "file": "meshes/g2f1721dc_4.glb",
+   "material": "mat29",
+   "name": "Plane leafy_grass",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0.004,
+    -40,
+    1
+   ]
+  },
+  {
+   "id": "m95",
+   "file": "meshes/g8acef358_4.glb",
+   "material": "mat43",
+   "name": "WindowPane Plane emissive",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "tag": "WindowPane",
+   "matrix": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    4.32,
+    1.6,
+    -14,
+    1
+   ]
+  }
+ ],
+ "models": [
+  {
+   "name": "wooden_ladder",
+   "matrix": [
+    0,
+    0.44671,
+    -3.41681,
+    0,
+    0,
+    3.41681,
+    0.44671,
+    0,
+    3.44589,
+    0,
+    0,
+    0,
+    -1.85,
+    0,
+    -15.8,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "wooden_ladder",
+   "matrix": [
+    0,
+    0.44671,
+    3.41681,
+    0,
+    0,
+    3.41681,
+    -0.44671,
+    0,
+    -3.44589,
+    0,
+    0,
+    0,
+    1.85,
+    0,
+    -20.5,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "WoodenChair_01",
+   "matrix": [
+    -0.29552,
+    0,
+    -0.95534,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.95534,
+    0,
+    -0.29552,
+    0,
+    -1.35,
+    0,
+    -8.2,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "ArmChair_01",
+   "matrix": [
+    -0.38942,
+    0,
+    0.92106,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -0.92106,
+    0,
+    -0.38942,
+    0,
+    1.3,
+    0,
+    -3.6,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "ClassicNightstand_01",
+   "matrix": [
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    -1.45,
+    0,
+    -20.2,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "mantel_clock_01",
+   "matrix": [
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    -1.5,
+    0.66,
+    -20.55,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "vintage_radio_transceiver",
+   "matrix": [
+    -0.47943,
+    0,
+    -0.87758,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.87758,
+    0,
+    -0.47943,
+    0,
+    -3,
+    0.72,
+    -35.3,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false,
+   "tag": "Radio"
+  },
+  {
+   "name": "ClassicNightstand_01",
+   "matrix": [
+    0,
+    0,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    -3.1,
+    0,
+    -35.3,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "fern_02",
+   "matrix": [
+    1.4,
+    0,
+    0,
+    0,
+    0,
+    1.4,
+    0,
+    0,
+    0,
+    0,
+    1.4,
+    0,
+    1.8,
+    0,
+    -10.5,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "calathea_orbifolia_01",
+   "matrix": [
+    1.3,
+    0,
+    0,
+    0,
+    0,
+    1.3,
+    0,
+    0,
+    0,
+    0,
+    1.3,
+    0,
+    -1.8,
+    0,
+    -16.5,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "anthurium_botany_01",
+   "matrix": [
+    1.4,
+    0,
+    0,
+    0,
+    0,
+    1.4,
+    0,
+    0,
+    0,
+    0,
+    1.4,
+    0,
+    1.75,
+    0,
+    -27,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "antique_ceramic_vase_01",
+   "matrix": [
+    1.2,
+    0,
+    0,
+    0,
+    0,
+    1.2,
+    0,
+    0,
+    0,
+    0,
+    1.2,
+    0,
+    1.7,
+    0,
+    -6.4,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "wooden_bookshelf_worn",
+   "matrix": [
+    1.25,
+    0,
+    0,
+    0,
+    0,
+    1.25,
+    0,
+    0,
+    0,
+    0,
+    1.25,
+    0,
+    -2.4,
+    0,
+    -45.65,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "wooden_bookshelf_worn",
+   "matrix": [
+    1.25,
+    0,
+    0,
+    0,
+    0,
+    1.25,
+    0,
+    0,
+    0,
+    0,
+    1.25,
+    0,
+    0,
+    0,
+    -45.65,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "wooden_bookshelf_worn",
+   "matrix": [
+    1.25,
+    0,
+    0,
+    0,
+    0,
+    1.25,
+    0,
+    0,
+    0,
+    0,
+    1.25,
+    0,
+    2.4,
+    0,
+    -45.65,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "ClassicNightstand_01",
+   "matrix": [
+    0.09983,
+    0,
+    0.995,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -0.995,
+    0,
+    0.09983,
+    0,
+    1.45,
+    0,
+    -41.2,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "vintage_oil_lamp",
+   "matrix": [
+    0.92106,
+    0,
+    -0.38942,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0.38942,
+    0,
+    0.92106,
+    0,
+    1.5,
+    0.69,
+    -41.45,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "wooden_bowl_01",
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1.42,
+    0.69,
+    -41,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "pachira_aquatica_01",
+   "matrix": [
+    1.57123,
+    0,
+    1.81417,
+    0,
+    0,
+    2.4,
+    0,
+    0,
+    -1.81417,
+    0,
+    1.57123,
+    0,
+    -4.9,
+    0,
+    -37.6,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "pachira_aquatica_01",
+   "matrix": [
+    1.48666,
+    0,
+    2.37273,
+    0,
+    0,
+    2.8,
+    0,
+    0,
+    -2.37273,
+    0,
+    1.48666,
+    0,
+    4.9,
+    0,
+    -44.3,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": true
+  },
+  {
+   "name": "calathea_orbifolia_01",
+   "matrix": [
+    1.62306,
+    0,
+    1.16862,
+    0,
+    0,
+    2,
+    0,
+    0,
+    -1.16862,
+    0,
+    1.62306,
+    0,
+    -2.6,
+    0,
+    -43.6,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "anthurium_botany_01",
+   "matrix": [
+    1.90327,
+    0,
+    0.61447,
+    0,
+    0,
+    2,
+    0,
+    0,
+    -0.61447,
+    0,
+    1.90327,
+    0,
+    3.2,
+    0,
+    -37.6,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "fern_02",
+   "matrix": [
+    0.52796,
+    0,
+    2.54583,
+    0,
+    0,
+    2.6,
+    0,
+    0,
+    -2.54583,
+    0,
+    0.52796,
+    0,
+    -5.2,
+    0,
+    -44.2,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "potted_plant_02",
+   "matrix": [
+    1.13799,
+    0,
+    -1.12471,
+    0,
+    0,
+    1.6,
+    0,
+    0,
+    1.12471,
+    0,
+    1.13799,
+    0,
+    5.2,
+    0,
+    -40.5,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "fern_02",
+   "matrix": [
+    -1.92219,
+    0,
+    1.07014,
+    0,
+    0,
+    2.2,
+    0,
+    0,
+    -1.07014,
+    0,
+    -1.92219,
+    0,
+    2.6,
+    0,
+    -45.2,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "calathea_orbifolia_01",
+   "matrix": [
+    1.67876,
+    0,
+    1.08709,
+    0,
+    0,
+    2,
+    0,
+    0,
+    -1.08709,
+    0,
+    1.67876,
+    0,
+    -5.6,
+    0,
+    -35.6,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "shrub_02",
+   "matrix": [
+    -0.00994,
+    0,
+    -1.19996,
+    0,
+    0,
+    1.2,
+    0,
+    0,
+    1.19996,
+    0,
+    -0.00994,
+    0,
+    5.4,
+    0,
+    -35.4,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "fern_02",
+   "matrix": [
+    -1.36258,
+    0,
+    1.17617,
+    0,
+    0,
+    1.8,
+    0,
+    0,
+    -1.17617,
+    0,
+    -1.36258,
+    0,
+    -3.4,
+    0,
+    -37.2,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "fern_02",
+   "matrix": [
+    1.27757,
+    0,
+    0.96323,
+    0,
+    0,
+    1.6,
+    0,
+    0,
+    -0.96323,
+    0,
+    1.27757,
+    0,
+    3.8,
+    0,
+    -42.6,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "anthurium_botany_01",
+   "matrix": [
+    0.04377,
+    0,
+    1.5994,
+    0,
+    0,
+    1.6,
+    0,
+    0,
+    -1.5994,
+    0,
+    0.04377,
+    0,
+    -4,
+    0,
+    -41,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "calathea_orbifolia_01",
+   "matrix": [
+    1.53433,
+    0,
+    -0.45369,
+    0,
+    0,
+    1.6,
+    0,
+    0,
+    0.45369,
+    0,
+    1.53433,
+    0,
+    1,
+    0,
+    -44.8,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  },
+  {
+   "name": "fern_02",
+   "matrix": [
+    -0.22476,
+    0,
+    1.98733,
+    0,
+    0,
+    2,
+    0,
+    0,
+    -1.98733,
+    0,
+    -0.22476,
+    0,
+    -1.6,
+    0,
+    -45.4,
+    1
+   ],
+   "snow": 0,
+   "tint": [
+    1,
+    1,
+    1
+   ],
+   "castShadow": false
+  }
+ ],
+ "markers": [
+  {
+   "tag": "PlayerStart",
+   "spawn": "wake",
+   "position": [
+    0.6,
+    0,
+    14
+   ],
+   "yaw": 0.3,
+   "pitch": 0.95,
+   "eye": 0.16,
+   "note": "lying in the daisies; eye height 0.16 m, stands up to 1.62"
+  },
+  {
+   "tag": "PlayerStart",
+   "spawn": "default",
+   "position": [
+    0.6,
+    0,
+    14
+   ],
+   "yaw": 0.3,
+   "pitch": 0.95,
+   "eye": 0.16,
+   "note": "same as wake (first arrival)"
+  },
+  {
+   "tag": "PlayerStart",
+   "spawn": "hall",
+   "position": [
+    0,
+    0,
+    -1.5
+   ],
+   "yaw": 0,
+   "pitch": 0
+  },
+  {
+   "tag": "PlayerStart",
+   "spawn": "book",
+   "position": [
+    -0.4,
+    0,
+    -9.4
+   ],
+   "yaw": 0.5,
+   "pitch": 0
+  },
+  {
+   "tag": "PlayerStart",
+   "spawn": "window",
+   "position": [
+    1.6,
+    0,
+    -14.2
+   ],
+   "yaw": 1.2,
+   "pitch": 0
+  },
+  {
+   "tag": "PlayerStart",
+   "spawn": "globe",
+   "position": [
+    -0.5,
+    0,
+    -21.2
+   ],
+   "yaw": -0.2,
+   "pitch": 0
+  },
+  {
+   "tag": "PlayerStart",
+   "spawn": "door1",
+   "position": [
+    2.6,
+    0,
+    -24
+   ],
+   "yaw": -1.4,
+   "pitch": 0
+  },
+  {
+   "tag": "PlayerStart",
+   "spawn": "door2",
+   "position": [
+    -2.6,
+    0,
+    -28
+   ],
+   "yaw": 1.4,
+   "pitch": 0
+  },
+  {
+   "tag": "PlayerStart",
+   "spawn": "door3",
+   "position": [
+    2.6,
+    0,
+    -30.4
+   ],
+   "yaw": -1.4,
+   "pitch": 0
+  },
+  {
+   "tag": "LibraryMouth",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "yaw": 0
+  },
+  {
+   "tag": "I_book",
+   "position": [
+    -1.35,
+    0.47,
+    -8.2
+   ],
+   "radius": 0.25
+  },
+  {
+   "tag": "I_window",
+   "position": [
+    4.2,
+    1.6,
+    -14
+   ],
+   "radius": 0.7
+  },
+  {
+   "tag": "I_globe",
+   "position": [
+    -1.45,
+    0.72,
+    -19.95
+   ],
+   "radius": 0.15
+  },
+  {
+   "tag": "I_cherries",
+   "position": [
+    1.42,
+    0.69,
+    -41
+   ],
+   "radius": 0.25
+  },
+  {
+   "tag": "I_bottle",
+   "position": [
+    1.6,
+    0.69,
+    -40.85
+   ],
+   "radius": 0.03
+  },
+  {
+   "tag": "I_radio",
+   "position": [
+    -3,
+    0.72,
+    -35.3
+   ],
+   "radius": 0.3
+  },
+  {
+   "tag": "I_door1",
+   "position": [
+    3.7,
+    1.2,
+    -24
+   ],
+   "radius": 0.6
+  },
+  {
+   "tag": "I_door2",
+   "position": [
+    -3.7,
+    1.2,
+    -28
+   ],
+   "radius": 0.6
+  },
+  {
+   "tag": "I_door3",
+   "position": [
+    3.7,
+    1.2,
+    -30.4
+   ],
+   "radius": 0.6
+  },
+  {
+   "tag": "I_exit",
+   "position": [
+    0,
+    1.4,
+    3.5
+   ],
+   "radius": 2.5
+  },
+  {
+   "tag": "I_bedGive",
+   "position": [
+    -0.1,
+    0.85,
+    -41.2
+   ],
+   "radius": 0.4
+  },
+  {
+   "tag": "HerBed",
+   "position": [
+    -0.05,
+    0.6,
+    -41.05
+   ],
+   "yaw": 0,
+   "pitch": 1.5708,
+   "roll": 0,
+   "quat": [
+    0,
+    0.70711,
+    0.70711,
+    0
+   ],
+   "figureFront": "+Z",
+   "euler": [
+    -1.5707963267948966,
+    3.141592653589793,
+    0,
+    "YXZ"
+   ],
+   "note": "her.group transform (feet origin, figure local front +Z) as set in cherryMemory()"
+  },
+  {
+   "tag": "HerSit",
+   "position": [
+    0,
+    0.52,
+    -39.4
+   ],
+   "yaw": 3.14159,
+   "pitch": 0,
+   "roll": 0,
+   "quat": [
+    0,
+    0,
+    0,
+    1
+   ],
+   "figureFront": "+Z",
+   "seatHeight": 0.52,
+   "note": "reunion: hips at y=0.52 (her.group.y = 0.52 - hipY), facing +Z toward the nave"
+  },
+  {
+   "tag": "CherryView",
+   "position": [
+    1,
+    0,
+    -39.4
+   ],
+   "yaw": 2.6,
+   "pitch": -0.35,
+   "note": "player feet position + look during the cherry memory"
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_wake",
+   "position": [
+    0.6,
+    0.16,
+    14
+   ],
+   "lookAt": [
+    -1.11899,
+    8.29416,
+    8.44297
+   ],
+   "fov": 62,
+   "yaw": 0.3,
+   "pitch": 0.95
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_meadow",
+   "position": [
+    0.4,
+    1.6,
+    10
+   ],
+   "lookAt": [
+    0.4,
+    1.6,
+    0
+   ],
+   "fov": 62,
+   "yaw": 0,
+   "pitch": 0
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_nave",
+   "position": [
+    0,
+    1.6,
+    -3
+   ],
+   "lookAt": [
+    0,
+    4.07404,
+    -12.68912
+   ],
+   "fov": 62,
+   "yaw": 0,
+   "pitch": 0.25
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_chamber",
+   "position": [
+    0.3,
+    1.6,
+    -34.8
+   ],
+   "lookAt": [
+    0.3,
+    0.40288,
+    -44.72809
+   ],
+   "fov": 62,
+   "yaw": 0,
+   "pitch": -0.12
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_door",
+   "position": [
+    -1.2,
+    1.6,
+    -23.6
+   ],
+   "lookAt": [
+    8.72809,
+    1.6,
+    -24.79712
+   ],
+   "fov": 62,
+   "yaw": -1.4508,
+   "pitch": 0
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.99176,
+    3.6536,
+    -3.74849
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.77351,
+    5.45775,
+    -10.29244
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.85862,
+    9.78359,
+    -26.00993
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.78237,
+    11.46257,
+    -24.41526
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.74422,
+    9.89976,
+    -15.18886
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.32832,
+    13.08527,
+    -4.99913
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.63076,
+    4.48559,
+    -27.04
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.985,
+    3.05009,
+    -30.7108
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.18097,
+    9.7316,
+    -13.92524
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.07304,
+    3.98911,
+    -18.20582
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.65992,
+    12.15354,
+    -31.2199
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.78897,
+    8.94747,
+    -1.13302
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.60215,
+    6.56619,
+    -26.17003
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.98266,
+    11.97756,
+    -13.90882
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.31349,
+    5.75703,
+    -29.44328
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.56336,
+    10.69422,
+    -24.33949
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.5778,
+    3.62893,
+    -15.6832
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.31059,
+    5.45901,
+    -4.70934
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.352,
+    13.6699,
+    -21.34287
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.84313,
+    9.60306,
+    -12.36016
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.42167,
+    13.54839,
+    -3.25025
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.70341,
+    7.72153,
+    -20.62409
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.64157,
+    5.11211,
+    -3.55798
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.42971,
+    10.01757,
+    -26.30113
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.88307,
+    12.2743,
+    -11.2666
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.82195,
+    11.87556,
+    -6.25646
+   ],
+   "color": [
+    1,
+    0.45079,
+    0.10224
+   ],
+   "size": 0.5,
+   "opacity": 0.72568
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -5,
+    5.6,
+    -40
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -4.85507,
+    5.55912,
+    -39.73668
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -4.71014,
+    5.50943,
+    -39.47607
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -4.56522,
+    5.44504,
+    -39.22086
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -4.42029,
+    5.36498,
+    -38.97365
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -4.27536,
+    5.2735,
+    -38.73699
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -4.13043,
+    5.17879,
+    -38.51332
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -3.98551,
+    5.09031,
+    -38.30495
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -3.84058,
+    5.01578,
+    -38.114
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -3.69565,
+    4.95864,
+    -37.94244
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -3.55072,
+    4.91704,
+    -37.79205
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -3.4058,
+    4.88444,
+    -37.66436
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -3.26087,
+    4.8518,
+    -37.56068
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -3.11594,
+    4.8106,
+    -37.48209
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.97101,
+    4.7556,
+    -37.42939
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.82609,
+    4.68668,
+    -37.40313
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.68116,
+    4.60883,
+    -37.40357
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.53623,
+    4.53062,
+    -37.43071
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.3913,
+    4.4614,
+    -37.48426
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.24638,
+    4.40829,
+    -37.56369
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -2.10145,
+    4.37388,
+    -37.66818
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.95652,
+    4.35542,
+    -37.79664
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.81159,
+    4.34575,
+    -37.94775
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.66667,
+    4.33566,
+    -38.11998
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.52174,
+    4.31692,
+    -38.31153
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.37681,
+    4.28502,
+    -38.52045
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.23188,
+    4.24062,
+    -38.74458
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -1.08696,
+    4.1894,
+    -38.98162
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.94203,
+    4.1402,
+    -39.22913
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.7971,
+    4.10214,
+    -39.48457
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.65217,
+    4.08169,
+    -39.74531
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.50725,
+    4.08051,
+    -40.00867
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.36232,
+    4.09499,
+    -40.27194
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.21739,
+    4.11736,
+    -40.53241
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -0.07246,
+    4.1383,
+    -40.78741
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.07246,
+    4.14996,
+    -41.03431
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.21739,
+    4.14854,
+    -41.27058
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.36232,
+    4.13549,
+    -41.49378
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.50725,
+    4.11711,
+    -41.70162
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.65217,
+    4.10242,
+    -41.89196
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.7971,
+    4.10023,
+    -42.06285
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    0.94203,
+    4.11627,
+    -42.21252
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.08696,
+    4.15127,
+    -42.33944
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.23188,
+    4.20075,
+    -42.44231
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.37681,
+    4.25643,
+    -42.52006
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.52174,
+    4.30897,
+    -42.57189
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.66667,
+    4.35093,
+    -42.59728
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.81159,
+    4.37926,
+    -42.59596
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    1.95652,
+    4.39621,
+    -42.56795
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    2.10145,
+    4.40863,
+    -42.51353
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    2.24638,
+    4.42565,
+    -42.43326
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    2.3913,
+    4.45569,
+    -42.32798
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    2.53623,
+    4.50371,
+    -42.19875
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    2.68116,
+    4.56951,
+    -42.04691
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    2.82609,
+    4.6478,
+    -41.87402
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    2.97101,
+    4.72987,
+    -41.68187
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    3.11594,
+    4.80642,
+    -41.47242
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    3.26087,
+    4.87054,
+    -41.24782
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    3.4058,
+    4.91997,
+    -41.0104
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    3.55072,
+    4.95776,
+    -40.76258
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    3.69565,
+    4.99124,
+    -40.50693
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    3.84058,
+    5.0296,
+    -40.24606
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    3.98551,
+    5.08085,
+    -39.98266
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    4.13043,
+    5.14912,
+    -39.71944
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    4.27536,
+    5.23333,
+    -39.4591
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    4.42029,
+    5.32743,
+    -39.20433
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    4.56522,
+    5.42238,
+    -38.95774
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    4.71014,
+    5.50906,
+    -38.72186
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    4.85507,
+    5.58116,
+    -38.49913
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    5,
+    5.63726,
+    -38.29184
+   ],
+   "color": [
+    1,
+    0.52712,
+    0.16203
+   ],
+   "size": 0.28,
+   "opacity": 1
+  }
+ ],
+ "uvConvention": "glTF: v=0 at the top of the stored PNG / Poly Haven image (three uv flipped on export)",
+ "stats": {
+  "meshEntries": 96,
+  "instances": 156987,
+  "triangles": 865826,
+  "models": 32,
+  "markers": 125,
+  "lights": 11,
+  "skipped": {
+   "sky": 1,
+   "snow": 1,
+   "config": 1
+  },
+  "figureLightsSkipped": 0,
+  "animatedObjects": 23,
+  "uniqueGeometries": 81,
+  "textures": [
+   "tex/meadow.png",
+   "tex/daisy.png",
+   "tex/leafAtlas.png",
+   "tex/butterflyWing.png",
+   "tex/seed.png",
+   "tex/spineWarm.png",
+   "tex/mapleAtlas.png",
+   "tex/bigLeaf0.png",
+   "tex/bigLeaf1.png",
+   "tex/rug.png",
+   "tex/glow.png"
+  ]
+ },
+ "notes": [
+  "gardenGrp / chamber visibility (runtime streaming by player z) ignored: everything exported",
+  "door chains are hidden until the radio has spoken (hidden:true, tags DoorChains1..3)",
+  "lure sprite and drifting motes/seeds are runtime FX (motes/seeds exported as animated leafcards snapshots)"
+ ]
+}

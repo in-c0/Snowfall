@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scene export viewer</title>
+<style>html,body{margin:0;background:#111;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head><body>
+<script type="module">
+// Rebuilds a level ONLY from the exported files (scene.json + meshes/*.glb + inst/*.bin + tex/*.png),
+// plus the Poly Haven scans / diffuse maps / HDRI it references by name. Materials are approximate on purpose.
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+
+const P = new URLSearchParams(location.search);
+const level = P.get('level');
+const fogK = +(P.get('fog') ?? 1);
+const base = `/scene/${level}/`;
+const W = innerWidth, H = innerHeight;
+const r = new THREE.WebGLRenderer({ antialias: false });
+r.setPixelRatio(1); r.setSize(W, H);
+r.outputColorSpace = THREE.SRGBColorSpace;
+r.toneMapping = THREE.ACESFilmicToneMapping;
+r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFShadowMap;
+document.body.appendChild(r.domElement);
+const cam = new THREE.PerspectiveCamera(62, W / H, 0.05, 900);
+const scene = new THREE.Scene();
+const gl = new GLTFLoader(); gl.setMeshoptDecoder(MeshoptDecoder);
+const tl = new THREE.TextureLoader();
+const lin = (a) => new THREE.Color().setRGB(a[0], a[1], a[2]);
+const S = await (await fetch(base + 'scene.json')).json();
+const stats = { meshes: 0, instances: 0, models: 0, glows: 0, lights: 0 };
+
+// ---- env
+const env = S.env;
+r.toneMappingExposure = (S.look?.exposure ?? 1) * 1.0;
+if (env.background) scene.background = lin(env.background);
+if (env.fog?.type === 'exp2') scene.fog = new THREE.FogExp2(lin(env.fog.color), env.fog.density * fogK);
+if (env.hdri) {
+  try {
+    const t = await new RGBELoader().loadAsync(`/assets/hdri/${env.hdri}_1k.hdr`);
+    const pm = new THREE.PMREMGenerator(r); scene.environment = pm.fromEquirectangular(t).texture;
+    scene.environmentIntensity = env.envIntensity ?? 1;
+  } catch (e) { console.warn('hdri', e); }
+}
+if (env.sky?.kind === 'dome') {
+  const m = new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false, fog: false, uniforms: { uTop: { value: lin(env.sky.top) }, uHor: { value: lin(env.sky.horizon) } },
+    vertexShader: 'varying vec3 vD; void main(){ vD = normalize(position); gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); gl_Position.z = gl_Position.w; }',
+    fragmentShader: 'uniform vec3 uTop; uniform vec3 uHor; varying vec3 vD; void main(){ float h = clamp(vD.y,0.0,1.0); gl_FragColor = vec4(mix(uHor,uTop,pow(h,0.6)),1.0);\n#include <colorspace_fragment>\n}' });
+  const sky = new THREE.Mesh(new THREE.SphereGeometry(500, 32, 16), m); sky.frustumCulled = false; sky.renderOrder = -10; scene.add(sky);
+}
+// ---- lights
+for (const L of S.lights) {
+  let l = null;
+  if (L.type === 'hemisphere') l = new THREE.HemisphereLight(lin(L.sky), lin(L.ground), L.intensity);
+  else if (L.type === 'directional') { l = new THREE.DirectionalLight(lin(L.color), L.intensity); l.position.fromArray(L.position); l.target.position.fromArray(L.target); scene.add(l.target);
+    if (L.castShadow && L.shadowExtent) { l.castShadow = true; const [a, b, c, d, n, f] = L.shadowExtent; Object.assign(l.shadow.camera, { left: a, right: b, bottom: c, top: d, near: n, far: f }); l.shadow.mapSize.set(1024, 1024); l.shadow.bias = L.shadowBias ?? 0; l.shadow.normalBias = L.shadowNormalBias ?? 0; } }
+  else if (L.type === 'point') { l = new THREE.PointLight(lin(L.color), L.intensity, L.distance, L.decay); l.position.fromArray(L.position); }
+  else if (L.type === 'spot') { l = new THREE.SpotLight(lin(L.color), L.intensity, L.distance, L.angle, L.penumbra, L.decay); l.position.fromArray(L.position); l.target.position.fromArray(L.target); scene.add(l.target); }
+  if (l) { scene.add(l); stats.lights++; }
+}
+// ---- materials
+const texCache = new Map();
+function tex(url, srgb) { if (!texCache.has(url)) { const t = tl.load(url); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.flipY = false; /* export uvs are glTF convention */ if (srgb) t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; texCache.set(url, t); } return texCache.get(url); }
+function snowPatch(m, amt, dir) {
+  m.onBeforeCompile = (sh) => {
+    sh.uniforms.uSA = { value: amt }; sh.uniforms.uSD = { value: new THREE.Vector3(...(dir || [0, 0, 0])) };
+    sh.fragmentShader = sh.fragmentShader.replace('#include <common>', '#include <common>\nuniform float uSA; uniform vec3 uSD;')
+      .replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
+        { vec3 wn = normalize((vec4(normal,0.0)*viewMatrix).xyz); float k = smoothstep(0.35,0.75,wn.y); k = max(k, smoothstep(0.25,0.7,dot(wn,uSD))*length(uSD)); k *= uSA;
+          diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.86,0.88,0.92), k); roughnessFactor = mix(roughnessFactor,0.85,k); metalnessFactor = mix(metalnessFactor,0.0,k); }`);
+  };
+}
+function leafPatch(m, grid) {
+  m.onBeforeCompile = (sh) => {
+    sh.uniforms.uGrid = { value: grid };
+    sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nattribute float aTile; uniform float uGrid;')
+      .replace('#include <uv_vertex>', `#include <uv_vertex>
+        { vec2 cell = vec2(mod(aTile,uGrid), floor(aTile/uGrid));
+          #ifdef USE_MAP
+          vMapUv = vec2((uv.x + cell.x)/uGrid, (uv.y + cell.y)/uGrid); // tile 0 = top-left of the atlas PNG
+          #endif
+        }`);
+  };
+  m.customProgramCacheKey = () => 'leaf' + grid;
+}
+const mats = {};
+function material(id) {
+  if (mats[id]) return mats[id];
+  const d = S.materials[id];
+  const col = d.color ? lin(d.color) : new THREE.Color(1, 1, 1);
+  let m;
+  const common = { side: d.doubleSided ? THREE.DoubleSide : d.backSide ? THREE.BackSide : THREE.FrontSide, transparent: !!d.transparent, opacity: d.opacity ?? 1, alphaTest: d.alphaTest ?? 0 };
+  if (d.depthWrite === false) common.depthWrite = false;
+  if (d.additive) common.blending = THREE.AdditiveBlending;
+  if (d.kind === 'emissive' || d.unlit) {
+    const c = d.kind === 'emissive' && d.emissive ? lin(d.emissive).multiplyScalar(d.emissiveIntensity ?? 1) : col;
+    m = new THREE.MeshBasicMaterial({ color: c, ...common });
+    if (d.map) m.map = tex(base + d.map, true);
+  } else if (d.kind === 'glass') {
+    m = new THREE.MeshPhysicalMaterial({ color: col, roughness: d.roughness ?? 0.05, metalness: 0, clearcoat: d.clearcoat ?? 0, ...common });
+  } else {
+    m = new THREE.MeshStandardMaterial({ color: col, roughness: d.roughness ?? 0.8, metalness: d.kind === 'pbr' ? Math.min(d.metalness ?? 0, 0.1) : (d.metalness ?? 0), ...common });
+    if (d.emissive) { m.emissive = lin(d.emissive); m.emissiveIntensity = d.emissiveIntensity ?? 1; }
+    if (d.kind === 'pbr') { m.map = tex(`/assets/tex/${d.polyhaven}_diff.webp`, true).clone(); m.map.repeat.set(...(d.tiling || [1, 1])); m.map.needsUpdate = true; }
+    if (d.map) { m.map = tex(base + d.map, true); if (d.tiling) { m.map = m.map.clone(); m.map.repeat.set(...d.tiling); m.map.needsUpdate = true; } }
+    if (d.kind === 'grass') m.color = lin(d.colorA).lerp(lin(d.colorB), 0.65);
+    if (d.kind === 'leafcards') leafPatch(m, d.grid);
+    else if (d.snow) snowPatch(m, d.snow, d.snowDir);
+  }
+  return (mats[id] = m);
+}
+// ---- meshes
+const geoCache = new Map();
+async function geometry(file) {
+  if (!geoCache.has(file)) geoCache.set(file, gl.loadAsync(base + file).then((g) => { let geo = null; g.scene.traverse((o) => { if (o.isMesh && !geo) geo = o.geometry; }); return geo; }));
+  return geoCache.get(file);
+}
+await Promise.all(S.meshes.map(async (e) => {
+  if (e.hidden) return;
+  const geo = (await geometry(e.file)).clone();
+  const mat = material(e.material);
+  let o;
+  if (e.matrix) { o = new THREE.Mesh(geo, mat); o.matrixAutoUpdate = false; o.matrix.fromArray(e.matrix); o.matrixWorldNeedsUpdate = true; stats.instances++; }
+  else {
+    const buf = new Float32Array(await (await fetch(base + e.instances)).arrayBuffer());
+    const st = 16 + e.customFloats;
+    o = new THREE.InstancedMesh(geo, mat, e.count);
+    const m4 = new THREE.Matrix4(), c = new THREE.Color();
+    const tiles = new Float32Array(e.count);
+    for (let i = 0; i < e.count; i++) {
+      m4.fromArray(buf, i * st); o.setMatrixAt(i, m4);
+      if (e.customFloats === 4) { tiles[i] = buf[i * st + 16]; c.setRGB(buf[i * st + 17], buf[i * st + 18], buf[i * st + 19]); o.setColorAt(i, c); }
+    }
+    if (e.customFloats === 4) geo.setAttribute('aTile', new THREE.InstancedBufferAttribute(tiles, 1));
+    if (e.instanceColors) { const cb = new Float32Array(await (await fetch(base + e.instanceColors)).arrayBuffer()); for (let i = 0; i < e.count; i++) { c.setRGB(cb[i * 3], cb[i * 3 + 1], cb[i * 3 + 2]); o.setColorAt(i, c); } }
+    o.frustumCulled = false;
+    stats.instances += e.count;
+  }
+  o.castShadow = !!e.castShadow && e.count === undefined; o.receiveShadow = !!e.receiveShadow;
+  scene.add(o); stats.meshes++;
+}));
+// ---- models (Poly Haven scans, loaded by name)
+const modelCache = new Map();
+await Promise.all(S.models.map(async (e) => {
+  if (e.hidden) return;
+  if (!modelCache.has(e.name)) modelCache.set(e.name, gl.loadAsync(`/assets/models/${e.name}.glb`));
+  const g = await modelCache.get(e.name);
+  let o;
+  if (e.node) { const n = g.scene.getObjectByName(e.node); o = n.clone(true); }
+  else o = g.scene.clone(true);
+  o.matrixAutoUpdate = false; o.matrix.fromArray(e.matrix); o.matrixWorldNeedsUpdate = true;
+  o.traverse((m) => { if (m.isMesh) { m.material = m.material.clone(); m.material.color.multiply(new THREE.Color(...e.tint)); if (e.snow) snowPatch(m.material, e.snow); m.castShadow = true; m.receiveShadow = true; } });
+  scene.add(o); stats.models++;
+}));
+// ---- glow markers
+const glowT = tex(base + 'tex/glow.png', false);
+for (const m of S.markers) if (m.tag === 'Glow') {
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowT, color: lin(m.color), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: m.opacity ?? 1 }));
+  sp.position.fromArray(m.position); sp.scale.setScalar(m.size); scene.add(sp); stats.glows++;
+}
+// wait for textures
+await new Promise((res) => { const t0 = performance.now(); const chk = () => { const all = [...texCache.values()].every((t) => t.image && (t.image.complete ?? true)); if (all || performance.now() - t0 > 20000) res(); else setTimeout(chk, 200); }; chk(); });
+window.VIEW = {
+  stats,
+  shot(mk) { cam.position.fromArray(mk.position); cam.fov = mk.fov; cam.updateProjectionMatrix(); cam.lookAt(...mk.lookAt); r.render(scene, cam); return r.info.render.triangles; },
+};
+window.VIEW_READY = true;
+</script>
+</body></html>

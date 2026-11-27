@@ -1,0 +1,1076 @@
+{
+ "level": "L_Road",
+ "source": "road.js visit=1 (pass 1 state; scarf / wheel tracks / exit light are pass-2+/3 details, exported hidden)",
+ "env": {
+  "hdri": "winter_evening",
+  "envIntensity": 0.06,
+  "background": [
+   0.00243,
+   0.07421,
+   0.14996
+  ],
+  "fog": {
+   "type": "exp2",
+   "color": [
+    0.00243,
+    0.07421,
+    0.14996
+   ],
+   "density": 0.064
+  },
+  "sky": {
+   "kind": "color",
+   "top": [
+    0.00243,
+    0.07421,
+    0.14996
+   ],
+   "horizon": [
+    0.00243,
+    0.07421,
+    0.14996
+   ]
+  }
+ },
+ "look": {
+  "exposure": 1.05,
+  "bloom": 0.16,
+  "halation": 0,
+  "focus": 11.884836538109194,
+  "focusRange": 5,
+  "dof": 0.32,
+  "dofNear": 0,
+  "lift": [
+   0,
+   0.01,
+   0.02
+  ],
+  "gamma": [
+   0.97,
+   1,
+   1.02
+  ],
+  "gain": [
+   0.9,
+   1,
+   1
+  ],
+  "sat": 0.95,
+  "contrast": 1.14,
+  "tint": [
+   0.74,
+   1,
+   1
+  ],
+  "vignette": 0.62,
+  "ca": 0.3,
+  "grain": 0.06,
+  "rays": 0,
+  "raysTint": [
+   1,
+   1,
+   1
+  ],
+  "raysThreshold": 0.8,
+  "raysDecay": 0.96,
+  "raysLen": 0.9,
+  "raysSky": 1,
+  "raysLight": [
+   0.5,
+   0.8
+  ]
+ },
+ "lights": [
+  {
+   "type": "hemisphere",
+   "sky": [
+    0.02843,
+    0.19462,
+    0.33245
+   ],
+   "ground": [
+    0.00061,
+    0.00212,
+    0.00402
+   ],
+   "intensity": 0.13
+  },
+  {
+   "type": "directional",
+   "color": [
+    0.27468,
+    0.49693,
+    0.7913
+   ],
+   "intensity": 0.55,
+   "position": [
+    -11.77228,
+    22,
+    -60.6
+   ],
+   "target": [
+    -5.77228,
+    0,
+    3.4
+   ],
+   "castShadow": true,
+   "shadowMapSize": 1024,
+   "shadowBias": -0.0006,
+   "shadowNormalBias": 0.05,
+   "shadowExtent": [
+    -22,
+    22,
+    -22,
+    22,
+    1,
+    140
+   ],
+   "tag": "Moon"
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.39157,
+    0.11193
+   ],
+   "intensity": 5,
+   "position": [
+    -7.60346,
+    1.78723,
+    12
+   ],
+   "distance": 11,
+   "decay": 1.6,
+   "castShadow": false,
+   "tag": "HouseWindowLight"
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.39157,
+    0.11193
+   ],
+   "intensity": 5,
+   "position": [
+    -7.60346,
+    1.78723,
+    -58
+   ],
+   "distance": 11,
+   "decay": 1.6,
+   "castShadow": false,
+   "tag": "HouseWindowLight"
+  },
+  {
+   "type": "point",
+   "color": [
+    1,
+    0.43415,
+    0.16203
+   ],
+   "intensity": 0,
+   "position": [
+    15.76894,
+    1.75434,
+    -44
+   ],
+   "distance": 16,
+   "decay": 1.5,
+   "castShadow": false,
+   "tag": "LeaveLightPoint"
+  }
+ ],
+ "materials": {
+  "mat0": {
+   "kind": "snowground",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.02732,
+    0.05286,
+    0.08438
+   ],
+   "roughness": 0.86,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "envMapIntensity": 0.6,
+   "wind": 0,
+   "sparkle": 0,
+   "relief": 1,
+   "periodicZ": 70,
+   "note": "road loop snow: procedural noise periodic in z every 70 m"
+  },
+  "mat1": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.02519,
+    0.02956,
+    0.03689
+   ],
+   "roughness": 0.55,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "envMapIntensity": 0.5,
+   "normalScale": 1,
+   "polyhaven": "asphalt_snow",
+   "tiling": [
+    1,
+    1
+   ],
+   "wind": 0,
+   "snowEdges": true,
+   "note": "asphalt: snow creeps in from the ribbon edges (uv.x 0/1), worn tyre lanes"
+  },
+  "mat2": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.69387,
+    0.73791,
+    0.7913
+   ],
+   "roughness": 0.5,
+   "metalness": 0,
+   "emissive": [
+    0.01764,
+    0.03955,
+    0.06848
+   ],
+   "emissiveIntensity": 1,
+   "alphaTest": 0.4,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/roadDash.png",
+   "wind": 0
+  },
+  "mat3": {
+   "kind": "pbr",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.04231,
+    0.04519,
+    0.05127
+   ],
+   "roughness": 1,
+   "metalness": 1,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "normalScale": 1,
+   "polyhaven": "bark_brown_02",
+   "tiling": [
+    1,
+    1
+   ],
+   "wind": 0
+  },
+  "mat4": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.01161,
+    0.01444,
+    0.01938
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "alphaTest": 0.35,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/twig2.png",
+   "wind": 0
+  },
+  "mat5": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.01161,
+    0.01444,
+    0.01938
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "alphaTest": 0.35,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/twig0.png",
+   "wind": 0
+  },
+  "mat6": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.01161,
+    0.01444,
+    0.01938
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "alphaTest": 0.35,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "map": "tex/twig1.png",
+   "wind": 0
+  },
+  "mat7": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.01681,
+    0.02029,
+    0.02624
+   ],
+   "roughness": 0.95,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat8": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.58408,
+    0.65141,
+    0.73046
+   ],
+   "roughness": 0.9,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat9": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.00439,
+    0.00518,
+    0.00651
+   ],
+   "roughness": 0.8,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat10": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.06848,
+    0.09759,
+    0.13287
+   ],
+   "roughness": 0.9,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat11": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0,
+    0,
+    0
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "emissive": [
+    1,
+    0.25415,
+    0.05127
+   ],
+   "emissiveIntensity": 2.6,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat12": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.0075,
+    0.00857,
+    0.01033
+   ],
+   "roughness": 1,
+   "metalness": 0,
+   "doubleSided": false,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat13": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshStandardMaterial",
+   "color": [
+    0.35153,
+    0.00518,
+    0.01033
+   ],
+   "roughness": 0.92,
+   "metalness": 0,
+   "emissive": [
+    0.10224,
+    0.00152,
+    0.00304
+   ],
+   "emissiveIntensity": 1,
+   "doubleSided": true,
+   "transparent": false,
+   "opacity": 1,
+   "wind": 0
+  },
+  "mat14": {
+   "kind": "basic",
+   "name": "",
+   "three": "MeshBasicMaterial",
+   "color": [
+    0.39157,
+    0.50289,
+    0.62396
+   ],
+   "doubleSided": false,
+   "transparent": true,
+   "opacity": 0,
+   "depthWrite": false,
+   "unlit": true,
+   "vertexColors": true,
+   "map": "tex/wheelTracks.png",
+   "wind": 0
+  }
+ },
+ "meshes": [
+  {
+   "id": "m0",
+   "file": "meshes/g0e6d713f_1452.glb",
+   "material": "mat3",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1132,
+   "instances": "inst/m0.bin",
+   "count": 73,
+   "customFloats": 0
+  },
+  {
+   "id": "m1",
+   "file": "meshes/gc74f9a7d_1320.glb",
+   "material": "mat3",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1032,
+   "instances": "inst/m1.bin",
+   "count": 79,
+   "customFloats": 0
+  },
+  {
+   "id": "m2",
+   "file": "meshes/gf7718112_1324.glb",
+   "material": "mat3",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1036,
+   "instances": "inst/m2.bin",
+   "count": 78,
+   "customFloats": 0
+  },
+  {
+   "id": "m3",
+   "file": "meshes/g176f03a8_1468.glb",
+   "material": "mat3",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1144,
+   "instances": "inst/m3.bin",
+   "count": 64,
+   "customFloats": 0
+  },
+  {
+   "id": "m4",
+   "file": "meshes/gd99c4242_1452.glb",
+   "material": "mat3",
+   "name": "Mesh bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 1132,
+   "instances": "inst/m4.bin",
+   "count": 53,
+   "customFloats": 0
+  },
+  {
+   "id": "m5",
+   "file": "meshes/g97bbfe1d_20079.glb",
+   "material": "mat0",
+   "name": "Plane snowground",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 39552,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m6",
+   "file": "meshes/g9f8cf7ac_496.glb",
+   "material": "mat5",
+   "name": "Mesh twig0",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 248,
+   "instances": "inst/m6.bin",
+   "count": 73,
+   "customFloats": 0
+  },
+  {
+   "id": "m7",
+   "file": "meshes/g5ed367fc_432.glb",
+   "material": "mat5",
+   "name": "Mesh twig0",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 216,
+   "instances": "inst/m7.bin",
+   "count": 79,
+   "customFloats": 0
+  },
+  {
+   "id": "m8",
+   "file": "meshes/g143ec484_432.glb",
+   "material": "mat6",
+   "name": "Mesh twig1",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 216,
+   "instances": "inst/m8.bin",
+   "count": 78,
+   "customFloats": 0
+  },
+  {
+   "id": "m9",
+   "file": "meshes/g9476f96b_504.glb",
+   "material": "mat4",
+   "name": "Mesh twig2",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 252,
+   "instances": "inst/m9.bin",
+   "count": 64,
+   "customFloats": 0
+  },
+  {
+   "id": "m10",
+   "file": "meshes/g4958888f_496.glb",
+   "material": "mat4",
+   "name": "Mesh twig2",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 248,
+   "instances": "inst/m10.bin",
+   "count": 53,
+   "customFloats": 0
+  },
+  {
+   "id": "m11",
+   "file": "meshes/g56780ee3_2751.glb",
+   "material": "mat1",
+   "name": "Mesh asphalt_snow",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 4704,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "m12",
+   "file": "meshes/g8af86c90_78.glb",
+   "material": "mat3",
+   "name": "Tube bark_brown_02",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 120,
+   "instances": "inst/m12.bin",
+   "count": 3,
+   "customFloats": 0
+  },
+  {
+   "id": "m13",
+   "file": "meshes/g05a6b76b_182.glb",
+   "material": "mat14",
+   "name": "WheelTracks Mesh wheelTracks",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 180,
+   "tag": "WheelTracks",
+   "hidden": true,
+   "instances": "inst/m13.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m14",
+   "file": "meshes/gc8446b48_4.glb",
+   "material": "mat2",
+   "name": "Plane roadDash",
+   "castShadow": false,
+   "receiveShadow": true,
+   "triangles": 2,
+   "instances": "inst/m14.bin",
+   "count": 39,
+   "customFloats": 0
+  },
+  {
+   "id": "m15",
+   "file": "meshes/g0c7206f4_50.glb",
+   "material": "mat13",
+   "name": "Scarf Plane basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 48,
+   "tag": "Scarf",
+   "hidden": true,
+   "animated": true,
+   "matrix": [
+    0.99892,
+    0.04643,
+    0,
+    0,
+    -0.04643,
+    0.99892,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -4.6049,
+    1.8714,
+    -38.02,
+    1
+   ]
+  },
+  {
+   "id": "m16",
+   "file": "meshes/g0c7206f4_50.glb",
+   "material": "mat13",
+   "name": "Scarf Plane basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 48,
+   "tag": "Scarf",
+   "hidden": true,
+   "matrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    -4.6049,
+    1.8714,
+    -108.02,
+    1
+   ]
+  },
+  {
+   "id": "m17",
+   "file": "meshes/g3028c709_24.glb",
+   "material": "mat7",
+   "name": "Box basic",
+   "castShadow": true,
+   "receiveShadow": true,
+   "triangles": 12,
+   "instances": "inst/m17.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m18",
+   "file": "meshes/gb8f87af1_24.glb",
+   "material": "mat7",
+   "name": "Box basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "instances": "inst/m18.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m19",
+   "file": "meshes/g6171a1e9_24.glb",
+   "material": "mat7",
+   "name": "Box basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "instances": "inst/m19.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m20",
+   "file": "meshes/g87097ae9_24.glb",
+   "material": "mat10",
+   "name": "Box basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "instances": "inst/m20.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m21",
+   "file": "meshes/gf4138101_24.glb",
+   "material": "mat12",
+   "name": "Box basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "instances": "inst/m21.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m22",
+   "file": "meshes/ga1406821_24.glb",
+   "material": "mat12",
+   "name": "Box basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "instances": "inst/m22.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m23",
+   "file": "meshes/g669bae69_24.glb",
+   "material": "mat12",
+   "name": "Box basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 12,
+   "instances": "inst/m23.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m24",
+   "file": "meshes/gd8c7130e_24.glb",
+   "material": "mat8",
+   "name": "Extrude basic",
+   "castShadow": true,
+   "receiveShadow": false,
+   "triangles": 8,
+   "instances": "inst/m24.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m25",
+   "file": "meshes/g0444d3dc_4.glb",
+   "material": "mat9",
+   "name": "Plane basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "instances": "inst/m25.bin",
+   "count": 2,
+   "customFloats": 0
+  },
+  {
+   "id": "m26",
+   "file": "meshes/g438a7340_4.glb",
+   "material": "mat11",
+   "name": "HouseWindow Plane basic",
+   "castShadow": false,
+   "receiveShadow": false,
+   "triangles": 2,
+   "tag": "HouseWindow",
+   "instances": "inst/m26.bin",
+   "count": 2,
+   "customFloats": 0
+  }
+ ],
+ "models": [],
+ "markers": [
+  {
+   "tag": "PlayerStart",
+   "spawn": "default",
+   "position": [
+    -5.77228,
+    0.00772,
+    9.4
+   ],
+   "yaw": -0.87321,
+   "note": "HIS start by the front door (third person); yaw = his heading, slightly turned toward the road"
+  },
+  {
+   "tag": "RoadStart",
+   "position": [
+    3.47399,
+    -0.01,
+    -8
+   ],
+   "yaw": -0.04234,
+   "period": 70,
+   "note": "a new pass begins here (S_LAND = 8)"
+  },
+  {
+   "tag": "RoadEnd",
+   "position": [
+    3.47399,
+    -0.01,
+    -78
+   ],
+   "yaw": -0.04234,
+   "period": 70,
+   "note": "teleport line: crossing it moves him and the camera back by 70 m (+Z)"
+  },
+  {
+   "tag": "LeaveLight",
+   "position": [
+    15.76894,
+    1.7526,
+    -44
+   ],
+   "color": [
+    1,
+    0.69,
+    0.44
+   ],
+   "intensity": 9,
+   "distance": 16,
+   "note": "warm exit light off the right of the road (pass 2+); the path toward it opens for |s-44|<6; copy one loop ahead at z-70"
+  },
+  {
+   "tag": "ScarfBough",
+   "position": [
+    -5.6049,
+    1.67009,
+    -38
+   ],
+   "note": "low bough holding the red scarf (pass 2)"
+  },
+  {
+   "tag": "HouseDoor",
+   "position": [
+    -8.30346,
+    0.08605,
+    9.4
+   ],
+   "note": "his front door step"
+  },
+  {
+   "tag": "FarGlow",
+   "position": [
+    0.27476,
+    3.47,
+    -30.6
+   ],
+   "color": [
+    0.0137,
+    0.26225,
+    0.43415
+   ],
+   "size": [
+    64,
+    40
+   ],
+   "opacity": 0.6,
+   "note": "follows him: always 40 m ahead down the road, 3.5 m up, unfogged"
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_road",
+   "position": [
+    3.6979,
+    2.39,
+    -11
+   ],
+   "lookAt": [
+    -1.09599,
+    1.44,
+    -36
+   ],
+   "fov": 62,
+   "him": [
+    1.98247,
+    -0.01,
+    -22
+   ]
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_house",
+   "position": [
+    2.08323,
+    1.69012,
+    3
+   ],
+   "lookAt": [
+    -9.70346,
+    2.2,
+    10
+   ],
+   "fov": 62
+  },
+  {
+   "tag": "Shot",
+   "name": "shot_start",
+   "position": [
+    -4.9032,
+    2.39,
+    19.2
+   ],
+   "lookAt": [
+    3.29606,
+    1.44,
+    -5.8
+   ],
+   "fov": 62,
+   "him": [
+    -1.2898,
+    -0.01,
+    8.2
+   ]
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -8.50346,
+    1.78723,
+    12
+   ],
+   "color": [
+    1,
+    0.39157,
+    0.11697
+   ],
+   "size": 3.2,
+   "opacity": 0.55
+  },
+  {
+   "tag": "Glow",
+   "position": [
+    -8.50346,
+    1.78723,
+    -58
+   ],
+   "color": [
+    1,
+    0.39157,
+    0.11697
+   ],
+   "size": 3.2,
+   "opacity": 0.55
+  }
+ ],
+ "uvConvention": "glTF: v=0 at the top of the stored PNG / Poly Haven image (three uv flipped on export)",
+ "stats": {
+  "meshEntries": 27,
+  "instances": 762,
+  "triangles": 504814,
+  "models": 0,
+  "markers": 12,
+  "lights": 5,
+  "skipped": {
+   "character": 2,
+   "snow": 1,
+   "fogcards": 1,
+   "config": 1,
+   "glowInvisible": 1
+  },
+  "figureLightsSkipped": 0,
+  "animatedObjects": 1,
+  "uniqueGeometries": 26,
+  "textures": [
+   "tex/roadDash.png",
+   "tex/twig2.png",
+   "tex/twig0.png",
+   "tex/twig1.png",
+   "tex/wheelTracks.png",
+   "tex/glow.png"
+  ]
+ },
+ "notes": [
+  "the 70 m stretch is periodic: everything (trees, house, scarf, tracks) repeats every L=70 m along −Z; RoadStart→RoadEnd is one loop (teleport back by 70 m at RoadEnd)",
+  "forest chunks exported regardless of runtime culling (trees.cull)",
+  "him (the silhouette) is a character: not exported",
+  "FarGlow follows him 40 m ahead down the road (marker gives one sample)"
+ ]
+}
